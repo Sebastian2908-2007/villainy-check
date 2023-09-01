@@ -1,26 +1,37 @@
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { questions } from "@/utils/questionData";
 /**each question is worth a max of 10 points */
-export default function Quiz () {
+export default function Quiz ({setDisplayAnswers}) {
     const [typeA,setTypeA] = useState(0);
     const [typeB,setTypeB] = useState(0);
     const [balanced,setBalanced] = useState(0);
+   const [hasSubmitted,setHasSubmitted] = useState(false);
+    
     let potentialPoints;
     let potentialPointsCounter = 0;
     questions.forEach(question => {
        potentialPointsCounter = potentialPointsCounter + 15;
     });
     potentialPoints = potentialPointsCounter;
- console.log(potentialPoints);
+
+ const handleReset = () => {
+    setDisplayAnswers(null);
+    setTypeA(0);
+    setTypeB(0);
+    setBalanced(0);
+    setHasSubmitted(false);
+ };
+
+
+useEffect(() => console.log(balanced),[balanced]);
  const handleQuestionAnswer = (event,question) => {
     event.preventDefault();
-    console.log(event.target)
+   console.log(event.target);
     const isUserCorrect = event.target.getAttribute('data-correct');
     const answerType = event.target.getAttribute('data-answertype');
-    console.log(isUserCorrect);
-    console.log(answerType);
     const correctType = question.correctType;
+
     if(isUserCorrect && answerType === correctType) {
         setBalanced(balanced + 15);
         return;
@@ -41,42 +52,124 @@ export default function Quiz () {
             setTypeA(typeA - 15);
             setBalanced(balanced - 15);
             break;
+            case'start right':
+            setTypeB(typeB - 5);
+            setTypeA(typeA + 5);
+            setBalanced(balanced - 5);
+            break;
+            case'mid right':
+            setTypeB(typeB - 10);
+            setTypeA(typeA + 10);
+            setBalanced(balanced - 10);
+            break;
           }
+    }else if (!isUserCorrect && correctType === 'far left') {
+        switch(answerType) {
+            case'start right':
+            setTypeB(typeB - 5);
+            setTypeA(typeA + 5);
+            setBalanced(balanced - 5);
+            break;
+            case'mid right':
+            setTypeB(typeB - 10);
+            setTypeA(typeA + 10);
+            setBalanced(balanced - 10);
+            break;
+            case'far right':
+            setTypeB(typeB - 15);
+            setTypeA(typeA + 15);
+            setBalanced(balanced - 15);
+            break;
+            case'start left':
+            setTypeB(typeB + 5);
+            setTypeA(typeA - 5);
+            setBalanced(balanced - 5);
+            break;
+            case'mid left':
+            setTypeB(typeB + 10);
+            setTypeA(typeA - 10);
+            setBalanced(balanced - 10);
+            break;
+          }      
     }
+    else if (!isUserCorrect && correctType === 'mid') {
+        switch(answerType) {
+            case'start right':
+            setTypeB(typeB - 5);
+            setTypeA(typeA + 5);
+            setBalanced(balanced - 5);
+            break;
+            case'mid right':
+            setTypeB(typeB - 10);
+            setTypeA(typeA + 10);
+            setBalanced(balanced - 10);
+            break;
+            case'far right':
+            setTypeB(typeB - 15);
+            setTypeA(typeA + 15);
+            setBalanced(balanced - 15);
+            break;
+            case'start left':
+            setTypeB(typeB + 5);
+            setTypeA(typeA - 5);
+            setBalanced(balanced - 5);
+            break;
+            case'mid left':
+            setTypeB(typeB + 10);
+            setTypeA(typeA - 10);
+            setBalanced(balanced - 10);
+            break;
+            case'far left':
+            setTypeB(typeB + 15);
+            setTypeA(typeA - 15);
+            setBalanced(balanced - 15);
+            break;
+          }      
+    }
+ };
 
-    
-
+ const handleSubmit = (event) => {
+    event.preventDefault();
+setDisplayAnswers({typeA:typeA,typeB:typeB,balanced:balanced});
+setHasSubmitted(true);
+console.log('handle submit ran');
+return;
  };
     return(
-    <form>
+        <>
+    <form onSubmit={handleSubmit}>
 
        {questions ? questions.map(question => (
+       
            <div className="flex flex-col h-[70vh]" key={question.ques1.text}>
-             <span>{question.correctType}</span>
+            <div className="flex flex-col">
+             <span className="text-center">Question &nbsp;{question.quesId}</span>
+             <span className="text-center">Choose only one answer from one box!</span>
+             </div>
         <div className="flex flex-row mb-11  justify-between items-center">
           <div className="border border-black w-[50%] h-[100%]">
-            <div className="text-center text-xs">{question.ques1.text}</div>
+            <div className="text-center text-xs pb-11">{question.ques1.text}</div>
         
 
           <div className="flex flex-col mb-11">
           {question.ques1.answers ? question.ques1.answers.map(answer => (
                 
                 <button
-               
+               id={question.quesId}
                 key={Math.random()}
-                 className="mt-2 mb-2"
-                 
+                 className="mt-2 mb-2 bg-orange-500 hover:bg-violet-600 text-center text-xs active:bg-violet-700"
+                 onClick={(event) => handleQuestionAnswer(event,question)}
+                 data-correct={answer.correct}
+                 data-answertype={answer.answerType}
                  >
-                    <span>{answer.answerType}</span>
-                    <p 
-                    onClick={(event) => handleQuestionAnswer(event,question)}
-                    data-correct={answer.correct}
-                    data-answertype={answer.answerType}
-                    className="text-center text-xs">
+                   
+                  
+                 
+                   
                     {answer.answerTxt}
-                    </p>
+                   
                 </button>
-
+        
             )):null}
          </div>
          </div>
@@ -84,25 +177,23 @@ export default function Quiz () {
           <span className="text-center">VS</span>
 
              <div className="border border-black w-[50%] h-[100%]">
-         <div className="text-center text-xs">{question.ques2.text}</div>
+         <div className="text-center text-xs pb-11">{question.ques2.text}</div>
          
           <div className="flex flex-col mb-11">
             {question.ques2.answers ? question.ques2.answers.map(answer => (
                 
                 <button
-                
+                id={question.quesId}
                 key={Math.random()}
-                className="mt-2 mb-2" 
-                
+                className="mt-2 mb-2 bg-orange-500 hover:bg-violet-600 text-center text-xs active:bg-violet-700" 
+                onClick={(event) => handleQuestionAnswer(event,question)}
+                data-correct={answer.correct}
+                data-answertype={answer.answerType}
                 >
-                    <span>{answer.answerType}</span>
-                    <p 
-                    onClick={(event) => handleQuestionAnswer(event,question)}
-                    data-correct={answer.correct}
-                    data-answertype={answer.answerType}
-                    className="text-center text-xs">
+                    
+                  
                         {answer.answerTxt}
-                    </p>
+                    
                 </button>
             )):null}
          </div>
@@ -116,7 +207,9 @@ export default function Quiz () {
         ))
         :
         null}
-
+{hasSubmitted ?  null:<button type="submit" className="bg-red-700">Submit test</button>}
     </form>
+    {hasSubmitted ? <button onClick={handleReset}  type="reset" className="bg-red-700">Reset</button>:null}
+    </>
     );
 };

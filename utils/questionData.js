@@ -33,7 +33,7 @@ export const questions = [
         },
         
     
-      
+        quesId:'1',
         correctAnswer: answers[3],
         correctType:'mid',
         answers: answers
@@ -60,7 +60,7 @@ export const questions = [
         },
         
     
-    
+    quesId:'2',
         correctAnswer: answers[6],
         correctType:'far right',
         answers: answers
@@ -87,7 +87,7 @@ export const questions = [
         },
        
     
-      
+      quesId:'3',
         correctAnswer: answers[0],
         correctType:'far left',
         answers: answers
@@ -114,7 +114,7 @@ export const questions = [
         },
        
     
-
+quesId:'4',
         correctAnswer: answers[6],
         correctType:'far right',
         answers: answers
@@ -141,7 +141,7 @@ export const questions = [
         },
         
     
-     
+     quesId:'5',
         correctAnswer: answers[0],
         correctType:'far left',
         answers: answers
@@ -168,7 +168,7 @@ export const questions = [
         },
         
     
-
+quesId:'6',
         correctAnswer: answers[3],
         correctType:'mid',
         answers: answers
@@ -195,7 +195,7 @@ export const questions = [
         },
      
     
-       
+       quesId:'7',
         correctAnswer: answers[0],
         correctType:'far left',
         answers: answers
@@ -207,23 +207,23 @@ export const questions = [
             text:"Your colleague buys products from a mega corporation",
               answers:[
             {answerTxt:'neutral/ both are equally disagreeable',answerType:'mid',correct:"true"},
-            {answerTxt:'slightly disagree with this more',answerType:'left'},
-            {answerTxt:'disagree with this more',answerType:'left'},
-            {answerTxt:'disagree with this far more',answerType:'left'},
+            {answerTxt:'slightly disagree with this more',answerType:'start left'},
+            {answerTxt:'disagree with this more',answerType:'mid left'},
+            {answerTxt:'disagree with this far more',answerType:'far left'},
         ],
         },
         ques2:{
             text:"A homeless man uses the $20 you gave him to buy scratch-off tickets",
               answers:[
             {answerTxt:'neutral/ both are equally disagreeable',answerType:'mid' ,correct:"true"},
-            {answerTxt:'slightly disagree with this more',answerType:'right'},
-            {answerTxt:'disagree with this more',answerType:'right'},
-            {answerTxt:'disagree with this far more',answerType:'right'},
+            {answerTxt:'slightly disagree with this more',answerType:'start right'},
+            {answerTxt:'disagree with this more',answerType:'mid right'},
+            {answerTxt:'disagree with this far more',answerType:'far right'},
         ],
         },
        
     
-        
+        quesId:'8',
         correctAnswer: answers[3],
         correctType:'mid',
         answers: answers
@@ -235,24 +235,24 @@ export const questions = [
             text:"A partner or employee agrees to work 30 hours/week, and refuses to work more when you are behind schedule",
               answers:[
             {answerTxt:'neutral/ both are equally disagreeable',answerType:'mid',correct:"false"},
-            {answerTxt:'slightly disagree with this more',answerType:'left',correct:"false"},
-            {answerTxt:'disagree with this more',answerType:'left',correct:"false"},
-            {answerTxt:'disagree with this far more',answerType:'left',correct:"false"},
+            {answerTxt:'slightly disagree with this more',answerType:'start left',correct:"false"},
+            {answerTxt:'disagree with this more',answerType:'mid left',correct:"false"},
+            {answerTxt:'disagree with this far more',answerType:'far left',correct:"false"},
         ],
         },
         ques2:{
             text:"Your competitor reveals a minor secret of yours just before a review for a potential promotion",
               answers:[
             {answerTxt:'neutral/ both are equally disagreeable',answerType:'mid',correct:"false"},
-            {answerTxt:'slightly disagree with this more',answerType:'right',correct:"false"},
-            {answerTxt:'disagree with this more',answerType:'right',correct:"false"},
-            {answerTxt:'disagree with this far more',answerType:'right' ,correct:"true"},
+            {answerTxt:'slightly disagree with this more',answerType:'start right',correct:"false"},
+            {answerTxt:'disagree with this more',answerType:'mid right',correct:"false"},
+            {answerTxt:'disagree with this far more',answerType:'far right' ,correct:"true"},
         ],
 
         },
-    
+    quesId:'9',
         correctAnswer: answers[6],
-        correctType:'right',
+        correctType:'far right',
         answers: answers
     },
 ];
