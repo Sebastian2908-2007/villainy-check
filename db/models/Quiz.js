@@ -21,10 +21,15 @@ const Quiz = mongoose.models.Quiz || model('Quiz', new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Question',
     }],
-    outcomeRecommendations: {
+    /**when each recommend is made it will be pushed here
+     * at the end of the quiz we will assess scores and push
+     * appropriate recommend based of of its typeOfRecommendation field matching
+     * the score field that scored highest or something like that
+     */
+    outcomeRecommendations:[ {
       type: Schema.Types.ObjectId,
       ref: 'QuizRecommendation',
-    },
+    }],
   }));
   
   module.exports =  Quiz;

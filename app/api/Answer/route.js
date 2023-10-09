@@ -19,42 +19,6 @@ export async function GET(request) {
 
 /*this creates answer and updates question*/
 
-/*export async function POST(request,response) {
-  try {
-    await dbConnect(); // Connect to MongoDB
-
-    const { questionId, answerTxt, answerType, correct } = await request.json();
-
-    // Create a new Answer document
-    const newAnswer = new Answer({
-      answerTxt: answerTxt,
-      answerType: answerType,
-      correct: correct,
-    });
-
-    // Save the new Answer document to the database
-    const savedAnswer = await newAnswer.save();
-
-    // Find the associated question by ID and push the new answer's ID to its answers array
-    const question = await Question.findByIdAndUpdate(
-      questionId,
-      { $push: { answers: savedAnswer._id } },
-      { new: true }
-    );
-
-    if (!question) {
-      return NextResponse.json({ error: 'Question not found.' }, { status: 404 });
-    }
-
-    return NextResponse.json({ answer: savedAnswer }, { status: 201 });
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json({ error: 'Server error.' }, { status: 500 });
-  }
-}*/
-
-
-
 
 export async function POST(request, response) {
     try {
@@ -96,6 +60,43 @@ export async function POST(request, response) {
     }
   }
   
+  /**Update for answer */
+  export async function PUT(request, response) {
+    try {
+      await dbConnect(); // Connect to MongoDB
+  
+      const { answerId, answerTxt, answerType, correct } = await request.json(); // Assuming the answer ID and fields are in the request body
+  
+      // Find the answer by ID
+      const answer = await Answer.findById(answerId);
+  
+      if (!answer) {
+        return NextResponse.json({ error: 'Answer not found.' }, { status: 404 });
+      }
+  
+      // Update the answer fields only if they are provided in the request
+      if (answerTxt) {
+        answer.answerTxt = answerTxt;
+      }
+  
+      if (answerType) {
+        answer.answerType = answerType;
+      }
+  
+      if (correct) {
+        answer.correct = correct;
+      }
+  
+      // Save the updated answer
+      const updatedAnswer = await answer.save();
+  
+      return NextResponse.json({ answer: updatedAnswer }, { status: 200 });
+    } catch (error) {
+      console.log(error);
+      return NextResponse.json({ error: 'Server error.' }, { status: 500 });
+    }
+  }
+  
 
 
 
@@ -111,7 +112,7 @@ export async function POST(request, response) {
 
   
 
-  export async function PUT(request, response) {
+  /**export async function PUT(request, response) {
     try {
       await dbConnect(); // Connect to MongoDB
   
@@ -142,7 +143,7 @@ export async function POST(request, response) {
     } catch (error) {
       return NextResponse.json({ error: 'Server error.' }, { status: 500 });
     }
-  }
+  }**/
   
   
 

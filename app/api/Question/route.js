@@ -21,39 +21,6 @@ export async function GET(request) {
 
 /**this creates question and update quiz */
 
-
-/*export async function POST(request,response) {
-  try {
-    await dbConnect(); // Connect to MongoDB
-
-    const { quizId, text } = await request.json();
-
-    // Create a new Question document and associate it with the provided quizId
-    const newQuestion = new Question({
-      text: text,
-    });
-
-    // Save the new Question document to the database
-    const savedQuestion = await newQuestion.save();
-
-    // Find the associated quiz by ID and push the new question's ID to its questions array
-    const quiz = await Quiz.findByIdAndUpdate(
-      quizId,
-      { $push: { questions: savedQuestion._id } },
-      { new: true }
-    );
-
-    if (!quiz) {
-      return NextResponse.json({ error: 'Quiz not found.' }, { status: 404 });
-    }
-
-    return NextResponse.json({ question: savedQuestion }, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ error: 'Server error.' }, { status: 500 });
-  }
-}*/
-
-
 export async function POST(request, response) {
   try {
     await dbConnect(); // Connect to MongoDB
@@ -117,7 +84,44 @@ export async function DELETE(request, response) {
 }
 
 
-/**Delete question and answers _id in params */
+export async function PUT(request, response) {
+  try {
+    await dbConnect(); // Connect to MongoDB
+
+    const { questionId, ques1, ques2 } = await request.json(); // Assuming the question ID, ques1, and ques2 are in the request body
+
+    // Find the question by ID
+    const question = await Question.findById(questionId);
+
+    if (!question) {
+      return NextResponse.json({ error: 'Question not found.' }, { status: 404 });
+    }
+
+    // Update the question fields only if they are provided in the request
+    if (ques1) {
+      question.ques1 = ques1;
+    }
+    
+    if (ques2) {
+      question.ques2 = ques2;
+    }
+
+    // Save the updated question
+    const updatedQuestion = await question.save();
+
+    return NextResponse.json({ question: updatedQuestion }, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ error: 'Server error.' }, { status: 500 });
+  }
+}
+
+
+
+
+
+
+/**Delete question and answers _id in params Keep for later just in case*/
 /*export async function DELETE(request, { params }) {
   try {
     await dbConnect(); // Connect to MongoDB
