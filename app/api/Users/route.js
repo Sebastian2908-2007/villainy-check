@@ -2,7 +2,7 @@ import dbConnect from '@/db/config/connection';
 import { NextResponse } from 'next/server';
 
 // Import your Mongoose models here (e.g., User, Product, Quiz, etc.)
-import {User} from '@db/models';
+import {User} from '@/db/models';
 
 export async function GET(request) {
   try {
