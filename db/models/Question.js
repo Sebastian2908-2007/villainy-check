@@ -2,22 +2,21 @@ import mongoose from "mongoose";
 const {Schema, model} = mongoose;
 
 const questionSchema = new Schema({
-    questionText: {
+    ques1: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    ques2: {
       type: String,
       required: true,
       trim: true,
     },
     correctAnswer: {
-      type: String,
-      required: true,
-      trim: true,
+      type: Schema.Types.ObjectId,
+      ref: 'Answer',
     },
-    questionValue: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    answerOptions: [{
+    answers: [{
       type: Schema.Types.ObjectId,
       ref: 'Answer',
     }],

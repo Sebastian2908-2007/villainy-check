@@ -3,12 +3,17 @@ const {Schema, model} = mongoose;
 
 
 const answerSchema = new Schema({
-    answerText:{
+    answerTxt:{
         type: String,
         required: true,
         trim: true
     },
-    answerValue:{
+    answerType:{
+        type: String,
+        required: true,
+        trim: true 
+    },
+    correct:{
         type: String,
         required: true,
         trim: true,

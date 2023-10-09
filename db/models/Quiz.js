@@ -9,7 +9,7 @@ const Quiz = mongoose.models.Quiz || model('Quiz', new Schema({
     },
     quizOutcome: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
     idealOutcome: {
