@@ -6,7 +6,9 @@ const AnswerForm = ({
     answerCount,
     setAnswerCount,
     currentQuesId,
-    setCurrentQuesId
+    setCurrentQuesId,
+    createdQuizId,
+    updateQuizData
 }) => {
   const [answerData, setAnswerData] = useState({
     answerTxt: '',
@@ -44,6 +46,7 @@ const AnswerForm = ({
             answerType: '',
             correct: '',
           });
+          await updateQuizData(createdQuizId);
         } else {
           // Handle error states here
           console.error('Failed to create answer');

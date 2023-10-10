@@ -7,7 +7,10 @@ const QuestionForm = ({
     quesAnswerMediator,
     setQuesAnswerMediator,
     currentQuesId,
-    setCurrentQuesId
+    setCurrentQuesId,
+    setRecommendEnabler,
+    recomendEnabler,
+    updateQuizData
 }) => {
     const [isDisabled,setIsDisabled] = useState(false);
     const quizId = createdQuizId;
@@ -18,7 +21,7 @@ const QuestionForm = ({
   });
   const handleButtonClick = () => {
     // Toggle isDisabled to the opposite of its current value
-    setIsDisabled((prevState) => !prevState);
+    setRecommendEnabler((prevState) => !prevState);
   };
   const handleQuestionChange = (e) => {
     setQuestionData({
@@ -62,6 +65,7 @@ const QuestionForm = ({
           });
           setQuesAnswerMediator(true);
           setCurrentQuesId(question._id);
+          await updateQuizData(quizId);
         } else {
           // Handle error states, e.g., show an error message
           console.error('Error creating question:', response.statusText);
@@ -105,7 +109,7 @@ useEffect(() => {console.log(createdQuestionIds,"QUESIDS"); console.log(question
         />
       </div>
       <button type="submit" 
-      disabled={quesAnswerMediator || !createdQuizId ? true:false}
+      disabled={quesAnswerMediator || !createdQuizId || recomendEnabler ? true:false}
     className="
      py-2
      px-4
@@ -122,7 +126,27 @@ useEffect(() => {console.log(createdQuestionIds,"QUESIDS"); console.log(question
         Create Question
       </button>
     </form>
- 
+    {createdQuestionIds.length > 0 ?
+      <button 
+      
+      onClick={handleButtonClick} 
+    className="
+     py-2
+     px-4
+     rounded
+     hover:bg-blue-600
+     hover:text-white
+     hover:border-blue-600
+     disabled:bg-gray-400
+     disabled:text-gray-700
+     disabled:border-gray-400
+     bg-blue-500
+     text-white border
+     border-blue-500">
+        
+        {recomendEnabler ?   'Add more Q&As': 'done adding Q&As'}
+      </button>
+:null}
     </div>
   );
 };
@@ -148,7 +172,7 @@ export default QuestionForm;
      text-white border
      border-blue-500">
         
-        {isDisabled ?   'Add more Ques': 'done adding ques'}
+        {isDisabled ?   'Add more Q&As': 'done adding Q&As'}
       </button>
 :null}
  */

@@ -2,7 +2,7 @@
 
 import React, { useState,useEffect } from 'react';
 
-const QuizForm = ({createdQuizId,setCreatedQuizId}) => {
+const QuizForm = ({createdQuizId,setCreatedQuizId,updateQuizData}) => {
   const [quizData, setQuizData] = useState({
     quizTitle: '',
     idealOutcome: '',
@@ -36,6 +36,7 @@ const QuizForm = ({createdQuizId,setCreatedQuizId}) => {
         const data = await response.json();
         const quizId = data.quiz._id;
         console.log('Created quiz with ID:', quizId);
+        await updateQuizData(quizId);
   
         // Store the quiz _id in state
         setCreatedQuizId(quizId);
