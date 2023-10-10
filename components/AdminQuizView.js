@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 
 export default function AdminQuizView({ workingQuizData, setWorkingQuizData }) {
   const quiz = workingQuizData;
@@ -113,6 +115,14 @@ const toggleEditingQuiz = () => {
     });
   };
 
+  const handleEditQuiz = (quizId) => {
+    // Perform any necessary data validation or updating logic here
+    // Once editing is done, you can update the state or send data to the server
+    // For simplicity, we'll just switch back to view mode in this example
+    setIsEditingQuiz(false);
+    setWorkingQuizData({ ...quiz }); // Update with edited quiz data
+  };
+
   // Function to update edited data for recommendations
   const handleEditRecommendation = (recommendationId) => {
     const editedRecommendation = quiz.outcomeRecommendations.find(
@@ -138,9 +148,14 @@ const toggleEditingQuiz = () => {
       <h1 className="text-2xl font-bold mb-4">Current Quiz (Admin View)</h1>
 
       <div key={quiz._id} className="border p-4 rounded-md shadow-md w-full">
+      <button className="text-blue-500 hover:underline" onClick={toggleEditingQuiz}>
+            {isEditingQuiz ? <SaveAsIcon/> : <EditIcon/>}
+          </button>
         <h2 className="text-lg font-semibold">
+          Quiz Name:{' '}
           {isEditingQuiz ? (
             <input
+            className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
               type="text"
               value={quiz.quizTitle}
               onChange={(e) =>
@@ -155,6 +170,7 @@ const toggleEditingQuiz = () => {
           Ideal Outcome:{' '}
           {isEditingQuiz ? (
             <input
+            className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
               type="text"
               value={quiz.idealOutcome}
               onChange={(e) =>
@@ -174,15 +190,22 @@ const toggleEditingQuiz = () => {
               >
                 {openQuestions.includes(question._id) ? 'Hide Question' : 'View Question'}
               </button>
+              
+              
+
+              {isEditingQuestion[question._id] ? (
+                <>
+
               <button
                 className="text-blue-500 hover:underline ml-2"
                 onClick={() => toggleEditingQuestion(question._id)}
               >
-                {isEditingQuestion[question._id] ? 'Save Question' : 'Edit Question'}
+                {isEditingQuestion[question._id] ? <SaveAsIcon/> : <EditIcon/>}
               </button>
-              {isEditingQuestion[question._id] ? (
-                <div>
+
+              <div>
                   <input
+                  className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
                     type="text"
                     value={question.ques1}
                     onChange={(e) =>
@@ -195,6 +218,7 @@ const toggleEditingQuiz = () => {
                     }
                   />
                   <input
+                  className="p-2 mt-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
                     type="text"
                     value={question.ques2}
                     onChange={(e) =>
@@ -207,12 +231,23 @@ const toggleEditingQuiz = () => {
                     }
                   />
                 </div>
+                </>
               ) : (
                 openQuestions.includes(question._id) && (
+                  <>
+              
+              <button
+                className="text-blue-500 hover:underline ml-2"
+                onClick={() => toggleEditingQuestion(question._id)}
+              >
+                {isEditingQuestion[question._id] ? <SaveAsIcon/> : <EditIcon/>}
+              </button>
+
                   <div>
                     <h3 className="text-md font-medium">A. {question.ques1}</h3>
                     <h3 className="text-md font-medium">B. {question.ques2}</h3>
                   </div>
+                  </>
                 )
               )}
               {openQuestions.includes(question._id) && (
@@ -237,12 +272,13 @@ const toggleEditingQuiz = () => {
                         onClick={() => toggleEditingAnswer(question._id, answer._id)}
                       >
                         {isEditingAnswer[question._id]?.[answer._id]
-                          ? 'Save Answer'
-                          : 'Edit Answer'}
+                          ? <SaveAsIcon/>
+                          : <EditIcon/>}
                       </button>
                       {isEditingAnswer[question._id]?.[answer._id] ? (
                         <div>
                           <input
+                          className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
                             type="text"
                             value={answer.answerTxt}
                             onChange={(e) =>
@@ -264,6 +300,7 @@ const toggleEditingQuiz = () => {
                             }
                           />
                           <input
+                          className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
                             type="text"
                             value={answer.answerType}
                             onChange={(e) =>
@@ -318,12 +355,13 @@ const toggleEditingQuiz = () => {
                     onClick={() => toggleEditingRecommendation(recommendation._id)}
                   >
                     {isEditingRecommendation[recommendation._id]
-                      ? 'Save Recommendation'
-                      : 'Edit Recommendation'}
+                      ? <SaveAsIcon/>
+                      : <EditIcon/>}
                   </button>
                   {isEditingRecommendation[recommendation._id] ? (
                     <div>
                       <input
+                      className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
                         type="text"
                         value={recommendation.typeOfRecommendation}
                         onChange={(e) =>
@@ -338,6 +376,7 @@ const toggleEditingQuiz = () => {
                         }
                       />
                       <input
+                      className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
                         type="text"
                         value={recommendation.resultsMeaning}
                         onChange={(e) =>
@@ -352,6 +391,7 @@ const toggleEditingQuiz = () => {
                         }
                       />
                       <input
+                      className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
                         type="text"
                         value={recommendation.tipsSummary}
                         onChange={(e) =>
@@ -379,9 +419,7 @@ const toggleEditingQuiz = () => {
           )}
         </div>
         <div className="mt-4">
-          <button className="text-blue-500 hover:underline" onClick={toggleEditingQuiz}>
-            {isEditingQuiz ? 'Save Quiz' : 'Edit Quiz'}
-          </button>
+         
         </div>
       </div>
     </div>
