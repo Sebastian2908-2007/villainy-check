@@ -26,6 +26,7 @@ export async function POST(request, response) {
     await dbConnect(); // Connect to MongoDB
 
     const { quizId, ques1, ques2 } = await request.json();
+    console.log(quizId,"QUIZ ID BACK");
 
     // Create a new Question document and associate it with the provided quizId
     const newQuestion = new Question({
