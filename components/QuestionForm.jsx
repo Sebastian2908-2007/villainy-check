@@ -5,7 +5,10 @@ const QuestionForm = ({
     setCreatedQuestionIds,
     createdQuizId,
     quesAnswerMediator,
-    setQuesAnswerMediator}) => {
+    setQuesAnswerMediator,
+    currentQuesId,
+    setCurrentQuesId
+}) => {
     const [isDisabled,setIsDisabled] = useState(false);
     const quizId = createdQuizId;
     console.log(quizId,"MY QUIZID");
@@ -58,6 +61,7 @@ const QuestionForm = ({
             ques2: '',
           });
           setQuesAnswerMediator(true);
+          setCurrentQuesId(question._id);
         } else {
           // Handle error states, e.g., show an error message
           console.error('Error creating question:', response.statusText);

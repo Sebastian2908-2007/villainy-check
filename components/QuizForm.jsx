@@ -39,11 +39,16 @@ const QuizForm = ({createdQuizId,setCreatedQuizId}) => {
   
         // Store the quiz _id in state
         setCreatedQuizId(quizId);
+        setQuizData({
+            quizTitle: '',
+            idealOutcome: '',
+       })
       } catch (error) {
         // Handle any other errors here
         console.error('An error occurred:', error);
       }
   };
+
 useEffect(()=> {console.log(quizData)},[quizData]);
 useEffect(()=> {console.log(createdQuizId)},[createdQuizId]);
  

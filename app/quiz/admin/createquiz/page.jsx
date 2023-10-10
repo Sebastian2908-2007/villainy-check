@@ -6,6 +6,7 @@ import QuestionForm from '@/components/QuestionForm';
 import AnswerForm from '@/components/AnswerForm';
 const CreateQuiz = () => {
     const [createdQuizId,setCreatedQuizId] = useState(null);
+    const [currentQuesId,setCurrentQuesId] = useState(null);
     const [createdQuestionIds,setCreatedQuestionIds] = useState([]);
     const [createdAnswerIds,setCreatedAnswerIds] = useState([]);
     const [quesAnswerMediator,setQuesAnswerMediator] = useState(null);
@@ -21,6 +22,7 @@ setQuesAnswerMediator={setQuesAnswerMediator}
 createdQuestionIds={createdQuestionIds}
 setCreatedQuestionIds={setCreatedQuestionIds}
 createdQuizId={createdQuizId}
+currentQuesId={currentQuesId}setCurrentQuesId={setCurrentQuesId}
 />
 <AnswerForm 
 quesAnswerMediator={quesAnswerMediator}
@@ -29,6 +31,7 @@ setQuesAnswerMediator={setQuesAnswerMediator}
  setCreatedAnswerIds={setCreatedAnswerIds}
  answerCount={answerCount}
  setAnswerCount={setAnswerCount}
+ currentQuesId={currentQuesId}setCurrentQuesId={setCurrentQuesId}
  />
     </>
   );

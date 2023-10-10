@@ -1,6 +1,13 @@
 import React, { useState,useEffect } from 'react';
 
-const AnswerForm = ({quesAnswerMediator,setQuesAnswerMediator,answerCount,setAnswerCount}) => {
+const AnswerForm = ({
+    quesAnswerMediator,
+    setQuesAnswerMediator,
+    answerCount,
+    setAnswerCount,
+    currentQuesId,
+    setCurrentQuesId
+}) => {
   const [answerData, setAnswerData] = useState({
     answerTxt: '',
     answerType: '',
@@ -17,11 +24,45 @@ const AnswerForm = ({quesAnswerMediator,setQuesAnswerMediator,answerCount,setAns
   const handleAnswerSubmit = async (e) => {
     e.preventDefault();
 
-    // Send answerData to your API endpoint using fetch or Axios
-setAnswerCount(answerCount -1);
+    try {
+        const response = await fetch('/api/Answer', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            questionId: currentQuesId,
+            ...answerData,
+          }),
+        });
+  
+        if (response.status === 201) {
+          // Successfully created answer
+          setAnswerCount(answerCount - 1);
+          setAnswerData({
+            answerTxt: '',
+            answerType: '',
+            correct: '',
+          });
+        } else {
+          // Handle error states here
+          console.error('Failed to create answer');
+        }
+      } catch (error) {
+        console.error('Error creating answer:', error);
+      }
+
     // Clear the form or handle success/error states
   };
-useEffect(() => {console.log(answerCount);if(answerCount === 0){setQuesAnswerMediator(false); setAnswerCount(4);}},[answerCount])
+useEffect(
+    () => {
+        console.log(currentQuesId);
+        if(answerCount === 0){
+            setQuesAnswerMediator(false);
+             setAnswerCount(4);
+             setCurrentQuesId(null);
+        }
+    },[answerCount])
   return (
     <form onSubmit={handleAnswerSubmit}>
        {quesAnswerMediator ? <span>{answerCount}</span>:null}
