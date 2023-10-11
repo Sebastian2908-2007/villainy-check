@@ -1,10 +1,12 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import AdminQuizView from '@/components/AdminQuizView';
 
 const CurrentQuizzes = () => {
   const [quizzes, setQuizzes] = useState([]);
-
+// this is not dry
+const [workingQuizData,setWorkingQuizData] = useState(null);
   useEffect(() => {
     // Fetch quiz data from the API here
     async function fetchQuizzes() {
@@ -12,21 +14,42 @@ const CurrentQuizzes = () => {
         const response = await fetch('http://localhost:3000/api/Quiz'); // Replace with your API endpoint
         const data = await response.json();
         setQuizzes(data.quizzes);
+      
       } catch (error) {
         console.error('Error fetching quizzes:', error);
       }
+     
     }
 
     fetchQuizzes();
   }, []);
-
+useEffect(() => {console.log(workingQuizData,"WQD in quizzes")},[workingQuizData]);
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Current Quizzes (Admin View)</h1>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {quizzes.map((quiz) => (
           <div key={quiz._id} className="border p-4 rounded-md shadow-md">
-            <h2 className="text-lg font-semibold">{quiz.quizTitle}</h2>
+            {!workingQuizData ?
+            <AdminQuizView
+             workingQuizData={quiz}
+             setWorkingQuizData={setWorkingQuizData}
+            />:<AdminQuizView
+            workingQuizData={workingQuizData}
+            setWorkingQuizData={setWorkingQuizData}
+           />}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CurrentQuizzes;
+
+//keep for style reference
+
+/*/<h2 className="text-lg font-semibold">{quiz.quizTitle}</h2>
             <p className="text-gray-500 mb-2">Ideal Outcome: {quiz.idealOutcome}</p>
             <div className="space-y-2">
               {quiz.questions.map((question) => (
@@ -57,12 +80,4 @@ const CurrentQuizzes = () => {
                   <p className="text-md">Tips Summary: {recommendation.tipsSummary}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default CurrentQuizzes;
+            </div>*/

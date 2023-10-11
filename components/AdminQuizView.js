@@ -3,7 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 
 export default function AdminQuizView({ workingQuizData, setWorkingQuizData }) {
-  const quiz = workingQuizData;
+  const [quiz,setQuiz] = useState(workingQuizData);
 
   // State to keep track of which questions, answers, and recommendations are open
   const [openQuestions, setOpenQuestions] = useState([]);
