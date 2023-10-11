@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 
-export default function AdminQuizView({ workingQuizData, setWorkingQuizData }) {
-  const [quiz,setQuiz] = useState(workingQuizData);
 
+export default function AdminQuizView({ workingQuizData, setWorkingQuizData }) {
+const quiz = workingQuizData;
   // State to keep track of which questions, answers, and recommendations are open
   const [openQuestions, setOpenQuestions] = useState([]);
   const [openAnswers, setOpenAnswers] = useState([]);
