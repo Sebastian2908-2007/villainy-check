@@ -6,14 +6,14 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           {/* Replace these dummy links with your actual navigation links */}
-          <Link className="text-blue-800 hover:underline" href="/quiz">
-            Link 1
+          <Link className="text-blue-800 hover:underline" href="/quiz/admin/createquiz">
+           Create a quiz
           </Link>
-          <Link className="text-blue-800 hover:underline" href="/quiz">
-            Link 2
+          <Link className="text-blue-800 hover:underline" href="/quiz/currentQuizzes">
+            All quizzes
           </Link>
-          <Link className="text-blue-800 hover:underline" href="/quiz">
-            Link 3
+          <Link className="text-blue-800 hover:underline" href="/about">
+            About Us
           </Link>
         </div>
         <div className="text-blue-800 text-2xl font-semibold">Your Logo</div>
