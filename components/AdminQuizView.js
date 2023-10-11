@@ -123,53 +123,59 @@ const toggleEditingQuiz = () => {
   };
   
 
-  // Function to update edited data for questions
-  /*const handleEditQuestion = (questionId) => {
-    const editedQuestion = quiz.questions.find((q) => q._id === questionId);
-    // Perform any necessary data validation or updating logic here
-    // Once editing is done, you can update the state or send data to the server
-    // For simplicity, we'll just switch back to view mode in this example
-    setIsEditingQuestion({
-      ...isEditingQuestion,
-      [questionId]: false,
-    });
-    setWorkingQuizData({
-      ...quiz,
-      questions: quiz.questions.map((q) =>
-        q._id === questionId ? editedQuestion : q
-      ),
-    });
-  };*/
-
-  // Function to update edited data for answers
-  const handleEditAnswer = (questionId, answerId) => {
+  const handleEditAnswer = async (questionId, answerId) => {
+    console.log(questionId,answerId,"ID's EDIT ANSWER FUNV");
     const editedAnswer = quiz.questions
       .find((q) => q._id === questionId)
       .answers.find((a) => a._id === answerId);
-    // Perform any necessary data validation or updating logic here
-    // Once editing is done, you can update the state or send data to the server
-    // For simplicity, we'll just switch back to view mode in this example
-    setIsEditingAnswer({
-      ...isEditingAnswer,
-      [questionId]: {
-        ...isEditingAnswer[questionId],
-        [answerId]: false,
-      },
-    });
-    setWorkingQuizData({
-      ...quiz,
-      questions: quiz.questions.map((q) =>
-        q._id === questionId
-          ? {
-              ...q,
-              answers: q.answers.map((a) =>
-                a._id === answerId ? editedAnswer : a
-              ),
-            }
-          : q
-      ),
-    });
+    try {
+      const response = await fetch('/api/Answer', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          answerId: answerId, 
+          answerTxt: editedAnswer.answerTxt, 
+          answerType: editedAnswer.answerType, 
+        }),
+      });
+  
+      if (response.ok) {
+        // Update the state or perform any other actions upon successful update
+        setIsEditingAnswer({
+          ...isEditingAnswer,
+          [questionId]: {
+            ...isEditingAnswer[questionId],
+            [answerId]: false,
+          },
+        });
+  
+        // Update your working data if needed
+        setWorkingQuizData({
+          ...quiz,
+          questions: quiz.questions.map((q) =>
+            q._id === questionId
+              ? {
+                  ...q,
+                  answers: q.answers.map((a) =>
+                    a._id === answerId ? editedAnswer : a
+                  ),
+                }
+              : q
+          ),
+        });
+      } else {
+        // Handle error cases
+        console.error('Failed to update answer.');
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error('An error occurred:', error);
+    }
   };
+  
+
 
   const handleEditQuiz = async (quizId) => {
     console.log(quizId,"IN EDIT HANDLE Q");
@@ -210,33 +216,53 @@ const toggleEditingQuiz = () => {
   };
   
 
-  /*const handleEditQuiz = (quizId) => {
-    // Perform any necessary data validation or updating logic here
-    // Once editing is done, you can update the state or send data to the server
-    // For simplicity, we'll just switch back to view mode in this example
-    setIsEditingQuiz(false);
-    setWorkingQuizData({ ...quiz }); // Update with edited quiz data
-  };*/
-
-  // Function to update edited data for recommendations
-  const handleEditRecommendation = (recommendationId) => {
+  const handleEditRecommendation = async (recommendationId) => {
     const editedRecommendation = quiz.outcomeRecommendations.find(
       (r) => r._id === recommendationId
     );
-    // Perform any necessary data validation or updating logic here
-    // Once editing is done, you can update the state or send data to the server
-    // For simplicity, we'll just switch back to view mode in this example
-    setIsEditingRecommendation({
-      ...isEditingRecommendation,
-      [recommendationId]: false,
-    });
-    setWorkingQuizData({
-      ...quiz,
-      outcomeRecommendations: quiz.outcomeRecommendations.map((r) =>
-        r._id === recommendationId ? editedRecommendation : r
-      ),
-    });
+  
+   
+  
+    try {
+      const response = await fetch('/api/QuizRecommends', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          recommendationId: recommendationId, // Include the recommendationId
+      resultsMeaning: editedRecommendation.resultsMeaning, // Update with your new data
+      tipsSummary: editedRecommendation.tipsSummary, // Update with your new data
+      typeOfRecommendation: editedRecommendation.typeOfRecommendation,
+        }),
+      });
+  
+      if (response.ok) {
+        // Update the state or perform any other actions upon successful update
+        setIsEditingRecommendation({
+          ...isEditingRecommendation,
+          [recommendationId]: false,
+        });
+  
+        // Update your working data if needed
+        setWorkingQuizData({
+          ...quiz,
+          outcomeRecommendations: quiz.outcomeRecommendations.map((r) =>
+            r._id === recommendationId ? editedRecommendation : r
+          ),
+        });
+      } else {
+        // Handle error cases
+        console.error('Failed to update recommendation.');
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error('An error occurred:', error);
+    }
   };
+  
+
+
 
   return (
     <div className="container mx-auto p-4">
@@ -381,7 +407,14 @@ const toggleEditingQuiz = () => {
                         onClick={() => toggleEditingAnswer(question._id, answer._id)}
                       >
                         {isEditingAnswer[question._id]?.[answer._id]
-                          ? <SaveAsIcon/>
+                          ? <SaveAsIcon
+                            onClick={
+                              () => {
+                                handleEditAnswer(question._id,answer._id);
+                              }
+                            }
+                          
+                          />
                           : <EditIcon/>}
                       </button>
                       {isEditingAnswer[question._id]?.[answer._id] ? (
@@ -464,7 +497,13 @@ const toggleEditingQuiz = () => {
                     onClick={() => toggleEditingRecommendation(recommendation._id)}
                   >
                     {isEditingRecommendation[recommendation._id]
-                      ? <SaveAsIcon/>
+                      ? <SaveAsIcon
+                      onClick={
+                        () => {
+                          handleEditRecommendation(recommendation._id);
+                        }
+                      }
+                      />
                       : <EditIcon/>}
                   </button>
                   {isEditingRecommendation[recommendation._id] ? (
