@@ -20,12 +20,12 @@ export default function SuperAdminDashboardLayout({children}){
         setAdminData(decodedUserData);
         console.log(decodedUserData);
         if(decodedUserData.isSuperAdmin === false) {
-            push('/login');
+            push('/login/superadmin');
         }
         return;
       }
       else{
-        push('/login');
+        push('/login/superadmin');
       }
     };
 

@@ -29,7 +29,7 @@ export async function POST(request) {
   
       // Check if superAdminPass matches the environment variable
       const isSuperAdmin = superAdminPass === process.env.SUPERADMINPASSWORD;
-  
+  if(isSuperAdmin){
       // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
   
@@ -74,6 +74,9 @@ export async function POST(request) {
         status: 200,
         headers: { "Set-Cookie": serialized },
       });
+    }else{
+      return NextResponse.json({ error: 'Improper credentials. Please try again.' }, { status: 403 }); 
+    }
   
     } catch (error) {
       console.log(error);
