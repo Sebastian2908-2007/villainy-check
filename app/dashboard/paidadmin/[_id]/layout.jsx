@@ -1,10 +1,13 @@
 'use client'
-import { useEffect,useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import { MAX_AGE } from "@/utils/constants";
 import decode from 'jwt-decode';
 
-export default function SuperAdminDashboardLayout({children}){
-   const [adminData,setAdminData] = useState(null);
+export default function AdminDashboardLayout({children}){
+    let existingCookie;
+  
     const { push } = useRouter();
     
   
@@ -17,8 +20,16 @@ export default function SuperAdminDashboardLayout({children}){
       if(response.ok) {
         const data = await response.json();
         const decodedUserData = decode(data.value);
-        setAdminData(decodedUserData);
-        console.log(decodedUserData);
+        const token = data.value;
+        //setAdminData(decodedUserData);
+        // set a browser cookie for use across profile
+         existingCookie = Cookies.get('userinfocookie');
+       if(!existingCookie) {
+        Cookies.set('userinfocookie',token,{expires: MAX_AGE});
+        existingCookie = Cookies.get('userinfocookie');
+       }
+    
+
         if(decodedUserData.isPaid === false) {
             push('/login');
         }
@@ -30,13 +41,12 @@ export default function SuperAdminDashboardLayout({children}){
     };
 
     return(
-        adminData ? 
         <div>
-        <h1>{adminData.firstName}'s paid Dashboard</h1>
-        <section>{children}</section>
+        <h1> paid Dashboard</h1>
+        <section>
+            {children}
+        </section>
         </div>
-        :
-        <div>loading</div>
         
     );
 };
