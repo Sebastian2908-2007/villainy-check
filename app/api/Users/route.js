@@ -23,7 +23,7 @@ export async function GET(request) {
 
 
 
-
+/**this route creates a simple user */
 export async function POST(request) {
   let token;
   try {

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { decode } from 'jsonwebtoken';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -27,7 +28,12 @@ export default function Login() {
       //window.location.href = '/dashboard';
       const data = await response.json();
       console.log(data);
+      const userData = decode(data.value);
+      if(userData.isPaid === true) {
       router.push('/dashboard');
+      }else{
+        router.push('/about');
+      }
     } else {
       // Handle login failure, e.g., show an error message.
       console.error('Login failed');

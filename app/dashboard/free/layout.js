@@ -13,7 +13,7 @@ export default function DashboardLayout({children}){
     },[]);
 
     const getUser = async () => {
-      const response = await fetch('/api/Dashboard');
+      const response = await fetch('/api/Dashboard/free');
       if(response.ok) {
         const data = await response.json();
         const decodedUserData = decode(data.value);
@@ -23,7 +23,7 @@ export default function DashboardLayout({children}){
         return;
       }
       else{
-        push('/');
+        push('/login');
       }
     };
 

@@ -8,9 +8,6 @@ import { MAX_AGE } from '@/utils/constants';
 
 
 export async function POST(request) {
-   
-    
-    console.log('it runs')
     let token;
     const { email, password } = await request.json();
   
@@ -48,7 +45,7 @@ export async function POST(request) {
           });
         
           const response = {
-            message: "Authenticated!",
+            value: token ,
           };
         
           return new Response(JSON.stringify(response), {
