@@ -31,7 +31,10 @@ export default function SuperAdminDashboardLayout({children}){
 
     return(
         adminData ? 
+        <div>
         <h1>{adminData.firstName}'s super admin Dashboard</h1>
+        <section>{children}</section>
+        </div>
         :
         <div>loading</div>
         

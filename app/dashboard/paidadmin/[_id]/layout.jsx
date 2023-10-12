@@ -3,8 +3,8 @@ import { useEffect,useState } from "react";
 import { useRouter } from "next/navigation";
 import decode from 'jwt-decode';
 
-export default function DashboardLayout({children}){
-   const [userData,setUserData] = useState(null);
+export default function SuperAdminDashboardLayout({children}){
+   const [adminData,setAdminData] = useState(null);
     const { push } = useRouter();
     
   
@@ -13,13 +13,15 @@ export default function DashboardLayout({children}){
     },[]);
 
     const getUser = async () => {
-      const response = await fetch('/api/Dashboard/free');
+      const response = await fetch('/api/Dashboard/paidadmin');
       if(response.ok) {
         const data = await response.json();
         const decodedUserData = decode(data.value);
-        setUserData(decodedUserData);
+        setAdminData(decodedUserData);
         console.log(decodedUserData);
-        
+        if(decodedUserData.isPaid === false) {
+            push('/login');
+        }
         return;
       }
       else{
@@ -28,9 +30,9 @@ export default function DashboardLayout({children}){
     };
 
     return(
-        userData ? 
+        adminData ? 
         <div>
-        <h1>{userData.firstName}'s free Dashboard</h1>
+        <h1>{adminData.firstName}'s paid Dashboard</h1>
         <section>{children}</section>
         </div>
         :

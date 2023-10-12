@@ -30,9 +30,9 @@ export default function Login() {
       console.log(data);
       const userData = decode(data.value);
       if(userData.isPaid === true) {
-      router.push('/dashboard');
+      router.push(`/dashboard/paidadmin/${userData._id}`);
       }else{
-        router.push('/about');
+        router.push('/dashboard/free');
       }
     } else {
       // Handle login failure, e.g., show an error message.
