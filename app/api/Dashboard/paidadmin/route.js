@@ -9,13 +9,11 @@ export async function GET() {
     let token;
     let isPaid;
     const cookieStore = cookies();
-  console.log(PAID_ADMIN_COOKIE_NAME);
-     token = cookieStore.get(PAID_ADMIN_COOKIE_NAME);
+    token = cookieStore.get(PAID_ADMIN_COOKIE_NAME);
 
      // if this route is hit and previous cookie is not available then we know user is logging in
      // so we try for that cookie so we can check isPaid data on token
 if(token === undefined) {
-    console.log('undef runs');
     loginToken = cookieStore.get(COOKIE_NAME);
     const userTknData = decode(loginToken.value);
     isPaid = userTknData.isPaid;
@@ -24,7 +22,7 @@ if(token === undefined) {
 
 
   console.log(token,"B E");
-    if (!token && !isPaid) {
+    if (isPaid === false) {
       return NextResponse.json(
         {
           message: "Unauthorized",
@@ -53,6 +51,7 @@ if(token === undefined) {
        
       });
     } catch (e) {
+       
       return NextResponse.json(
         {
           message: "Something went wrong",
@@ -80,6 +79,7 @@ if(token === undefined) {
        
       });
     } catch (e) {
+        console.log(e);
       return NextResponse.json(
         {
           message: "Something went wrong",
