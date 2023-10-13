@@ -23,7 +23,7 @@ export async function GET(request) {
 
 
 
-/**this route creates a simple user */
+/**this route creates a free user FREE SIGNUP */
 export async function POST(request) {
   let token;
   try {
@@ -68,7 +68,7 @@ export async function POST(request) {
       { expiresIn: '3h' }
     );
 
-    //return NextResponse.json({ admin: user, token: token }, { status: 200 },); // 200 OK
+    
     const seralized = serialize("logincookie", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
