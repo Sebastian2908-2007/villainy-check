@@ -53,7 +53,7 @@ export async function PUT(request, response) {
   try {
     await dbConnect(); // Connect to MongoDB
 
-    const { recommendationId, typeAScore, typeBScore, balancedScore, resultsMeaning, tipsSummary } = await request.json();
+    const { recommendationId, typeOfRecommendation, typeAScore, typeBScore, balancedScore, resultsMeaning, tipsSummary } = await request.json();
 
     // Find the recommendation by ID
     const recommendation = await QuizRecommend.findById(recommendationId);
@@ -77,6 +77,9 @@ export async function PUT(request, response) {
     }
     if (tipsSummary !== undefined) {
       recommendation.tipsSummary = tipsSummary;
+    }
+    if ( typeOfRecommendation !== undefined) {
+      recommendation. typeOfRecommendation =  typeOfRecommendation;
     }
 
     // Save the updated recommendation document to the database

@@ -53,7 +53,7 @@ export async function DELETE(request, response) {
     await dbConnect(); // Connect to MongoDB
 
     const { quizId } = await request.json(); // Assuming the quiz ID is in the request body
-
+console.log(quizId);
     // Find the quiz by ID
     const quiz = await Quiz.findById(quizId);
 

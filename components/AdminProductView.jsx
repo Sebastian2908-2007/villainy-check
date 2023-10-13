@@ -135,7 +135,7 @@ console.log(updatedData);
   );
 }*/
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 
@@ -145,11 +145,43 @@ export default function AdminProductView({ incomingProduct, quizzes }) {
   const [isEditingProduct, setIsEditingProduct] = useState(false);
   const [product, setProduct] = useState(incomingProduct);
   const [selectedQuizId, setSelectedQuizId] = useState(''); // Initially, no quiz is selected
-  const [createdProduct, setCreatedProduct] = useState(null);
+  //const [createdProduct, setCreatedProduct] = useState(null);
+  useEffect(()=> {setProduct(incomingProduct)},[incomingProduct])
 
   const toggleEditingProduct = () => {
     setIsEditingProduct(!isEditingProduct);
   };
+
+
+  const handleDeleteProduct = async () => {
+    try {
+      const productId = product._id;
+      const data = { productId: productId };
+  
+      // Send a DELETE request with the productId in the body
+      const response = await fetch('/api/Product', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error deleting product: ${response.statusText}`);
+      }
+  
+      // Handle the response or any necessary state updates
+      console.log('Product deleted successfully.');
+  
+      // You might want to clear the product data or perform other actions after deletion
+      setProduct(null);
+    } catch (error) {
+      console.error('An error occurred while deleting:', error);
+      // Handle the error if needed
+    }
+  };
+  
 
   const handleEditProduct = async () => {
     let updatedData;
@@ -216,9 +248,11 @@ export default function AdminProductView({ incomingProduct, quizzes }) {
   return (
     product && (
       <div className="container mx-auto p-4">
+        
         <h1 className="text-2xl font-bold mb-4">Product View</h1>
-
+      
         <div key={product._id} className="border p-4 rounded-md shadow-md w-full">
+        <div class="w-full bg-gray-300 p-4 flex justify-between mb-4">
           <button className="text-blue-500 hover:underline" onClick={toggleEditingProduct}>
             {isEditingProduct ? (
               <SaveIcon onClick={handleEditProduct} />
@@ -226,6 +260,13 @@ export default function AdminProductView({ incomingProduct, quizzes }) {
               <EditIcon />
             )}
           </button>
+          <button
+          className=" top-2 right-2 text-red-500 hover:text-red-700"
+          onClick={handleDeleteProduct}
+        >
+          Delete
+        </button>
+        </div>
           <h2 className="text-lg font-semibold">
             Product Title:{' '}
             {isEditingProduct ? (

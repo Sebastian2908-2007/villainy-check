@@ -170,7 +170,7 @@ const ProductPage = () => {
       >
         Create Product
       </button>
-     {createdProduct && <AdminProductView incomingProduct={createdProduct} quizzes={quizData}/>}
+     {createdProduct ? <AdminProductView incomingProduct={createdProduct} quizzes={quizData}/>:(null)}
     </div>
   );
 };

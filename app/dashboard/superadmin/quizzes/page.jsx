@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import AdminQuizView from '@/components/AdminQuizView';
+import AdminSingleQuizEdit from '@/components/AdminSingleQuizEdit';
 
 const CurrentQuizzes = () => {
   const [quizzes, setQuizzes] = useState([]);
@@ -31,10 +31,10 @@ useEffect(() => {console.log(workingQuizData,"WQD in quizzes")},[workingQuizData
         {quizzes.map((quiz) => (
           <div key={quiz._id} className="border p-4 rounded-md shadow-md">
             {!workingQuizData ?
-            <AdminQuizView
-             workingQuizData={quiz}
-             setWorkingQuizData={setWorkingQuizData}
-            />:<AdminQuizView
+            <AdminSingleQuizEdit
+             quiz={quiz}
+             
+            />:<AdminSingleQuizEdit
             workingQuizData={workingQuizData}
             setWorkingQuizData={setWorkingQuizData}
            />}
