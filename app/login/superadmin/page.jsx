@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-console.log(superAdminPass);
+
     // You can make a POST request here to your login endpoint with email, password, and superAdminPass.
     // Use the fetch API or a library like axios.
 
@@ -27,7 +27,7 @@ console.log(superAdminPass);
       // Login successful, you can redirect the user to a dashboard or home page.
       // Replace '/dashboard' with your desired route.
       const data = await response.json();
-      console.log(data);
+     
       const userData = decode(data.value);
       console.log(userData.isSuperAdmin);
       if (userData.isSuperAdmin === true) {

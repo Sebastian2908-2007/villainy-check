@@ -7,13 +7,24 @@ import decode from "jwt-decode";
 
 const Drawer = () => {
     let userData;
+    let isSuperAdmin;
     const userCookie = Cookies.get('userinfocookie');
+
 if(userCookie) {
     userData = decode(userCookie);
+    isSuperAdmin = userData.isSuperAdmin;
+    console.log(userData);
+    console.log(userData.isSuperAdmin);
 }
+
+
+
+
+
   const [isOpen, setIsOpen] = useState(false);
   const drawerRef = useRef(null);
-console.log(userData,"in drawer");
+
+
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -62,20 +73,58 @@ console.log(userData,"in drawer");
             {/* Replace anchor tags with Link components */}
             <ul>
               <li>
-                <Link className="text-blue-700 hover:underline" href={`/dashboard/paidadmin/${userData._id}`}>
+                <Link className="text-blue-700 hover:underline" 
+                href={
+                    isSuperAdmin ?
+                    `/dashboard/superadmin/${userData._id}`
+                    :
+                    `/dashboard/paidadmin/${userData._id}`}
+                    >
                   Dashboard
                 </Link>
               </li>
+
+             {isSuperAdmin ? <li>
+                <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/createquiz">
+                  Create Quiz
+                </Link>
+              </li>
+              :
               <li>
                 <Link className="text-blue-700 hover:underline" href="/dashboard/paidadmin/addtesters">
                   Add Subjects
-                </Link>
+                </Link> 
               </li>
+              }
+            {isSuperAdmin ?
               <li>
-                <Link className="text-blue-700 hover:underline" href="/settings">
-                  Settings
+                <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/settings">
+                 Profile Settings
                 </Link>
               </li>
+              :
+              <li>
+                <Link className="text-blue-700 hover:underline" href="/dashboard/paidadmin/settings">
+                 Profile Settings
+                </Link>
+              </li>
+             }
+             {
+             isSuperAdmin &&
+             <li>
+             <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/product">
+               Products
+             </Link>
+           </li>
+             }
+             {
+             isSuperAdmin &&
+             <li>
+             <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/quizzes">
+               All Quizzes
+             </Link>
+           </li>
+             }
             </ul>
           </div>
         </div>

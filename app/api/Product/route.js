@@ -70,7 +70,7 @@ export async function PUT(request) {
     await dbConnect(); // Connect to MongoDB
 
     const { productId, updatedData } = await request.json();
-
+console.log(productId, updatedData);
     // Find the product by ID and update it with the provided data
     const updatedProduct = await Product.findByIdAndUpdate(
       productId,

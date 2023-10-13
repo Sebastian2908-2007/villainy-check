@@ -26,7 +26,7 @@ export async function GET() {
   
     try {
       verify(value, secret);
-  
+
       const response = {
         value: value,
       };

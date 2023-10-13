@@ -28,3 +28,28 @@ export const getSingleQuiz = async (quizId) => {
         console.error('Error getting quiz:', error.message);
       }
 };
+
+export const getSingleProduct = async (productId) => {
+  try {
+    // Send a request to your API endpoint to fetch the product
+    const response = await fetch(`/api/Product/singleproduct/${productId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      // Successfully retrieved the product data
+      const { product } = await response.json();
+      console.log(product, "Product Data Fetched");
+      return product;
+    } else {
+      // Handle error states, e.g., show an error message
+      console.error('Error getting product:', response.statusText);
+    }
+  } catch (error) {
+    console.log(error);
+    console.error('Error getting product:', error.message);
+  }
+};
