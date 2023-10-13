@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import { MAX_AGE } from "@/utils/constants";
 import decode from 'jwt-decode';
 
+import Drawer from "@/components/Drawer";
+
 export default function AdminDashboardLayout({children}){
     let existingCookie;
   
@@ -17,8 +19,10 @@ export default function AdminDashboardLayout({children}){
 
     const getUser = async () => {
       const response = await fetch('/api/Dashboard/paidadmin');
+      
       if(response.ok) {
         const data = await response.json();
+       
         const decodedUserData = decode(data.value);
         const token = data.value;
         //setAdminData(decodedUserData);
@@ -41,12 +45,16 @@ export default function AdminDashboardLayout({children}){
     };
 
     return(
-        <div>
-        <h1> paid Dashboard</h1>
-        <section>
-            {children}
-        </section>
-        </div>
+      <div className="flex flex-col   w-full">
+      <header className=" flex flex-row justify-end w-full">
+        <Drawer />
+      </header>
+      <section className="flex flex-col w-full ">
+        {children}
+      </section>
+    </div>
+    
         
     );
 };
+

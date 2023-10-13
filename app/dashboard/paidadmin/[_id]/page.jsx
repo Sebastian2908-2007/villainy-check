@@ -3,6 +3,7 @@ import UpdateUserDetails from "@/components/UpdateUserDetails";
 import Cookies from "js-cookie";
 import UniModal from "@/components/UniModal";
 import decode from "jwt-decode";
+import EditIcon from '@mui/icons-material/Edit';
 import { useEffect, useState } from "react";
 export default function AdminDash() {
     let decodedData;
@@ -22,6 +23,7 @@ export default function AdminDash() {
   
     return(
        data ? <UniModal
+       
          title={"Organization Details"}
         content={<UpdateUserDetails userId={decodedData._id}/>}
           />:<div
@@ -32,9 +34,13 @@ export default function AdminDash() {
              py-2
               px-4
                rounded cursor-pointer
-                hover:text-blue-700"
+                hover:text-blue-700
+                bg-blue-500 hover:bg-blue-700
+                flex flex-row justify-center
+                m-4
+                "
         >
-          Actions
+          <EditIcon/>
         </div>
         
         

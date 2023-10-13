@@ -3,8 +3,12 @@ import { verify } from "jsonwebtoken";
 import { PAID_ADMIN_COOKIE_NAME,COOKIE_NAME } from "@/utils/constants";
 import { NextResponse } from "next/server";
 import decode from 'jwt-decode';
+import {User} from '@/db/models'
+import dbConnect from '@/db/config/connection';
 
+/**this is an auth route used in the paid admin layout component it helps with ui security*/
 export async function GET() {
+    console.log("DDDDDDDDDDDDDDDDDDDD");
     let loginToken;
     let token;
     let isPaid;
@@ -92,3 +96,49 @@ if(token === undefined) {
 
     }
   }
+
+  /**this route is for paid admins to add user who will take their quiz */
+  
+
+export async function POST(request) {
+  try {
+    // Connect to the MongoDB database
+    await dbConnect();
+
+    const {
+      email,
+      password,
+      firstName,
+      lastName,
+      userId, // ID of the user creating the new user
+    } = await request.json();
+console.log(userId,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
+    // Check if the user creating the new user exists
+    const creatorUser = await User.findById(userId);
+
+    if (!creatorUser) {
+      return NextResponse.json({ error: 'User creating the new user not found.' }, { status: 400 });
+    }
+
+    // Create a new User document with isSubject set to true
+    const newUser = new User({
+      email,
+      password,
+      firstName,
+      lastName,
+      isSubject: true,
+    });
+
+    // Save the new User document to the database
+    const savedUser = await newUser.save();
+
+    // Push the ID of the newly created user into the subjects array of the creator user
+    creatorUser.subjects.push(savedUser._id);
+    await creatorUser.save();
+
+    return NextResponse.json({ message: 'User created and updated successfully.' }, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ error: 'Server error.' }, { status: 500 });
+  }
+}

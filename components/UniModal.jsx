@@ -18,9 +18,9 @@ const UniModal = ({content,title}) => {
     <div>
       <button
         onClick={isOpen ? closeModal : openModal}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        className="m-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
-        {isOpen ? "Close Modal" : "Edit Details"}
+        {isOpen ? "Close Modal" : "Edit Org info"}
       </button>
 
       {isOpen && (

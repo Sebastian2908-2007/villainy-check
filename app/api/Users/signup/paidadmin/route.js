@@ -7,6 +7,7 @@ import { User } from '@/db/models';
 import { MAX_AGE } from '@/utils/constants';
 
 export async function POST(request) {
+   
   let token;
   try {
     // Connect to the MongoDB database
