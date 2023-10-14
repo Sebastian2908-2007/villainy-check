@@ -1,20 +1,29 @@
 'use client'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import decode from 'jwt-decode';
+import clientDatabase from '@/utils/dexieDb';
+import { useLiveQuery } from "dexie-react-hooks";
 
 
 export default function Signup() {
+  let productArr;
+  const [product, setProduct] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const router = useRouter();
-
+   productArr = useLiveQuery(() => clientDatabase.product.toArray(),[]);
+  useEffect(() => {
+   
+    setProduct(productArr);
+  },[productArr]);
+ 
   const handlePaidSignup = async (e) => {
     e.preventDefault();
-
+    console.log(product[0]._id);
     // You can make a POST request here to your signup endpoint with all the form fields.
     // Use the fetch API or a library like axios.
 
@@ -22,7 +31,7 @@ export default function Signup() {
     const response = await fetch('/api/Users/signup/paidadmin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password, firstName, lastName }),
+      body: JSON.stringify({ email, password, firstName, lastName, productType: product[0]._id }),
     });
 
     if (response.ok) {

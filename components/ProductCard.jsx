@@ -43,9 +43,7 @@ const [stripeData,setStripeData] = useState(null);
 
       async function handleBuyNowClick() {
         addProductToClientDatabase();
-        try {
-          //const stripe = stripePromise;
-          
+        try {  
           // Create a PaymentIntent or Checkout Session on the server
           const response = await fetch('/api/Product/checkout', {
             method: 'POST',
@@ -57,16 +55,8 @@ const [stripeData,setStripeData] = useState(null);
       
           const session = await response.json();
           console.log(session.sessionId);
-      setStripeData(session);
-          // Redirect to the Stripe Checkout
-         /* const { error } = await stripe.redirectToCheckout({
-            sessionId: session.id,
-          });
-      
-          if (error) {
-            console.error('Error redirecting to checkout:', error);
-          }*/
-        ;
+         setStripeData(session);
+        
         } catch (error) {
           console.error('Error processing purchase:', error);
         }

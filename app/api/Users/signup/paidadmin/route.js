@@ -13,7 +13,7 @@ export async function POST(request) {
     // Connect to the MongoDB database
     await dbConnect();
 
-    const { email, password, firstName, lastName } = await request.json();
+    const { email, password, firstName, lastName,productType } = await request.json();
 
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
@@ -32,6 +32,7 @@ export async function POST(request) {
       firstName,
       lastName,
       isPaid: true, // Set isPaid to true for new users signing up through this route
+      productType: productType
     });
 
     // Save the new User document to the database
