@@ -252,7 +252,7 @@ export default function AdminProductView({ incomingProduct, quizzes }) {
         <h1 className="text-2xl font-bold mb-4">Product View</h1>
       
         <div key={product._id} className="border p-4 rounded-md shadow-md w-full">
-        <div class="w-full bg-gray-300 p-4 flex justify-between mb-4">
+        <div className="w-full bg-gray-300 p-4 flex justify-between mb-4">
           <button className="text-blue-500 hover:underline" onClick={toggleEditingProduct}>
             {isEditingProduct ? (
               <SaveIcon onClick={handleEditProduct} />

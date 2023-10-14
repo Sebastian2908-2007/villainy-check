@@ -76,9 +76,9 @@ if(userCookie) {
                 <Link className="text-blue-700 hover:underline" 
                 href={
                     isSuperAdmin ?
-                    `/dashboard/superadmin/${userData._id}`
+                    `/dashboard/superadmin/${userData && userData._id}`
                     :
-                    `/dashboard/paidadmin/${userData._id}`}
+                    `/dashboard/paidadmin/${userData && userData._id}`}
                     >
                   Dashboard
                 </Link>
