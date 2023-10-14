@@ -41,7 +41,7 @@ export default function Signup() {
       const data = await response.json();
      
      const token = data.value;
-     
+     clientDatabase.product.clear();
     
       
 
