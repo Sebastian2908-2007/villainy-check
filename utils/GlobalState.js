@@ -1,3 +1,4 @@
+'use client'
 // import create context from react this will allow us to create and use our global store
 import React, { createContext, useContext } from "react";
 // our reducer funtion from reducers.js
@@ -13,7 +14,8 @@ const { Provider } = StoreContext;
 // If we didn't include {...props} in our returning <Provider> component, nothing on the page would be rendered!
 const StoreProvider = ({ value=[], ...props }) => {
     const [state, dispatch] = useProductReducer({
-        admin: null,
+        admin: {},
+        
       
     });
     return <Provider value={[state, dispatch]} {...props} />

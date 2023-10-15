@@ -12,9 +12,10 @@ export async function GET() {
     let loginToken;
     let token;
     let isPaid;
+    let verified;
     const cookieStore = cookies();
     token = cookieStore.get(PAID_ADMIN_COOKIE_NAME);
-
+console.log(token);
      // if this route is hit and previous cookie is not available then we know user is logging in
      // so we try for that cookie so we can check isPaid data on token
 if(token === undefined) {
@@ -25,7 +26,7 @@ if(token === undefined) {
 }
 
 
-  console.log(token,"B E");
+  console.log(token.expiresAt,"B E");
     if (isPaid === false) {
       return NextResponse.json(
         {
@@ -44,8 +45,16 @@ if(token === undefined) {
     const secret = process.env.JWT_SECRET || "";
   
     try {
-      verify(value, secret);
-  
+    
+    verify(value, secret,function(err,decoded){
+      if(err) {
+        console.log(err,'VERIFY ERR');
+        console.log(decoded,'VERIFY DECODED');
+      }
+      else{
+        console.log(decoded)
+      }
+    });
       const response = {
         value: value,
       };
@@ -55,7 +64,8 @@ if(token === undefined) {
        
       });
     } catch (e) {
-       
+       //console.log(e);
+      
       return NextResponse.json(
         {
           message: "Something went wrong",
@@ -73,7 +83,7 @@ if(token === undefined) {
   
     try {
       verify(value, secret);
-  
+      
       const response = {
         value: value,
       };

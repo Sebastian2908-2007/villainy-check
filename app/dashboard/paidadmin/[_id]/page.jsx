@@ -6,9 +6,11 @@ import decode from "jwt-decode";
 import EditIcon from '@mui/icons-material/Edit';
 import { useEffect, useState } from "react";
 import SetGlobalState from "@/components/SetGlobalState";
+import PaidAllUsers from "@/components/PaidAllUsers";
 export default function AdminDash() {
     let decodedData;
     const [data,setData] = useState(null);
+    const [openUsers,setOpenUsers] = useState(null);
     const userCookie = Cookies.get('userinfocookie');
 
     const userData = (userData) => {
@@ -33,10 +35,8 @@ export default function AdminDash() {
         content={<UpdateUserDetails userId={data._id}/>}
           />
           <SetGlobalState/>
-          </div>
-          :
-          <div
-          onClick={() => { console.log(data,"CLICKED") }}
+        <button
+          onClick={() => { setOpenUsers(true); }}
           className="
            text-black
             font-semibold
@@ -49,8 +49,13 @@ export default function AdminDash() {
                 m-4
                 "
         >
-          <EditIcon/>
-        </div>
+          View testers
+        </button>
+        {openUsers && <PaidAllUsers/>}
+          </div>
+          :
+          <div>loading...</div>
+        
         
         
      

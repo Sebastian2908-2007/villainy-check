@@ -13,8 +13,6 @@ const Drawer = () => {
 if(userCookie) {
     userData = decode(userCookie);
     isSuperAdmin = userData.isSuperAdmin;
-    console.log(userData);
-    console.log(userData.isSuperAdmin);
 }
 
 
@@ -135,26 +133,3 @@ if(userCookie) {
 
 export default Drawer;
 
-/*
- <div className="relative">
-      <button onClick={toggleDrawer} className="hover:text-blue-700  py-2 px-4 ">
-        {isOpen ? ' ' :<ArrowCircleLeftIcon/>}
-      </button>
-      {isOpen && (
-        <div
-          className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-0 transition-transform ease-in-out duration-300"
-          ref={drawerRef}
-        >
-          <div className="p-4 flex justify-between">
-            <h2>Drawer</h2>
-            <button onClick={closeDrawer} className="text-gray-500">
-              X
-            </button>
-          </div>
-          <div className="p-4">
-            <p>This is the drawer content.</p>
-          </div>
-        </div>
-      )}
-    </div>
-*/
