@@ -1,0 +1,1 @@
+export const ADD_ADMIN_DATA = 'ADD_ADMIN_DATA';

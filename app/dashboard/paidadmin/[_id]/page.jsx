@@ -5,6 +5,7 @@ import UniModal from "@/components/UniModal";
 import decode from "jwt-decode";
 import EditIcon from '@mui/icons-material/Edit';
 import { useEffect, useState } from "react";
+import SetGlobalState from "@/components/SetGlobalState";
 export default function AdminDash() {
     let decodedData;
     const [data,setData] = useState(null);
@@ -14,20 +15,28 @@ export default function AdminDash() {
         setData(userData);
        };
 
+       useEffect(() => {
     if (userCookie) {
        decodedData = decode(userCookie);
         console.log(decodedData);
-        
+        userData(decodedData);
     }
+  },[]);
   
   
     return(
-       data ? <UniModal
+       data ? 
+       <div>
+       <UniModal
        
          title={"Organization Details"}
-        content={<UpdateUserDetails userId={decodedData._id}/>}
-          />:<div
-          onClick={() => { userData(decodedData) }}
+        content={<UpdateUserDetails userId={data._id}/>}
+          />
+          <SetGlobalState/>
+          </div>
+          :
+          <div
+          onClick={() => { console.log(data,"CLICKED") }}
           className="
            text-black
             font-semibold
