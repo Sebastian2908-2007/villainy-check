@@ -43,6 +43,10 @@ const userSchema = new Schema({
     type:String,
     required: false
 },
+  quizLink: {
+    type:String,
+    required: false
+},
   productType: {
     type: Schema.Types.ObjectId,
     ref: 'Product',
