@@ -47,6 +47,10 @@ const userSchema = new Schema({
     type:String,
     required: false
 },
+  assignedQuiz: {
+    type: Schema.Types.ObjectId,
+    ref: 'Quiz',
+},
   productType: {
     type: Schema.Types.ObjectId,
     ref: 'Product',

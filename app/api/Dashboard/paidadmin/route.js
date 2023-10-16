@@ -26,7 +26,7 @@ if(token === undefined) {
 }
 
 
-  console.log(token.expiresAt,"B E");
+  console.log(token,"B E");
     if (isPaid === false) {
       return NextResponse.json(
         {
@@ -121,6 +121,8 @@ export async function POST(request) {
       firstName,
       lastName,
       userId, // ID of the user creating the new user
+      //send quizLink
+      assignedQuiz// send assignedQuiz
     } = await request.json();
 console.log(userId,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
     // Check if the user creating the new user exists
@@ -137,6 +139,7 @@ console.log(userId,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
       firstName,
       lastName,
       isSubject: true,
+      assignedQuiz
     });
 
     // Save the new User document to the database
@@ -144,7 +147,20 @@ console.log(userId,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
 
     // Push the ID of the newly created user into the subjects array of the creator user
     creatorUser.subjects.push(savedUser._id);
+
     await creatorUser.save();
+    // we create our added subject user a quiz link for later test navigation
+const newQuizLink = `/quiz/${assignedQuiz}/user/${savedUser._id}`;
+
+// First, we find the user you want to update.
+const userToUpdate = await User.findById(savedUser._id);
+
+// Then, set the new quizLink property.
+userToUpdate.quizLink = newQuizLink;
+
+// Save the updated user to the database.
+await userToUpdate.save();
+
 
     return NextResponse.json({ message: 'User created and updated successfully.' }, { status: 200 });
   } catch (error) {

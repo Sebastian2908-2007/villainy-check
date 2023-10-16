@@ -11,21 +11,23 @@ export default function AdminDash() {
     let decodedData;
     const [data,setData] = useState(null);
     const [openUsers,setOpenUsers] = useState(null);
-    const userCookie = Cookies.get('userinfocookie');
+    
 
     const userData = (userData) => {
         setData(userData);
        };
 
        useEffect(() => {
-    if (userCookie) {
+        setTimeout(() => {
+        const userCookie = Cookies.get('userinfocookie');
+      console.log(userCookie,"USERCOOKIE")
        decodedData = decode(userCookie);
         console.log(decodedData);
         userData(decodedData);
-    }
+      },1000);
   },[]);
   
-  
+  useEffect(()=>{console.log(data)},[data]);
     return(
        data ? 
        <div>

@@ -2,7 +2,7 @@
 import { useState,useEffect } from 'react';
 import Cookies from "js-cookie";
 import decode from "jwt-decode";
-
+import { useStoreContext } from '@/utils/GlobalState';
 
 
 
@@ -10,6 +10,7 @@ import decode from "jwt-decode";
 
 
 export default function AddUserForm() {
+  const [state, dispatch] = useStoreContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -26,7 +27,7 @@ export default function AddUserForm() {
       return () => clearTimeout(timer);
     }
   }, [successMessage]);
-
+console.log(state.admin);
   const handleSubmit = async (e) => {
     let decodedData;
     e.preventDefault();
@@ -42,6 +43,7 @@ export default function AddUserForm() {
       firstName,
       lastName,
       userId,
+      assignedQuiz:state.admin.productType.quiz,
     };
 
     try {
