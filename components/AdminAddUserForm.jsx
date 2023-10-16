@@ -44,6 +44,7 @@ console.log(state.admin);
       lastName,
       userId,
       assignedQuiz:state.admin.productType.quiz,
+      adminEmail: state.admin.email
     };
 
     try {

@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import decode from 'jwt-decode';
 import {User} from '@/db/models'
 import dbConnect from '@/db/config/connection';
+import bcrypt from 'bcryptjs';
 
 /**this is an auth route used in the paid admin layout component it helps with ui security*/
 export async function GET() {
@@ -121,10 +122,11 @@ export async function POST(request) {
       firstName,
       lastName,
       userId, // ID of the user creating the new user
-      //send quizLink
+      adminEmail,//users admin email
       assignedQuiz// send assignedQuiz
     } = await request.json();
-console.log(userId,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
+console.log(adminEmail,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
+const hashedPassword = await bcrypt.hash(password, 10);
     // Check if the user creating the new user exists
     const creatorUser = await User.findById(userId);
 
@@ -135,11 +137,12 @@ console.log(userId,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
     // Create a new User document with isSubject set to true
     const newUser = new User({
       email,
-      password,
+      password: hashedPassword,
       firstName,
       lastName,
       isSubject: true,
-      assignedQuiz
+      assignedQuiz,
+      adminEmail
     });
 
     // Save the new User document to the database

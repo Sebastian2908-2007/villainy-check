@@ -26,14 +26,42 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+
+/**fields important to quizzing */
+
   quizComplete: {
     type: Boolean,
     default: false,
+  },
+  quizLink: {
+    type:String,
+    required: false
+},
+  assignedQuiz: {
+    type: Schema.Types.ObjectId,
+    ref: 'Quiz',
+},
+quizOutcome: {
+  type: String,
+  required: false,
+  trim: true,
+},
+  adminEmail: {
+    type: String,
+    required: false,
+    trim: true,
   },
   isSubject: {
     type: Boolean,
     default: false,
   },
+  /**this will be given based on score*/
+  quizRecommendations: {
+    type: Schema.Types.ObjectId,
+    ref: 'QuizRecommendation',
+  },
+/**fields important to quizzing */
+
   // Fields for paid and super admin users
   phone: {
     type:String,
@@ -43,14 +71,7 @@ const userSchema = new Schema({
     type:String,
     required: false
 },
-  quizLink: {
-    type:String,
-    required: false
-},
-  assignedQuiz: {
-    type: Schema.Types.ObjectId,
-    ref: 'Quiz',
-},
+
   productType: {
     type: Schema.Types.ObjectId,
     ref: 'Product',
