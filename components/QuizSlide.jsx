@@ -1,6 +1,6 @@
 export const QuizSlide = ({question,goToNextSlide}) => {
     return(
-        <div className="overflow-hidden bg-[#849b9f] flex flex-row w-[100vw] items-start">
+        <div className="overflow-hidden bg-[#849b9f] flex flex-row w-[100%] items-start">
         <div className="flex flex-col mt-0 max-w-[100%]">
           <div className="bg-[#f0e7e7] flex flex-col justify-center pr-8 h-16 shrink-0 items-end">
             <div className="bg-[#849b9f] flex flex-col items-center p-2">
@@ -18,7 +18,7 @@ export const QuizSlide = ({question,goToNextSlide}) => {
 
              
         <div>
-          <div className="min-h-screen p-4  ">
+          <div className=" p-4  ">
            
             <p className="text-[1rem] font-['Inter'] font-bold text-[#fde1e2]">{question.ques1}</p>
             <p className="text-[1rem] font-['Inter'] font-bold text-[#fde1e2]">{question.ques2}</p>

@@ -68,7 +68,7 @@ const NewQuiz = ({ items }) => {
   };
 
   return (
-    <div className='min-h-screen w-[100vw]'>
+    <div className=' w-[100vw] mt-[8rem]'>
         <h2 className="text-2xl font-semibold mb-2">{quizTitle}</h2>
     <Slider  ref={sliderRef} {...settings}>
       {items.questions.map((question, index) => (
@@ -80,7 +80,7 @@ const NewQuiz = ({ items }) => {
         
       ))}
     </Slider>
-
+<div className='mainClass '>hello</div>
    
 
 
