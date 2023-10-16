@@ -15,9 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <StoreProvider>
     <html lang="en" style={{ height: '100%' }}>
-      <body className={inter.className} style={{ height: '100%' }}>
+      <body className={inter.className} style={{ height: '100%' }} >
       <Header/>
-      <main className="flex min-h-screen flex-col items-center justify-between pb-[11rem]" >
+      <main className="flex min-h-screen flex-col items-center justify-between p-8 pb-[11rem] max-w-fit" >
         {children}
       </main>  
       <Footer/>

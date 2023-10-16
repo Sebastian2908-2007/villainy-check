@@ -50,11 +50,12 @@ import Slider from 'react-slick';
 import  { useRef } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+import QuizSlide from './QuizSlide';
 const NewQuiz = ({ items }) => {
     const sliderRef = useRef();
     const goToNextSlide = () => {
         sliderRef.current.slickNext();
+        console.log('ref clicked');
       };
  const quizTitle = items.quizTitle;
     console.log(items);
@@ -67,21 +68,30 @@ const NewQuiz = ({ items }) => {
   };
 
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen w-[100vw]'>
+        <h2 className="text-2xl font-semibold mb-2">{quizTitle}</h2>
     <Slider  ref={sliderRef} {...settings}>
-      {items.questions.map((item, index) => (
-        <div key={index}>
-          <div className="min-h-screen p-4 bg-white shadow-md rounded-lg">
-            <h2 className="text-2xl font-semibold mb-2">{quizTitle}</h2>
-            
-            <button onClick={goToNextSlide}>Next Slide</button>
-          </div>
-        </div>
+      {items.questions.map((question, index) => (
+        <QuizSlide
+        question={question}
+        goToNextSlide={goToNextSlide}
+        key={index}/>
+        
+        
       ))}
     </Slider>
+
+   
+
+
   </div>
   );
 };
 
 export default NewQuiz;
+
+/*
+
+
+*/
 
