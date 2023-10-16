@@ -51,21 +51,13 @@ import  { useRef } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const Carousel = (/*{ items }*/) => {
+const NewQuiz = ({ items }) => {
     const sliderRef = useRef();
     const goToNextSlide = () => {
         sliderRef.current.slickNext();
       };
-    var items = [
-        {
-            name: "Random Name #1",
-            description: "Probably the most random thing you have ever seen!"
-        },
-        {
-            name: "Random Name #2",
-            description: "Hello World!"
-        }
-    ]
+ const quizTitle = items.quizTitle;
+    console.log(items);
   const settings = {
     dots: true,
     infinite: true,
@@ -75,21 +67,21 @@ const Carousel = (/*{ items }*/) => {
   };
 
   return (
-    <Slider ref={sliderRef} {...settings}>
-      {items.map((item, index) => (
+    <div className='min-h-screen'>
+    <Slider  ref={sliderRef} {...settings}>
+      {items.questions.map((item, index) => (
         <div key={index}>
-          {/* Your carousel item content */}
-          <div className="p-4 bg-white shadow-md rounded-lg">
-            {/* Place your content here */}
-            <h2 className="text-2xl font-semibold mb-2">{item.title}</h2>
-            <p className="text-gray-500 mb-4">{item.description}</p>
+          <div className="min-h-screen p-4 bg-white shadow-md rounded-lg">
+            <h2 className="text-2xl font-semibold mb-2">{quizTitle}</h2>
+            
             <button onClick={goToNextSlide}>Next Slide</button>
           </div>
         </div>
       ))}
     </Slider>
+  </div>
   );
 };
 
-export default Carousel;
+export default NewQuiz;
 
