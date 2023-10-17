@@ -37,7 +37,7 @@ export default function QuizLayout({children}){
 };
 
     return(
-      <div className="flex flex-col h-auto   w-[100%]" >
+      <div className="flex flex-col min-h-screen   w-[100%]" >
       <section className="flex flex-col w-full h-auto ">
         {children}
       </section>

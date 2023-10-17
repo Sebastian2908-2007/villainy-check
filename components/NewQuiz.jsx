@@ -68,8 +68,8 @@ const NewQuiz = ({ items }) => {
   };
 
   return (
-    <div className=' w-[100vw] mt-[8rem]'>
-        <h2 className="text-2xl font-semibold mb-2">{quizTitle}</h2>
+    <div className=' w-[100vw] mt-[4rem] '>
+        <h2 className="text-2xl text-center mb-16 text-[#f0e7e7] font-extrabold mb-2">{quizTitle}</h2>
     <Slider  ref={sliderRef} {...settings}>
       {items.questions.map((question, index) => (
         <QuizSlide
@@ -80,7 +80,7 @@ const NewQuiz = ({ items }) => {
         
       ))}
     </Slider>
-<div className='mainClass '>hello</div>
+<div >hello</div>
    
 
 

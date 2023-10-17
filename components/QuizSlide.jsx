@@ -1,30 +1,66 @@
 export const QuizSlide = ({question,goToNextSlide}) => {
     return(
-        <div className="overflow-hidden bg-[#849b9f] flex flex-row w-[100%] items-start">
-        <div className="flex flex-col mt-0 max-w-[100%]">
+        <div className=" overflow-hidden bg-[#849b9f] flex flex-row w-[100%] items-start h-[100%] min-[375px]:h-[auto]">
+        <div className="flex flex-col mt-0 max-w-[100%] h-[100vh] min-[375px]:h-[auto]">
           <div className="bg-[#f0e7e7] flex flex-col justify-center pr-8 h-16 shrink-0 items-end">
-            <div className="bg-[#849b9f] flex flex-col items-center p-2">
+            <div className="bg-[#849b9f] flex flex-col items-center min-[360px]:p-2">
               <div className="text-[1.1rem] font-['Inter'] font-bold text-[#fde1e2] mr-px">
                 The Human Risk Project
               </div>
             </div>
           </div>
-          <div className="flex flex-row items-start">
-            <div className="bg-[#dbd5d5] w-16 shrink-0 h-[732px]" />
-            <div className="self-end flex flex-col justify-between w-[calc(100vw-144px)]  h-[668px] items-center">
-              <div className="flex flex-col gap-10 h-32 shrink-0 items-start">
+          <div className="flex flex-row items-start h-[100vh] min-[375px]:h-[auto]">
+
+            <div className="bg-[#dbd5d5] w-16 shrink-0 h-[736px] " />
+            <div className="self-end flex flex-col justify-between w-[calc(100vw-144px)]  h-[668px] items-center h-100%">
+              <div className="flex flex-col gap-10  shrink-0 items-start w-full h-[100%] min-[360px]:h-32">
 
 
 
              
-        <div>
-          <div className=" p-4  ">
-           
-            <p className="text-[1rem] font-['Inter'] font-bold text-[#fde1e2]">{question.ques1}</p>
-            <p className="text-[1rem] font-['Inter'] font-bold text-[#fde1e2]">{question.ques2}</p>
-            {question.answers.map((answer,index) => (
-                <p className="text-[1rem] font-['Inter'] font-bold text-[#fde1e2] ml-3" key={index}>{answer.answerTxt}</p>
-            ))}
+        <div className="w-full">
+          <div className=" p-4  w-full">
+           <div className="flex flex-col min-[540px]:flex-row w-full justify-between mb-[2rem]">
+            <p className="
+            text-[1.1rem]
+             min-[540px]:text-[1.3rem]
+             font-['Inter']
+             font-bold
+             text-[#fde1e2]
+             min-[540px]:p-2
+            ">1.&nbsp;{question.ques1}</p>
+            <span className="bg-[#fde1e2] text-[#849b9f] mt-8 mb-8 text-center font-extrabold rounded">VS</span>
+            <p className="
+            text-[1.1rem]
+             min-[540px]:text-[1.3rem]
+             font-['Inter']
+             font-bold
+             text-[#fde1e2]
+             min-[540px]:p-2
+            ">2.&nbsp;{question.ques2}</p>
+            </div>
+          
+
+<ul className="text-[#fde1e2] list-none list-outside ">
+  {question.answers.map((answer, index) => (
+    <li className="
+    bg-[#999595]
+    text-[1rem] 
+    font-['Inter']
+    font-bold
+    text-center
+    mb-4
+    p-2
+    rounded rounded-full
+    " 
+    key={index}
+    >
+      {answer.answerTxt}
+    </li>
+  ))}
+</ul>
+
+
             
           </div>
         </div>
@@ -50,7 +86,7 @@ export const QuizSlide = ({question,goToNextSlide}) => {
             </div>
           </div>
         </div>
-        <div className="bg-[#999595] w-20 shrink-0 h-[796px]" />
+        <div className="bg-[#999595] w-20 shrink-0 h-[800px]" />
       </div>
     );
 };
@@ -58,7 +94,7 @@ export default QuizSlide;
 
 /*
 
-    {items.questions.map((question, index) => (
+    {items.questions.map((question, index) => ( h-[796px] left h-[732px]
         <div key={index}>
           <div className="min-h-screen p-4 bg-white shadow-md rounded-lg">
             <h2 className="text-2xl font-semibold mb-2">{quizTitle}</h2>
