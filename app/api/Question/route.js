@@ -40,10 +40,14 @@ export async function POST(request, response) {
     // Find the associated quiz by ID and push the new question's ID to its questions array
     const quiz = await Quiz.findByIdAndUpdate(
       quizId,
-      { $push: { questions: savedQuestion._id } },
+      { 
+        $push: { questions: savedQuestion._id },
+        
+      },
       { new: true }
     );
-
+    quiz.idealOutcome += 15;
+    await quiz.save();
     if (!quiz) {
       return NextResponse.json({ error: 'Quiz not found.' }, { status: 404 });
     }

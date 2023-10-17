@@ -184,8 +184,8 @@ const toggleEditingQuiz = () => {
       // Prepare the updated data. You should replace this with your actual data.
       const updatedData = {
         quizTitle: workingQuizData.quizTitle,
-        quizOutcome: workingQuizData.quizOutcome,
-        idealOutcome: workingQuizData.idealOutcome,
+        //quizOutcome: workingQuizData.quizOutcome,
+       // idealOutcome: workingQuizData.idealOutcome,
         // Add or update other fields as needed
       };
   
@@ -294,7 +294,8 @@ const toggleEditingQuiz = () => {
             quiz.quizTitle
           )}
         </h2>
-        <p className="text-gray-500 mb-2">
+
+       {/* <p className="text-gray-500 mb-2">
           Ideal Outcome:{' '}
           {isEditingQuiz ? (
             <input
@@ -309,7 +310,8 @@ const toggleEditingQuiz = () => {
           ) : (
             quiz.idealOutcome
           )}
-        </p>
+          </p>*/}
+
         <div className="space-y-2">
           {quiz.questions.map((question) => (
             <div key={question._id}>

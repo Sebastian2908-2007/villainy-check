@@ -62,7 +62,7 @@ useEffect(
         console.log(currentQuesId);
         if(answerCount === 0){
             setQuesAnswerMediator(false);
-             setAnswerCount(4);
+             setAnswerCount(8);
              setCurrentQuesId(null);
         }
     },[answerCount])

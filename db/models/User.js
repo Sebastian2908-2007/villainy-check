@@ -42,7 +42,7 @@ const userSchema = new Schema({
     ref: 'Quiz',
 },
 quizOutcome: {
-  type: String,
+  type: Number,
   required: false,
   trim: true,
 },

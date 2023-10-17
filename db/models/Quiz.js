@@ -8,12 +8,12 @@ const Quiz = mongoose.models.Quiz || model('Quiz', new Schema({
       trim: true,
     },
     quizOutcome: {
-      type: String,
+      type: Number,
       required: false,
       trim: true,
     },
     idealOutcome: {
-      type: String,
+      type: Number,
       required: true,
       trim: true,
     },

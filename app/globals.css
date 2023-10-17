@@ -11,13 +11,7 @@
   --background-start-rgb: 153 149 149;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+
 
 * {
   box-sizing: border-box;
@@ -29,13 +23,16 @@ html{
 }
 body {
   max-width: 100%;
+ 
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+ /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
+      
     )
-    rgb(var(--background-start-rgb));
+   
+    rgb(var(--background-start-rgb))*/
 }
 
 .mainClass {
@@ -43,10 +40,13 @@ body {
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb));
+      rgb(var(--background-end-rgb)) ,
+      rgb(var(--background-start-rgb))
     )
-    rgb(var(--background-start-rgb));
+    
+   
 }
+
 
 
 

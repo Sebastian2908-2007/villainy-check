@@ -157,8 +157,8 @@ export default function AdminSingleQuizEdit({ quiz }) {
     try {
       const updatedData = {
         quizTitle: workingQuizData.quizTitle,
-        quizOutcome: workingQuizData.quizOutcome,
-        idealOutcome: workingQuizData.idealOutcome,
+       // quizOutcome: workingQuizData.quizOutcome,
+       // idealOutcome: workingQuizData.idealOutcome,
         // Add or update other fields as needed
       };
 
@@ -294,7 +294,8 @@ console.log(editedRecommendation);
             workingQuizData.quizTitle
           )}
         </h2>
-        <p className="text-gray-500 mb-2">
+
+        {/*<p className="text-gray-500 mb-2">
           Ideal Outcome:{' '}
           {isEditingQuiz ? (
             <input
@@ -308,7 +309,8 @@ console.log(editedRecommendation);
           ) : (
             workingQuizData.idealOutcome
           )}
-        </p>
+          </p>*/}
+
         <div className="space-y-2">
           {workingQuizData.questions.map((question) => (
             <div key={question._id}>

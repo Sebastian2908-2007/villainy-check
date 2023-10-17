@@ -167,7 +167,8 @@ export default function AdminQuizViewMultiples({ workingQuizData, setWorkingQuiz
               quiz.quizTitle
             )}
           </h2>
-          <p className="text-gray-500 mb-2">
+
+          {/*<p className="text-gray-500 mb-2">
             Ideal Outcome:{' '}
             {isEditingQuiz ? (
               <input
@@ -181,7 +182,8 @@ export default function AdminQuizViewMultiples({ workingQuizData, setWorkingQuiz
             ) : (
               quiz.idealOutcome
             )}
-          </p>
+          </p>*/}
+          
           <div className="space-y-2">
             {quiz.questions.map((question) => (
               <div key={question._id}>

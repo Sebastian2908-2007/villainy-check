@@ -29,13 +29,14 @@ export async function POST(request,response) {
   try {
     await dbConnect(); // Connect to MongoDB
 
-    const { quizTitle, idealOutcome } = await request.json();
+  const { quizTitle, /*idealOutcome*/ } = await request.json();
 
     // Create a new Quiz document
     const newQuiz = new Quiz({
       quizTitle,
-      idealOutcome,
+      idealOutcome: 15, 
     });
+    
 
     // Save the new Quiz document to the database
     const savedQuiz = await newQuiz.save();
@@ -96,6 +97,7 @@ export async function PUT(request, response) {
     await dbConnect(); // Connect to MongoDB
 
     const { quizId, updatedData } = await request.json();
+    
 
     // Find the quiz by ID and update it with the provided data
     const updatedQuiz = await Quiz.findByIdAndUpdate(

@@ -3,9 +3,10 @@
 import React, { useState,useEffect } from 'react';
 
 const QuizForm = ({createdQuizId,setCreatedQuizId,updateQuizData}) => {
+ 
   const [quizData, setQuizData] = useState({
     quizTitle: '',
-    idealOutcome: '',
+    //idealOutcome: '',
   });
 
   const handleQuizChange = (e) => {
@@ -42,7 +43,7 @@ const QuizForm = ({createdQuizId,setCreatedQuizId,updateQuizData}) => {
         setCreatedQuizId(quizId);
         setQuizData({
             quizTitle: '',
-            idealOutcome: '',
+            //idealOutcome: '',
        })
       } catch (error) {
         // Handle any other errors here
@@ -70,7 +71,8 @@ useEffect(()=> {console.log(createdQuizId)},[createdQuizId]);
           required
         />
       </div>
-      <div className="mb-4">
+
+     {/* <div className="mb-4">
         <label htmlFor="idealOutcome" className="block font-medium">
           Ideal Outcome:
         </label>
@@ -83,7 +85,8 @@ useEffect(()=> {console.log(createdQuizId)},[createdQuizId]);
           className="w-full border rounded p-2"
           required
         />
-      </div>
+  </div>*/}
+
       <button  disabled={createdQuizId && true} type="submit" 
     className="
      py-2

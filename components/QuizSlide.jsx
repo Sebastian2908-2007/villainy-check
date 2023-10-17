@@ -1,7 +1,17 @@
-export const QuizSlide = ({question,goToNextSlide}) => {
+export const QuizSlide = ({question,goToNextSlide,width}) => {
     return(
-        <div className=" overflow-hidden bg-[#849b9f] flex flex-row w-[100%] items-start h-[100%] min-[375px]:h-[auto]">
-        <div className="flex flex-col mt-0 max-w-[100%] h-[100vh] min-[375px]:h-[auto]">
+        <div className=" 
+        
+        bg-[#849b9f]
+        flex flex-row
+        
+        items-start h-[100%] 
+        min-[375px]:h-[auto]
+        
+        "
+        style={{width:width}}
+        >
+        <div className="flex flex-col mt-0 max-w-[100%] h-[auto] min-[375px]:h-[auto]">
           <div className="bg-[#f0e7e7] flex flex-col justify-center pr-8 h-16 shrink-0 items-end">
             <div className="bg-[#849b9f] flex flex-col items-center min-[360px]:p-2">
               <div className="text-[1.1rem] font-['Inter'] font-bold text-[#fde1e2] mr-px">
@@ -9,29 +19,50 @@ export const QuizSlide = ({question,goToNextSlide}) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row items-start h-[100vh] min-[375px]:h-[auto]">
+          <div className="flex flex-row items-start h-[auto] min-[375px]:h-[auto]">
 
-            <div className="bg-[#dbd5d5] w-16 shrink-0 h-[736px] " />
-            <div className="self-end flex flex-col justify-between w-[calc(100vw-144px)]  h-[668px] items-center h-100%">
-              <div className="flex flex-col gap-10  shrink-0 items-start w-full h-[100%] min-[360px]:h-32">
+            <div className="bg-[#dbd5d5] w-16 shrink-0 h-[1761px] 
+            min-[360px]:h-[1167px]
+            min-[375px]:h-[1067px] 
+            min-[540px]:h-[817px]
+            min-[768px]:h-[748px]
+
+            " />
+            <div className="
+            self-end
+            flex flex-col justify-between w-[calc(100vw-144px)]  h-[auto] items-center ">
+
+              <div className="
+              flex
+               flex-col
+               gap-10
+                shrink-0
+               items-start
+               w-full
+               h-[auto]
+               min-[360px]:h-[auto]
+               
+               ">
 
 
 
              
         <div className="w-full">
           <div className=" p-4  w-full">
-           <div className="flex flex-col min-[540px]:flex-row w-full justify-between mb-[2rem]">
+           <div className="flex flex-col min-[540px]:flex-row w-full justify-between ">
             <p className="
             text-[1.1rem]
+            text-center
              min-[540px]:text-[1.3rem]
              font-['Inter']
              font-bold
              text-[#fde1e2]
              min-[540px]:p-2
             ">1.&nbsp;{question.ques1}</p>
-            <span className="bg-[#fde1e2] text-[#849b9f] mt-8 mb-8 text-center font-extrabold rounded">VS</span>
+           {/* <span className="bg-[#fde1e2] text-[#849b9f] mt-8 mb-8 text-center font-extrabold rounded">VS</span>*/}
             <p className="
             text-[1.1rem]
+            text-center
              min-[540px]:text-[1.3rem]
              font-['Inter']
              font-bold
@@ -86,7 +117,13 @@ export const QuizSlide = ({question,goToNextSlide}) => {
             </div>
           </div>
         </div>
-        <div className="bg-[#999595] w-20 shrink-0 h-[800px]" />
+        <div className="bg-[#999595] w-20 shrink-0 h-[1825px]
+        min-[360px]:h-[1231px]
+        min-[375px]:h-[1131px]
+        min-[540px]:h-[881px]
+        min-[768px]:h-[811px]
+        
+        " />
       </div>
     );
 };
