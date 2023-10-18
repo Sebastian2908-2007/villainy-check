@@ -6,8 +6,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import QuizSlide from './QuizSlide';
 import { between } from '@/utils/between';
+import ErrorModal from './ErrorModal';
 
+/*
+const closeModal = () => {
+  setError(null);
+};
 
+// Render the Modal component with the error and onClose function
+<Modal error={error} onClose={closeModal} />
+*/
 const NewQuiz = ({ items }) => {
     let width  ;
     const sliderRef = useRef();
@@ -15,7 +23,7 @@ const NewQuiz = ({ items }) => {
     const [typeB,setTypeB] = useState(0);
     const [balanced,setBalanced] = useState(0);
    const [hasSubmitted,setHasSubmitted] = useState(false);
-   //const [correctType,setCorrectType] = useState(null);
+   const [error,setError] = useState(null);
    const [displayAnswers,setDisplayAnswers] = useState(null);
    const [slideCounter,setSlideCounter] = useState(items.questions.length);
 
@@ -32,7 +40,15 @@ const NewQuiz = ({ items }) => {
     
  };
 
+ const closeModal = () => {
+    setError(null);
+  };
+
     const goToNextSlide = () => {
+        if(!hasSubmitted) {
+            setError('Please pick an answer!');
+            return;
+        }
         sliderRef.current.slickNext();
         console.log('ref clicked');
         handleReset();
@@ -74,6 +90,7 @@ const centerMode = between(window.innerWidth,1281,1365);
   useEffect(() => console.log(displayAnswers,'Final Quiz Scores'),[displayAnswers]);
   return (
     <div className=' w-[100%] mt-[4rem] '>
+        <ErrorModal error={error} onClose={closeModal} />
         <h2 className="text-2xl text-center mb-16 text-[#849b9f] font-extrabold mb-2">{quizTitle}</h2>
     <Slider  ref={sliderRef} {...settings}>
       {items.questions.map((question, index) => (
