@@ -1,4 +1,152 @@
+'use client'
+import { useState,useEffect } from "react";
 export const QuizSlide = ({question,goToNextSlide,width}) => {
+ 
+    
+
+        const [typeA,setTypeA] = useState(0);
+        const [typeB,setTypeB] = useState(0);
+        const [balanced,setBalanced] = useState(0);
+       const [hasSubmitted,setHasSubmitted] = useState(false);
+       const [correctType,setCorrectType] = useState(null);
+    
+
+    
+    
+     const handleReset = () => {
+        setDisplayAnswers(null);
+        setTypeA(0);
+        setTypeB(0);
+        setBalanced(0);
+        setHasSubmitted(false);
+     };
+    
+    useEffect(() => {
+        question.answers.forEach(answer => {
+            if(answer.correct === 'true') {
+                setCorrectType(answer.answerType);
+            }
+        });
+    },[]);
+    useEffect(() => console.log(balanced,'balanced score'),[balanced]);
+    useEffect(() => console.log(typeA,'type A score'),[typeA]);
+    useEffect(() => console.log(typeB,'type B score'),[typeB]);
+    useEffect(() => console.log(correctType,'correct type'),[correctType]);
+
+     const handleQuestionAnswer = (event,question) => {
+        event.preventDefault();
+       console.log(event.target);
+       /**this will be our question.answer[].correct */
+        const isUserCorrect = event.target.getAttribute('data-correct');
+        const answerType = event.target.getAttribute('data-answertype');
+        /**In the case of our data we will have this be our question.correctAnswer */
+        //const correctType = question.correctType;
+    
+        if(isUserCorrect === 'true' && answerType === correctType) {
+            setBalanced(balanced + 15);
+            return;
+        }else if(isUserCorrect === 'false' && correctType === 'far right') {
+              switch(answerType) {
+                case'start left':
+                setTypeB(typeB + 5);
+                setTypeA(typeA - 5);
+                setBalanced(balanced - 5);
+                break;
+                case'mid left':
+                setTypeB(typeB + 10);
+                setTypeA(typeA - 10);
+                setBalanced(balanced - 10);
+                break;
+                case'far left':
+                setTypeB(typeB + 15);
+                setTypeA(typeA - 15);
+                setBalanced(balanced - 15);
+                break;
+                case'start right':
+                setTypeB(typeB - 5);
+                setTypeA(typeA + 5);
+                setBalanced(balanced - 5);
+                break;
+                case'mid right':
+                setTypeB(typeB - 10);
+                setTypeA(typeA + 10);
+                setBalanced(balanced - 10);
+                break;
+              }
+        }else if (isUserCorrect === 'false' && correctType === 'far left') {
+            switch(answerType) {
+                case'start right':
+                setTypeB(typeB - 5);
+                setTypeA(typeA + 5);
+                setBalanced(balanced - 5);
+                break;
+                case'mid right':
+                setTypeB(typeB - 10);
+                setTypeA(typeA + 10);
+                setBalanced(balanced - 10);
+                break;
+                case'far right':
+                setTypeB(typeB - 15);
+                setTypeA(typeA + 15);
+                setBalanced(balanced - 15);
+                break;
+                case'start left':
+                setTypeB(typeB + 5);
+                setTypeA(typeA - 5);
+                setBalanced(balanced - 5);
+                break;
+                case'mid left':
+                setTypeB(typeB + 10);
+                setTypeA(typeA - 10);
+                setBalanced(balanced - 10);
+                break;
+              }      
+        }
+        else if (isUserCorrect === 'false' && correctType === 'mid') {
+            switch(answerType) {
+                case'start right':
+                setTypeB(typeB - 5);
+                setTypeA(typeA + 5);
+                setBalanced(balanced - 5);
+                break;
+                case'mid right':
+                setTypeB(typeB - 10);
+                setTypeA(typeA + 10);
+                setBalanced(balanced - 10);
+                break;
+                case'far right':
+                setTypeB(typeB - 15);
+                setTypeA(typeA + 15);
+                setBalanced(balanced - 15);
+                break;
+                case'start left':
+                setTypeB(typeB + 5);
+                setTypeA(typeA - 5);
+                setBalanced(balanced - 5);
+                break;
+                case'mid left':
+                setTypeB(typeB + 10);
+                setTypeA(typeA - 10);
+                setBalanced(balanced - 10);
+                break;
+                case'far left':
+                setTypeB(typeB + 15);
+                setTypeA(typeA - 15);
+                setBalanced(balanced - 15);
+                break;
+              }      
+        }
+     };
+    
+     const handleSubmit = (event) => {
+        event.preventDefault();
+    setDisplayAnswers({typeA:typeA,typeB:typeB,balanced:balanced});
+    setHasSubmitted(true);
+    console.log('handle submit ran');
+    return;
+     };
+
+
     return(
         <div className=" 
         
@@ -85,6 +233,9 @@ export const QuizSlide = ({question,goToNextSlide,width}) => {
     rounded rounded-full
     " 
     key={index}
+    onClick={(event) => handleQuestionAnswer(event,question)}
+    data-correct={answer.correct}
+    data-answertype={answer.answerType}
     >
       {answer.answerTxt}
     </li>

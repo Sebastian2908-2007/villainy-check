@@ -28,8 +28,10 @@ useEffect(() => console.log(balanced),[balanced]);
  const handleQuestionAnswer = (event,question) => {
     event.preventDefault();
    console.log(event.target);
+   /**this will be our question.answer[].correct */
     const isUserCorrect = event.target.getAttribute('data-correct');
     const answerType = event.target.getAttribute('data-answertype');
+    /**In the case of our data we will have this be our question.correctAnswer */
     const correctType = question.correctType;
 
     if(isUserCorrect && answerType === correctType) {
