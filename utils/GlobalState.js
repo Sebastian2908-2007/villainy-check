@@ -16,6 +16,7 @@ const StoreProvider = ({ value=[], ...props }) => {
     const [state, dispatch] = useProductReducer({
         admin: {},
         testSubject:{},
+        quizRecs:[]
       
     });
     return <Provider value={[state, dispatch]} {...props} />

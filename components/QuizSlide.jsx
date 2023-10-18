@@ -1,5 +1,7 @@
 'use client'
 import { useState,useEffect } from "react";
+import { sendQuizResults } from "@/utils/sendQuizResults";
+import { useStoreContext } from '@/utils/GlobalState';
 export const QuizSlide = ({
     question,
     goToNextSlide,
@@ -15,12 +17,12 @@ export const QuizSlide = ({
     hasSubmitted,
     setHasSubmitted,
     displayAnswers,
-    setDisplayAnswers,
+   // setDisplayAnswers,
     slideCounter,
    //setSlideCounter
 }) => {
  
-    
+  const [state, dispatch] = useStoreContext(); 
 const [lastTypeA,setLastTypeA] = useState({amount:0,add:false,subtract:false});
 const [lastTypeB,setLastTypeB] = useState({amount:0,add:false,subtract:false});
 const [lastBalanced,setLastBalanced] = useState({amount:0,add:false,subtract:false});
@@ -562,13 +564,13 @@ setLastTypeB({amount:0,add:false,subtract:false});
         /**ADD NEWER ELSE IF AND CASES BELOW */
      };
     
-     const handleSubmit = (event) => {
+     /*const handleSubmit = (event) => {
         event.preventDefault();
     setDisplayAnswers({typeA:typeA,typeB:typeB,balanced:balanced});
     setHasSubmitted(true);
    // console.log('handle submit ran');
     return;
-     };
+     };*/
 
 
     return(
@@ -732,6 +734,11 @@ onClick={() => handleUnselect()}>Unselect</button>
         <span className="text-[#fde1e2]">Type A Score {displayAnswers.typeA}</span>
         <span className="text-[#fde1e2]">Type B Score {displayAnswers.typeB}</span>
         <span className="text-[#fde1e2]">Type Balanced Score {displayAnswers.balanced}</span>
+        <button 
+         className="text-xl font-['Inter'] font-bold text-[#fde1e2] mr-1"
+         onClick={() => sendQuizResults(displayAnswers,state.quizRecs)}>
+          Finish
+        </button>
       </div>
     );
 };

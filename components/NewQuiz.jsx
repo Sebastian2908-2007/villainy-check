@@ -54,10 +54,14 @@ const NewQuiz = ({ items }) => {
         sliderRef.current.slickNext();
        // console.log('ref clicked');
         handleReset();
+        if(slideCounter === 1) {
+          setDisplayAnswers({...displayAnswers,idealOutcome:items.idealOutcome});
+          console.log('Ideal out setter  ran');
+        }
       };
 
  const quizTitle = items.quizTitle;
-   // console.log(items);
+   console.log(items.idealOutcome);
 
   
 const centerMode = between(window.innerWidth,1281,1365);
@@ -88,8 +92,8 @@ const centerMode = between(window.innerWidth,1281,1365);
  // useEffect(() => console.log(typeA,'type A score'),[typeA]);
  // useEffect(() => console.log(typeB,'type B score'),[typeB]);
   //useEffect(() => console.log(correctType,'correct type'),[correctType]);
-//  useEffect(() => console.log(slideCounter,'Number of quiz slides'),[slideCounter]);
-//  useEffect(() => console.log(displayAnswers,'Final Quiz Scores'),[displayAnswers]);
+  useEffect(() => console.log(slideCounter,'Number of quiz slides'),[slideCounter]);
+  useEffect(() => console.log(displayAnswers,'Final Quiz Scores'),[displayAnswers]);
   return (
     <div className=' w-[100%] mt-[4rem] '>
         <ErrorModal error={error} onClose={closeModal} />

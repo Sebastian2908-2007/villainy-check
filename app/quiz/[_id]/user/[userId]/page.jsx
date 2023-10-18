@@ -4,7 +4,7 @@ import NewQuiz from '@/components/NewQuiz';
  import { getSingleQuiz,getSingleUser } from '@/utils/getData';
 import { usePathname } from 'next/navigation';
 import { useStoreContext } from '@/utils/GlobalState';
-import { ADD_QUIZZER_DATA } from '@/utils/actions';
+import { ADD_QUIZZER_DATA,ADD_QUIZRECS_DATA } from '@/utils/actions';
 
 export default function TakeQuiz() {
     const [state, dispatch] = useStoreContext();
@@ -26,8 +26,12 @@ export default function TakeQuiz() {
         async function getTheQuiz() {
         if(!quiz) {
         const currentQuiz = await getSingleQuiz(quizId);
+        dispatch({
+            type: ADD_QUIZRECS_DATA,
+            quizRecs: currentQuiz.outcomeRecommendations
+         });
         setQuiz(currentQuiz);
-        console.log(state.testSubject,"MY SUBJECT IN STATE");
+       // console.log(state.testSubject,"MY SUBJECT IN STATE");
         }else{
             console.log('quiz already set');
            

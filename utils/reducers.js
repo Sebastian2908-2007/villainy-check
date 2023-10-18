@@ -3,7 +3,7 @@
 import { useReducer } from 'react';
 
 import {
-    ADD_ADMIN_DATA, ADD_QUIZZER_DATA,
+    ADD_ADMIN_DATA, ADD_QUIZZER_DATA,ADD_QUIZRECS_DATA
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -19,6 +19,11 @@ export const reducer = (state, action) => {
                 return{
                     ...state,
                     testSubject : action.testSubject,
+                };
+            case ADD_QUIZRECS_DATA:
+                return{
+                    ...state,
+                    quizRecs : action.quizRecs,
                 };
                               
 
