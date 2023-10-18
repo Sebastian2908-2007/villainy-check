@@ -22,9 +22,9 @@ export default function TakeQuiz() {
     getTheQuiz();
     },[]);
  
-    console.log(splitPath);
-    console.log(testerId,"userId");
-    console.log(quizId,"QUIZ ID");
+    //console.log(splitPath);
+    //console.log(testerId,"userId");
+    //console.log(quizId,"QUIZ ID");
     return(
         quiz ?<NewQuiz items={quiz}/>:<button>Start Quiz</button>
     );

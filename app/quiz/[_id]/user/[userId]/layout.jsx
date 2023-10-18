@@ -23,7 +23,7 @@ export default function QuizLayout({children}){
       
       if(response.ok) {
         const data = await response.json();
-       console.log(data,"my data");
+       //console.log(data,"my data");
     };
    
     const userInfoCookie = Cookies.get('userinfocookie');

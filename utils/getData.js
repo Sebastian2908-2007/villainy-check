@@ -13,7 +13,7 @@ export const getSingleQuiz = async (quizId) => {
         if (response.ok) {
           // Successfully created a new question
           const { quiz } = await response.json();
-          console.log(quiz,"QUIZ DATA FEtched");
+        //  console.log(quiz,"QUIZ DATA FEtched");
           return quiz;
   
        

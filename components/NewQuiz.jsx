@@ -17,13 +17,22 @@ const NewQuiz = ({ items }) => {
    const [hasSubmitted,setHasSubmitted] = useState(false);
    const [correctType,setCorrectType] = useState(null);
 
+   const handleReset = () => {
+    //setDisplayAnswers(null);
+   // setTypeA(0);
+   // setTypeB(0);
+   // setBalanced(0);
+    setHasSubmitted(false);
+ };
+
     const goToNextSlide = () => {
         sliderRef.current.slickNext();
         console.log('ref clicked');
+        handleReset();
       };
 
  const quizTitle = items.quizTitle;
-    console.log(items);
+   // console.log(items);
 
   
 const centerMode = between(window.innerWidth,1281,1365);
@@ -40,7 +49,7 @@ const centerMode = between(window.innerWidth,1281,1365);
     arrows: false,
   };
 
-  console.log(centerMode);
+  //console.log(centerMode);
   if(between(window.innerWidth,540,912)){
  width = '90%';
   }else if(between(window.innerWidth,912,1280)){

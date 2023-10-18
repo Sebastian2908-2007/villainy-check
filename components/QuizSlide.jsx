@@ -23,13 +23,7 @@ export const QuizSlide = ({
 
     
     
-     const handleReset = () => {
-        setDisplayAnswers(null);
-        setTypeA(0);
-        setTypeB(0);
-        setBalanced(0);
-        setHasSubmitted(false);
-     };
+  
     
     /*useEffect(() => {
         question.answers.forEach(answer => {
@@ -40,26 +34,33 @@ export const QuizSlide = ({
         });
     },[]);*/
     const getCorrectAnswerType = (question) => {
+        setHasSubmitted(true);
         question.answers.forEach(answer => {
             if(answer.correct === 'true') {
                 setCorrectType(answer.answerType);
-                console.log(answer._id)
+                console.log(answer._id,'correct answer id');
             }
         });
     }
- 
+
 
      const handleQuestionAnswer = (event,question) => {
         event.preventDefault();
+      
        console.log(event.target);
+       
        /**this will be our question.answer[].correct */
         const isUserCorrect = event.target.getAttribute('data-correct');
         const answerType = event.target.getAttribute('data-answertype');
         /**In the case of our data we will have this be our question.correctAnswer */
         //const correctType = question.correctType;
+        console.log(isUserCorrect);
     console.log(answerType);
+    console.log(correctType);
+
         if(isUserCorrect === 'true' && answerType === correctType) {
             setBalanced(balanced + 15);
+            console.log('adding balanced');
             return;
         }else if(isUserCorrect === 'false' && correctType === 'far right') {
             console.log('FAR RIGHT ran');
@@ -252,11 +253,18 @@ export const QuizSlide = ({
     rounded rounded-full
     " 
     key={index}
-    onClick={(event) => {getCorrectAnswerType(question); handleQuestionAnswer(event,question);}}
-    data-correct={answer.correct}
-    data-answertype={answer.answerType}
     >
+        <button
+        disabled={hasSubmitted ? true:false}
+         onClick={(event) => {
+            getCorrectAnswerType(question);
+            handleQuestionAnswer(event,question)
+        }}
+         data-correct={answer.correct}
+         data-answertype={answer.answerType}
+        >
       {answer.answerTxt}
+      </button>
     </li>
   ))}
 </ul>
