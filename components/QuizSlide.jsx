@@ -13,7 +13,11 @@ export const QuizSlide = ({
     //correctType,
     //setCorrectType,
     hasSubmitted,
-    setHasSubmitted
+    setHasSubmitted,
+    displayAnswers,
+    setDisplayAnswers,
+    slideCounter,
+   //setSlideCounter
 }) => {
  
     
@@ -72,6 +76,7 @@ export const QuizSlide = ({
             setBalanced(balanced + 15);
             console.log('adding balanced');
             return;
+            /**added mid to equasion */
         }else if(isUserCorrect === 'false' && correctType === 'far right') {
             console.log('FAR RIGHT ran');
               switch(answerType) {
@@ -99,6 +104,12 @@ export const QuizSlide = ({
                 setTypeB(typeB - 10);
                 setTypeA(typeA + 10);
                 setBalanced(balanced - 10);
+                break;
+
+                case'mid':
+                setTypeB(typeB + 5);
+                setTypeA(typeA + 5);
+                setBalanced(balanced - 5);
                 break;
               }
         }else if (isUserCorrect === 'false' && correctType === 'far left') {
@@ -128,6 +139,12 @@ export const QuizSlide = ({
                 setTypeB(typeB + 10);
                 setTypeA(typeA - 10);
                 setBalanced(balanced - 10);
+                break;
+
+                case'mid':
+                setTypeB(typeB + 5);
+                setTypeA(typeA + 5);
+                setBalanced(balanced - 5);
                 break;
               }      
         }
@@ -164,8 +181,10 @@ export const QuizSlide = ({
                 setTypeA(typeA - 15);
                 setBalanced(balanced - 15);
                 break;
+               
               }      
         }
+        /**ADD NEWER ELSE IF AND CASES BELOW */
      };
     
      const handleSubmit = (event) => {
@@ -178,6 +197,7 @@ export const QuizSlide = ({
 
 
     return(
+        slideCounter >= 1 ?
         <div className=" 
         
         bg-[#849b9f]
@@ -312,6 +332,13 @@ export const QuizSlide = ({
         min-[768px]:h-[811px]
         
         " />
+      </div>:
+      <div className="flex flec-col justify-center bg-[#bbb6b6]">
+        <span className="text-[#fde1e2]">Quiz Complete!</span>
+        <span className="text-[#fde1e2]">Check out your scores</span>
+        <span className="text-[#fde1e2]">Type A Score {displayAnswers.typeA}</span>
+        <span className="text-[#fde1e2]">Type B Score {displayAnswers.typeB}</span>
+        <span className="text-[#fde1e2]">Type Balanced Score {displayAnswers.balanced}</span>
       </div>
     );
 };

@@ -15,7 +15,9 @@ const NewQuiz = ({ items }) => {
     const [typeB,setTypeB] = useState(0);
     const [balanced,setBalanced] = useState(0);
    const [hasSubmitted,setHasSubmitted] = useState(false);
-   const [correctType,setCorrectType] = useState(null);
+   //const [correctType,setCorrectType] = useState(null);
+   const [displayAnswers,setDisplayAnswers] = useState(null);
+   const [slideCounter,setSlideCounter] = useState(items.questions.length);
 
    const handleReset = () => {
     //setDisplayAnswers(null);
@@ -23,6 +25,11 @@ const NewQuiz = ({ items }) => {
    // setTypeB(0);
    // setBalanced(0);
     setHasSubmitted(false);
+   
+        setDisplayAnswers({typeA:typeA,typeB:typeB,balanced:balanced});
+   
+        setSlideCounter(slideCounter - 1);
+    
  };
 
     const goToNextSlide = () => {
@@ -62,7 +69,9 @@ const centerMode = between(window.innerWidth,1281,1365);
   useEffect(() => console.log(balanced,'balanced score'),[balanced]);
   useEffect(() => console.log(typeA,'type A score'),[typeA]);
   useEffect(() => console.log(typeB,'type B score'),[typeB]);
-  useEffect(() => console.log(correctType,'correct type'),[correctType]);
+  //useEffect(() => console.log(correctType,'correct type'),[correctType]);
+  useEffect(() => console.log(slideCounter,'Number of quiz slides'),[slideCounter]);
+  useEffect(() => console.log(displayAnswers,'Final Quiz Scores'),[displayAnswers]);
   return (
     <div className=' w-[100%] mt-[4rem] '>
         <h2 className="text-2xl text-center mb-16 text-[#849b9f] font-extrabold mb-2">{quizTitle}</h2>
@@ -78,10 +87,14 @@ const centerMode = between(window.innerWidth,1281,1365);
         setTypeB={setTypeB}
         balanced={balanced}
         setBalanced={setBalanced}
-        correctType={correctType}
-        setCorrectType={setCorrectType}
+        //correctType={correctType}
+        //setCorrectType={setCorrectType}
         hasSubmitted={hasSubmitted}
         setHasSubmitted={setHasSubmitted}
+        slideCounter={slideCounter}
+        setSlideCounter={setSlideCounter}
+        displayAnswers={displayAnswers}
+        setDisplayAnswers={setDisplayAnswers}
         key={index}/>
         
         
