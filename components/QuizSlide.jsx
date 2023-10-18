@@ -1,14 +1,24 @@
 'use client'
 import { useState,useEffect } from "react";
-export const QuizSlide = ({question,goToNextSlide,width}) => {
+export const QuizSlide = ({
+    question,
+    goToNextSlide,
+    width,
+    typeA,
+    setTypeA,
+    typeB,
+    setTypeB,
+    balanced,
+    setBalanced,
+    correctType,
+    setCorrectType,
+    hasSubmitted,
+    setHasSubmitted
+}) => {
  
     
 
-        const [typeA,setTypeA] = useState(0);
-        const [typeB,setTypeB] = useState(0);
-        const [balanced,setBalanced] = useState(0);
-       const [hasSubmitted,setHasSubmitted] = useState(false);
-       const [correctType,setCorrectType] = useState(null);
+      
     
 
     
@@ -21,17 +31,23 @@ export const QuizSlide = ({question,goToNextSlide,width}) => {
         setHasSubmitted(false);
      };
     
-    useEffect(() => {
+    /*useEffect(() => {
         question.answers.forEach(answer => {
             if(answer.correct === 'true') {
                 setCorrectType(answer.answerType);
+                console.log(answer._id)
             }
         });
-    },[]);
-    useEffect(() => console.log(balanced,'balanced score'),[balanced]);
-    useEffect(() => console.log(typeA,'type A score'),[typeA]);
-    useEffect(() => console.log(typeB,'type B score'),[typeB]);
-    useEffect(() => console.log(correctType,'correct type'),[correctType]);
+    },[]);*/
+    const getCorrectAnswerType = (question) => {
+        question.answers.forEach(answer => {
+            if(answer.correct === 'true') {
+                setCorrectType(answer.answerType);
+                console.log(answer._id)
+            }
+        });
+    }
+ 
 
      const handleQuestionAnswer = (event,question) => {
         event.preventDefault();
@@ -41,11 +57,12 @@ export const QuizSlide = ({question,goToNextSlide,width}) => {
         const answerType = event.target.getAttribute('data-answertype');
         /**In the case of our data we will have this be our question.correctAnswer */
         //const correctType = question.correctType;
-    
+    console.log(answerType);
         if(isUserCorrect === 'true' && answerType === correctType) {
             setBalanced(balanced + 15);
             return;
         }else if(isUserCorrect === 'false' && correctType === 'far right') {
+            console.log('FAR RIGHT ran');
               switch(answerType) {
                 case'start left':
                 setTypeB(typeB + 5);
@@ -74,6 +91,7 @@ export const QuizSlide = ({question,goToNextSlide,width}) => {
                 break;
               }
         }else if (isUserCorrect === 'false' && correctType === 'far left') {
+            console.log('FAR left ran');
             switch(answerType) {
                 case'start right':
                 setTypeB(typeB - 5);
@@ -103,6 +121,7 @@ export const QuizSlide = ({question,goToNextSlide,width}) => {
               }      
         }
         else if (isUserCorrect === 'false' && correctType === 'mid') {
+            console.log('mid ran');
             switch(answerType) {
                 case'start right':
                 setTypeB(typeB - 5);
@@ -233,7 +252,7 @@ export const QuizSlide = ({question,goToNextSlide,width}) => {
     rounded rounded-full
     " 
     key={index}
-    onClick={(event) => handleQuestionAnswer(event,question)}
+    onClick={(event) => {getCorrectAnswerType(question); handleQuestionAnswer(event,question);}}
     data-correct={answer.correct}
     data-answertype={answer.answerType}
     >
