@@ -3,7 +3,7 @@
 import { useReducer } from 'react';
 
 import {
-    ADD_ADMIN_DATA,
+    ADD_ADMIN_DATA, ADD_QUIZZER_DATA,
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -14,7 +14,12 @@ export const reducer = (state, action) => {
                          ...state,
                         admin: action.admin,
                      };
-              
+                     
+            case ADD_QUIZZER_DATA:
+                return{
+                    ...state,
+                    testSubject : action.testSubject,
+                };
                               
 
              // if it's none of these actions, do not update state at all and keep things the same! 

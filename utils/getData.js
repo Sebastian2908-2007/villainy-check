@@ -53,3 +53,27 @@ export const getSingleProduct = async (productId) => {
     console.error('Error getting product:', error.message);
   }
 };
+export const getSingleUser = async (userId) => {
+  try {
+    // Send a request to your API endpoint to fetch the product
+    const response = await fetch(`/api/Users/singleuser/${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      // Successfully retrieved the product data
+      const { user } = await response.json();
+      console.log(user, "single user Data Fetched");
+      return user;
+    } else {
+      // Handle error states, e.g., show an error message
+      console.error('Error getting single user:', response.statusText);
+    }
+  } catch (error) {
+    console.log(error);
+    console.error('Error gettingsingle user:', error.message);
+  }
+};

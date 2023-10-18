@@ -29,7 +29,7 @@ const [lastBalanced,setLastBalanced] = useState({amount:0,add:false,subtract:fal
 
     
     
-  useEffect(() => {console.log(lastBalanced)},[lastBalanced]);
+  //useEffect(() => {console.log(lastBalanced)},[lastBalanced]);
     
    const handleUnselect = () => {
     if(lastBalanced.add) {
@@ -64,11 +64,11 @@ setLastTypeB({amount:0,add:false,subtract:false});
         if(answer.correct === 'true') {
             //setCorrectType(answer.answerType);
             correctType = answer.answerType;
-            console.log(answer._id,'correct answer id');
+           // console.log(answer._id,'correct answer id');
         }
     });
 
-       console.log(event.target);
+      // console.log(event.target);
        setHasSubmitted(true);
 
        /**this will be our question.answer[].correct */
@@ -76,18 +76,18 @@ setLastTypeB({amount:0,add:false,subtract:false});
         const answerType = event.target.getAttribute('data-answertype');
         /**In the case of our data we will have this be our question.correctAnswer */
         //const correctType = question.correctType;
-        console.log(isUserCorrect);
-    console.log(answerType);
-    console.log(correctType);
+       // console.log(isUserCorrect);
+    //console.log(answerType);
+   // console.log(correctType);
 
         if(isUserCorrect === 'true' && answerType === correctType) {
             setBalanced(balanced + 15);
-            console.log('adding balanced');
+          //  console.log('adding balanced');
             setLastBalanced({...lastBalanced,amount: 15,add:true});
             return;
             /**added mid to equasion */
         }else if(isUserCorrect === 'false' && correctType === 'far right') {
-            console.log('FAR RIGHT ran');
+           // console.log('FAR RIGHT ran');
               switch(answerType) {
                 case'start left':
                 setTypeB(typeB + 5);
@@ -153,7 +153,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
               }
         }
         else if(isUserCorrect === 'false' && correctType === 'mid right') {
-            console.log('mid RIGHT ran');
+           // console.log('mid RIGHT ran');
               switch(answerType) {
                 case'start left':
                 setTypeB(typeB + 5);
@@ -221,7 +221,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
         
         
         else if(isUserCorrect === 'false' && correctType === 'start right') {
-            console.log('FAR RIGHT ran');
+          //  console.log('FAR RIGHT ran');
               switch(answerType) {
                 case'start left':
                 setTypeB(typeB + 5);
@@ -294,7 +294,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
         /*!!!!!!!!!!!!!!!**************NEED TO SETLAST BELOW********************************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
         
         else if (isUserCorrect === 'false' && correctType === 'far left') {
-            console.log('FAR left ran');
+          //  console.log('FAR left ran');
             switch(answerType) {
                 case'start right':
                 setTypeB(typeB - 5);
@@ -360,7 +360,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
               }      
         }
         else if (isUserCorrect === 'false' && correctType === 'mid left') {
-            console.log('FAR left ran');
+          //  console.log('FAR left ran');
             switch(answerType) {
                 case'start right':
                 setTypeB(typeB - 5);
@@ -426,7 +426,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
               }      
         }
         else if (isUserCorrect === 'false' && correctType === 'start left') {
-            console.log('FAR left ran');
+          //  console.log('FAR left ran');
             switch(answerType) {
                 case'start right':
                 setTypeB(typeB - 10);
@@ -494,7 +494,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
 
 
         else if (isUserCorrect === 'false' && correctType === 'mid') {
-            console.log('mid ran');
+         //   console.log('mid ran');
             switch(answerType) {
                 case'start right':
                 setTypeB(typeB - 5);
@@ -566,7 +566,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
         event.preventDefault();
     setDisplayAnswers({typeA:typeA,typeB:typeB,balanced:balanced});
     setHasSubmitted(true);
-    console.log('handle submit ran');
+   // console.log('handle submit ran');
     return;
      };
 
