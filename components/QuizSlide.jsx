@@ -10,8 +10,8 @@ export const QuizSlide = ({
     setTypeB,
     balanced,
     setBalanced,
-    correctType,
-    setCorrectType,
+    //correctType,
+    //setCorrectType,
     hasSubmitted,
     setHasSubmitted
 }) => {
@@ -33,22 +33,32 @@ export const QuizSlide = ({
             }
         });
     },[]);*/
-    const getCorrectAnswerType = (question) => {
+   /* const getCorrectAnswerType = (question) => {
         setHasSubmitted(true);
         question.answers.forEach(answer => {
             if(answer.correct === 'true') {
-                setCorrectType(answer.answerType);
+                //setCorrectType(answer.answerType);
                 console.log(answer._id,'correct answer id');
             }
         });
-    }
+    }*/
 
 
      const handleQuestionAnswer = (event,question) => {
         event.preventDefault();
-      
+      let correctType;
+
+      question.answers.forEach(answer => {
+        if(answer.correct === 'true') {
+            //setCorrectType(answer.answerType);
+            correctType = answer.answerType;
+            console.log(answer._id,'correct answer id');
+        }
+    });
+
        console.log(event.target);
-       
+       setHasSubmitted(true);
+
        /**this will be our question.answer[].correct */
         const isUserCorrect = event.target.getAttribute('data-correct');
         const answerType = event.target.getAttribute('data-answertype');
@@ -257,7 +267,7 @@ export const QuizSlide = ({
         <button
         disabled={hasSubmitted ? true:false}
          onClick={(event) => {
-            getCorrectAnswerType(question);
+            //getCorrectAnswerType(question);
             handleQuestionAnswer(event,question)
         }}
          data-correct={answer.correct}
