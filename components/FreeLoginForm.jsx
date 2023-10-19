@@ -1,9 +1,10 @@
 'use client'
 // Login.js
 import { useState } from 'react';
+import decode from 'jwt-decode';
 //import { useRouter } from 'next/navigation';
 
-export default function FreeLoginForm({ closeModal,success }) {
+export default function FreeLoginForm({ closeModal,success,setUserData }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //const router = useRouter();
@@ -26,6 +27,7 @@ export default function FreeLoginForm({ closeModal,success }) {
       // Replace '/dashboard' with your desired route.
       const data = await response.json();
       const userData = decode(data.value);
+      setUserData(userData);
       if (userData.isPaid === true) {
         //router.push(`/dashboard/paidadmin/${userData._id}`);
       } else {

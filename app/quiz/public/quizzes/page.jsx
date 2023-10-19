@@ -6,13 +6,9 @@ import { fetchQuizzes } from '@/utils/getData';
 
 export default function PublicQuizzes() {
   const [myQuizzes,setQuizzes] = useState(null);
-  /*const [isOpen,setIsOpen] = useState(false);
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };*/
+ 
   
-  //useEffect(() => {
+  //useEffect(() => { great example for other non nec useEffects
    async function setQuizData() {
    
 const quizzes = await fetchQuizzes();
@@ -46,11 +42,3 @@ myQuizzes ?
   
 };
 
-/*quizzes ? <div>
-<h2>QuicCard coming soon</h2>
-</div>:
-quizzes.map(quiz => (
-<QuizCard quiz={quiz}/>
-))
-)
-}*/

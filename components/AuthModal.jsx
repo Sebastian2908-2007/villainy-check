@@ -2,7 +2,7 @@ import { useState } from 'react';
 import FreeLoginForm from './FreeLoginForm';
 import FreeSignupForm from './FreeSignupForm';
 
-const AuthModal = ({ content, title, isOpen, closeModal,success }) => {
+const AuthModal = ({ content, title, isOpen, closeModal,success,setUserData }) => {
   const [isLogin, setIsLogin] = useState(true);
 //success variable for opening the success modal after successful login or signup
   const toggleForm = () => {
@@ -41,7 +41,19 @@ const AuthModal = ({ content, title, isOpen, closeModal,success }) => {
                     </h3>
                     <div className="mt-2">
                      {content}
-                      {isLogin ? <FreeLoginForm closeModal={closeModal}/> : <FreeSignupForm closeModal={closeModal}/>}
+                      {
+                      isLogin ? <FreeLoginForm 
+                      closeModal={closeModal}
+                      success={success} 
+                      setUserData={setUserData}
+                      />
+                      :
+                    <FreeSignupForm 
+                    closeModal={closeModal} 
+                    success={success}
+                    setUserData={setUserData}
+                    />
+                    }
                       <button onClick={toggleForm} className="text-blue-500 hover:text-blue-700">
                         {isLogin ? "Switch to Signup" : "Switch to Login"}
                       </button>

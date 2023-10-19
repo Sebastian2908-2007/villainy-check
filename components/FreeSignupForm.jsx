@@ -1,9 +1,10 @@
 'use client'
 // Signup.js
 import { useState } from 'react';
+import decode from 'jwt-decode';
 //import { useRouter } from 'next/navigation';
 
-export default function FreeSignupForm({ closeModal,success }) {
+export default function FreeSignupForm({ closeModal,success,setUserData }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -34,7 +35,7 @@ export default function FreeSignupForm({ closeModal,success }) {
       try {
         // Decode the token
         const userData = decode(token);
-
+        setUserData(userData);
         // `userData` will contain the token's payload, which typically includes user information.
 
       } catch (error) {
