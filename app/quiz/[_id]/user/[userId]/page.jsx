@@ -39,7 +39,7 @@ export default function TakeQuiz() {
     };
     getQuizzer();
     getTheQuiz();
-    },[]);
+    },[dispatch,quiz,quizId,testerId]);
  
     //console.log(splitPath);
     //console.log(testerId,"userId");

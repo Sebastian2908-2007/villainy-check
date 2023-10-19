@@ -736,7 +736,7 @@ onClick={() => handleUnselect()}>Unselect</button>
         <span className="text-[#fde1e2]">Type Balanced Score {displayAnswers.balanced}</span>
         <button 
          className="text-xl font-['Inter'] font-bold text-[#fde1e2] mr-1"
-         onClick={() => sendQuizResults(displayAnswers,state.quizRecs)}>
+         onClick={() => sendQuizResults(displayAnswers,state.quizRecs,state.testSubject)}>
           Finish
         </button>
       </div>
