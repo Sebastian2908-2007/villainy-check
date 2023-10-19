@@ -1,27 +1,18 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const UniModal = ({content,title}) => {
-  const [isOpen, setIsOpen] = useState(false);
+const UniModal = ({content,title,isOpen,closeModal}) => {
+  
   //const [title, setTitle] = useState("Modal Title");
   //const [content, setContent] = useState("Modal content goes here");
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+ 
+useEffect(() => {console.log(isOpen)},[isOpen]);
+  
 
   return (
     <div>
-      <button
-        onClick={isOpen ? closeModal : openModal}
-        className="m-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      >
-        {isOpen ? "Close Modal" : "Edit Org info"}
-      </button>
+      
 
       {isOpen && (
         <div className={`fixed z-10 inset-0 overflow-y-auto`}>

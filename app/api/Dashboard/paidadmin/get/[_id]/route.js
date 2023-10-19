@@ -12,7 +12,13 @@ console.log(_id,"IN ROUTE");
     // Fetch the user document by _id and populate any referenced data fields (e.g., productType, subjects, etc.)
     const user = await User.findById(_id)
       .populate('productType') // Assuming productType is a reference to the 'Product' model
-      .populate('subjects') // Assuming subjects is a reference to other 'User' documents
+      .populate({
+        path: 'subjects',
+        populate: [
+          { path: 'quizRecommendations' }, // Assuming quizRecommendations is a reference to the 'QuizRecommendation' model
+          { path: 'assignedQuiz' }, // Assuming assignedQuiz is a reference to the 'Quiz' model
+        ],
+      }) // Assuming subjects is a reference to other 'User' documents
       .populate('usersPurchases'); // Assuming usersPurchases is a reference to 'Product' model or another related model
 
     if (!user) {

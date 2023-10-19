@@ -34,6 +34,19 @@ quizData.recipiant = tester.adminEmail;
 quizData.firstName = tester.firstName;
 quizData.lastName = tester.lastName;
 console.log(quizData);
+try{
+    fetch('/api/Users',{
+        method:'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({userId:tester._id,updatedData: {quizRecommendations: quizData.recommendation._id}})
+    });
+}catch(e) {
+    console.log(e);
+}
+
+try{
 await fetch('/api/Email',{
     method:'POST',
     headers: {
@@ -41,4 +54,7 @@ await fetch('/api/Email',{
       },
       body: JSON.stringify({quizData: quizData})
 });
+}catch(e) {
+    console.log(e);
+}
 };
