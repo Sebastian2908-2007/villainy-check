@@ -1,4 +1,4 @@
-import Email from '@/components/emails/email';
+import ResultsEmail from '@/components/emails/ResultsEmail';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -14,7 +14,7 @@ export async function POST(request) {
       from: 'sebastian@topdev.tech',
       to:`${recipiant}`,
       subject: `${firstName} ${lastName}'s test results`,
-      react: Email({ recommendation,firstName,lastName }),
+      react: ResultsEmail({ recommendation,firstName,lastName }),
     });
 console.log(data);
     return NextResponse.json({success: 'email sent!'});
