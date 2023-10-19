@@ -6,6 +6,9 @@ import decode from 'jwt-decode';
 import {User} from '@/db/models'
 import dbConnect from '@/db/config/connection';
 import bcrypt from 'bcryptjs';
+/**for sending magic quiz links*/
+import { Resend } from 'resend'
+import MagickLinkEmail from '@/components/emails/MagickLinkEmail';
 
 /**this is an auth route used in the paid admin layout component it helps with ui security*/
 export async function GET() {
@@ -112,6 +115,7 @@ if(token === undefined) {
   
 
 export async function POST(request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     // Connect to the MongoDB database
     await dbConnect();
@@ -164,8 +168,20 @@ userToUpdate.quizLink = newQuizLink;
 // Save the updated user to the database.
 await userToUpdate.save();
 
+try {
+  const data = await resend.emails.send({
+    from: 'sebastian@topdev.tech',
+    to:`${userToUpdate.email}`,
+    subject: `${userToUpdate.firstName} ${userToUpdate.lastName}'s Magic Quiz Link`,
+    react: MagickLinkEmail({ newQuizLink }),
+  });
+console.log(data);
+} catch (error) {
+  console.log('email error',error);
+}
 
-    return NextResponse.json({ message: 'User created and updated successfully.' }, { status: 200 });
+
+    return NextResponse.json({ message: 'User created and updated successfully & quiz link email sent!.' }, { status: 200 });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });

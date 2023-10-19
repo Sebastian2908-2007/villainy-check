@@ -17,7 +17,7 @@ import {
 
 import * as React from "react";
 
-export default function MagickLinkEmail() {
+export default function MagickLinkEmail({newQuizLink}) {
   
     
   return (
@@ -28,7 +28,7 @@ export default function MagickLinkEmail() {
       <Container style={container}>
         <Heading style={h1}>Take your Quiz with this link</Heading>
         <Link
-          href="https://notion.so"
+          href={`http://localhost:3000/${newQuizLink}`}
           target="_blank"
           style={{
             ...link,
