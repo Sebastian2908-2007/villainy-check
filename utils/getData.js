@@ -77,3 +77,26 @@ export const getSingleUser = async (userId) => {
     console.error('Error gettingsingle user:', error.message);
   }
 };
+
+export async function fetchQuizzes() {
+  try {
+    const response = await fetch('http://localhost:3000/api/Quiz'); // Replace with your API endpoint
+    const data = await response.json();
+    return data.quizzes;
+  
+  } catch (error) {
+    console.error('Error fetching quizzes:', error);
+  }
+ 
+}
+
+/**verify  logged in account (free)*/
+export const verifyFreeLoggedIn = async () => {
+ const response = await fetch('/api/Dashboard/free');
+ if(response.ok) {
+  const data = await response.json();
+  return data;
+ }else{
+  return false;
+ }
+};
