@@ -11,8 +11,8 @@ export async function POST(request) {
     console.log(recommendation,firstName,lastName,recipiant,'REC POST');
   try {
     const data = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
-      to:'sebastiancrespin279@gmail.com', /*`${recipiant}`,*/
+      from: 'sebastian@topdev.tech',
+      to:`${recipiant}`,
       subject: `${firstName} ${lastName}'s test results`,
       react: Email({ recommendation,firstName,lastName }),
     });

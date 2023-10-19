@@ -5,19 +5,20 @@ export const sendQuizResults = async (scoresData,recommends,tester) => {
     const {typeA,typeB,balanced,idealOutcome} = scoresData;
 //console.log(scoresData,'SCore data in func');
 //console.log(recommends,'recommends data in func');
-console.log(tester);
+console.log(typeA,typeB,balanced);
+console.log(typeA > typeB && typeA > balanced,'?????????????');
 /*!!!!!!RESULTS RECOMMENDS DECISION!!!!!!!******/
-if(typeA > typeB && balanced) {
+if(typeA > typeB && typeA > balanced) {
     quizData.recommendation = recommends.filter(rec => {
         return rec.typeOfRecommendation === 'far right';
     })[0];
 };
-if(typeB > typeA && balanced) {
+if(typeB > typeA && typeB > balanced) {
     quizData.recommendation = recommends.filter(rec => {
         return rec.typeOfRecommendation === 'far left';
     })[0];
 };
-if(balanced > typeB && typeA) {
+if(balanced > typeB && balanced > typeA) {
     quizData.recommendation = recommends.filter(rec => {
         return rec.typeOfRecommendation === 'Ideal';
     })[0];
