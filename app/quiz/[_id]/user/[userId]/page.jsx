@@ -4,7 +4,7 @@ import NewQuiz from '@/components/NewQuiz';
  import { getSingleQuiz,getSingleUser } from '@/utils/getData';
 import { usePathname } from 'next/navigation';
 import { useStoreContext } from '@/utils/GlobalState';
-import { ADD_QUIZZER_DATA,ADD_QUIZRECS_DATA } from '@/utils/actions';
+import { ADD_QUIZZER_DATA,ADD_QUIZRECS_DATA,ADD_IDEALOUTCOME_DATA } from '@/utils/actions';
 
 export default function TakeQuiz() {
     const [state, dispatch] = useStoreContext();
@@ -30,6 +30,11 @@ export default function TakeQuiz() {
             type: ADD_QUIZRECS_DATA,
             quizRecs: currentQuiz.outcomeRecommendations
          });
+        dispatch({
+            type: ADD_IDEALOUTCOME_DATA,
+            idealOutcome: currentQuiz.idealOutcome
+         });
+         console.log(currentQuiz.idealOutcome,'KK');
         setQuiz(currentQuiz);
        // console.log(state.testSubject,"MY SUBJECT IN STATE");
         }else{

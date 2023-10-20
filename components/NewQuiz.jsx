@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import QuizSlide from './QuizSlide';
 import { between } from '@/utils/between';
 import ErrorModal from './ErrorModal';
-import { useStoreContext } from '@/utils/GlobalState';
+//import { useStoreContext } from '@/utils/GlobalState';
 /*
 const closeModal = () => {
   setError(null);
@@ -17,8 +17,8 @@ const closeModal = () => {
 <Modal error={error} onClose={closeModal} />
 */
 const NewQuiz = ({ items }) => {
-  const [state, dispatch] = useStoreContext();
-  console.log(state,"MY SUBJECT IN STATE");
+  //const [state, dispatch] = useStoreContext();
+  //console.log(state.idealOutcome,"MY SUBJECT IN STATE");
     let width  ;
     const sliderRef = useRef();
     const [typeA,setTypeA] = useState(0);
