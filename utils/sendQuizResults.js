@@ -1,9 +1,9 @@
 import { updateUserQuizStatus } from "./updateUserQuizStatus";
 import { between } from "./between";
-export const sendQuizResults = async (scoresData,/*recommends,*/tester) => {
+export const sendQuizResults = async (scoresData,recommends,tester) => {
     //console.log(recommends,'RECOMMEnds in send');
     console.log(tester,'tester ata top');
-    const recommends = [
+   /* const recommends = [
         {
             resultsMeaning
 : 
@@ -106,6 +106,7 @@ _id
 : 
 "652ed7b90ab29335fe9ae8d2",
         },
+        
         {
             resultsMeaning
 : 
@@ -115,7 +116,7 @@ tipsSummary
 "this person should realize that there is no way that they are always right.  and empathy",
 typeOfRecommendation
 : 
-"Ideal",
+"equals b&a higher start",
 __v
 : 
 0,
@@ -132,7 +133,7 @@ tipsSummary
 "this person should realize that there is no way that they are always right.  and empathy",
 typeOfRecommendation
 : 
-"mixed a higher",
+"equals b&a higher mid",
 __v
 : 
 0,
@@ -149,7 +150,7 @@ tipsSummary
 "this person should realize that there is no way that they are always right.  and empathy",
 typeOfRecommendation
 : 
-"mixed b higher",
+"equals b&a higher far",
 __v
 : 
 0,
@@ -166,7 +167,7 @@ tipsSummary
 "this person should realize that there is no way that they are always right.  and empathy",
 typeOfRecommendation
 : 
-"mixed a and b equal",
+"mixed a higher start right",
 __v
 : 
 0,
@@ -174,7 +175,93 @@ _id
 : 
 "652ed7b90ab29335fe9ae8d2",
         },
-    ];
+        {
+            resultsMeaning
+: 
+"this person tends to lean far right and most likely lacks empathy. ",
+tipsSummary
+: 
+"this person should realize that there is no way that they are always right.  and empathy",
+typeOfRecommendation
+: 
+"mixed a higher mid right",
+__v
+: 
+0,
+_id
+: 
+"652ed7b90ab29335fe9ae8d2",
+        },
+        {
+            resultsMeaning
+: 
+"this person tends to lean far right and most likely lacks empathy. ",
+tipsSummary
+: 
+"this person should realize that there is no way that they are always right.  and empathy",
+typeOfRecommendation
+: 
+"mixed a higher far right",
+__v
+: 
+0,
+_id
+: 
+"652ed7b90ab29335fe9ae8d2",
+        },
+        {
+            resultsMeaning
+: 
+"this person tends to lean far right and most likely lacks empathy. ",
+tipsSummary
+: 
+"this person should realize that there is no way that they are always right.  and empathy",
+typeOfRecommendation
+: 
+"mixed b higher start left",
+__v
+: 
+0,
+_id
+: 
+"652ed7b90ab29335fe9ae8d2",
+        },
+        {
+            resultsMeaning
+: 
+"this person tends to lean far right and most likely lacks empathy. ",
+tipsSummary
+: 
+"this person should realize that there is no way that they are always right.  and empathy",
+typeOfRecommendation
+: 
+"mixed b higher mid left",
+__v
+: 
+0,
+_id
+: 
+"652ed7b90ab29335fe9ae8d2",
+        },
+        {
+            resultsMeaning
+: 
+"this person tends to lean far right and most likely lacks empathy. ",
+tipsSummary
+: 
+"this person should realize that there is no way that they are always right.  and empathy",
+typeOfRecommendation
+: 
+"mixed b higher far left",
+__v
+: 
+0,
+_id
+: 
+"652ed7b90ab29335fe9ae8d2",
+        },
+       
+    ];*/
     console.log(tester._id,'tester id before function');
     await updateUserQuizStatus(tester._id);
     let quizData = {};
@@ -185,10 +272,9 @@ _id
 console.log(typeA,typeB,balanced);
 console.log(typeA > typeB && typeA > balanced,'?????????????');
 
-/*2 ARG was per*/
+
 function percentage(value1,value2)
 {
-  //return (num/100)*per;
   let percentage = (value2 - value1) / (value1) * 100;
   const finalValue = 100 + percentage;
   return finalValue;
@@ -246,9 +332,9 @@ if(typeAPer > 0 && typeBPer > 0) {
     if(typeAPer > typeBPer) {
         // A higher
         console.log('mixed a higher');
-        quizData.recommendation = recommends.filter(rec => {
+        /*quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher';
-        })[0];
+        })[0];*/
         // run more score checks here for varying degrees
         // we need if statements or switch statement that checks what percentage of the total possible score each
         // variable is to deliver different results and recommendations based on the levels of villainy
@@ -258,44 +344,54 @@ if(typeAPer > 0 && typeBPer > 0) {
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher start right';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
 
       }else if(between(typeAPer,50,75) && between(typeBPer,50,75)){
            console.log('mixed a higher mid right');
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher mid right';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
       }
       else if(between(typeAPer,75,100) && between(typeBPer,75,100)){
          console.log('mixed a higher far right');
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher far right';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
       }
 
     }else if(typeBPer > typeAPer){
         // B higher
         console.log('mixed B higher');
-        quizData.recommendation = recommends.filter(rec => {
+        /*quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed b higher';
-        })[0];
+        })[0];*/
         // run more score checks here for varying degrees
+
         if(between(typeBPer,0,50) && between(typeAPer,0,50)) {
-            console.log('mixed a higher start left');
+            console.log('mixed a higher start left',typeBPer);
             quizData.recommendation = recommends.filter(rec => {
-                return rec.typeOfRecommendation === 'mixed a higher start left';
+                return rec.typeOfRecommendation === 'mixed b higher start left';
             })[0];
+            console.log(quizData.recommendation,"AFTER SET In IF");
     
-          }else if(between(typeBPer,50,75) && between(typeAPer,50,75)){
+          }
+          
+          else if(between(typeBPer,50,75) && between(typeAPer,50,75)){
                console.log('mixed a higher mid left');
             quizData.recommendation = recommends.filter(rec => {
-                return rec.typeOfRecommendation === 'mixed a higher mid left';
+                return rec.typeOfRecommendation === 'mixed b higher mid left';
             })[0];
+            console.log(quizData.recommendation,"AFTER SET In IF");
           }
+
           else if(between(typeBPer,75,100) && between(typeAPer,75,100)){
              console.log('mixed a higher far left');
             quizData.recommendation = recommends.filter(rec => {
-                return rec.typeOfRecommendation === 'mixed a higher far left';
+                return rec.typeOfRecommendation === 'mixed b higher far left';
             })[0];
+            console.log(quizData.recommendation,"AFTER SET In IF");
           }
     
 
@@ -303,14 +399,42 @@ if(typeAPer > 0 && typeBPer > 0) {
     else if(typeBPer === typeAPer){
         // Type A & B equals
         console.log('mixed A and B equals');
-        quizData.recommendation = recommends.filter(rec => {
+       /* quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a and b equals';
-        })[0];
+        })[0];*/
+        console.log(quizData.recommendation,"AFTER SET In IF");
+        if(between(typeBPer,0,50) && between(typeAPer,0,50)) {
+            console.log('mixed a higher start left');
+            quizData.recommendation = recommends.filter(rec => {
+                return rec.typeOfRecommendation === 'equals b&a higher start';
+            })[0];
+            console.log(quizData.recommendation,"AFTER SET In IF");
+    
+          }
+          
+          else if(between(typeBPer,50,75) && between(typeAPer,50,75)){
+               console.log('mixed a higher mid left');
+            quizData.recommendation = recommends.filter(rec => {
+                return rec.typeOfRecommendation === 'equals b&a higher mid';
+            })[0];
+            console.log(quizData.recommendation,"AFTER SET In IF");
+          }
+
+          else if(between(typeBPer,75,100) && between(typeAPer,75,100)){
+             console.log('mixed a higher far left');
+            quizData.recommendation = recommends.filter(rec => {
+                return rec.typeOfRecommendation === 'equals b&a higher far';
+            })[0];
+            console.log(quizData.recommendation,"AFTER SET In IF");
+          }
+    
         // run more score checks here for varying degrees
     }
  
 }
 /**NEW RECOMMEND TYPES ABOVE */
+
+
 // below runs when typeB or left villainy is the only villainy present
 else if(typeBPer > 0 && typeAPer === 0) {
     // only type B villainy or lefts values
@@ -327,6 +451,7 @@ else if(typeBPer > 0 && typeAPer === 0) {
     quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mid left';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
     }
 
     if(between(typeBPer,75,100)) {
@@ -334,6 +459,7 @@ else if(typeBPer > 0 && typeAPer === 0) {
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'far left';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
     }
 
 }
@@ -345,6 +471,7 @@ else if(typeAPer > 0 && typeBPer === 0) {
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'start right';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
     }
 
     if(between(typeAPer,50,75)) {
@@ -352,6 +479,7 @@ else if(typeAPer > 0 && typeBPer === 0) {
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mid right';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
     }
 
     if(between(typeAPer,75,100)) {
@@ -359,6 +487,7 @@ else if(typeAPer > 0 && typeBPer === 0) {
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'far right';
         })[0];
+        console.log(quizData.recommendation,"AFTER SET In IF");
     }
  
 }
@@ -369,6 +498,7 @@ else if(typeAPer === 0 && typeBPer === 0) {
  quizData.recommendation = recommends.filter(rec => {
     return rec.typeOfRecommendation === 'Ideal';
 })[0];
+console.log(quizData.recommendation,"AFTER SET In IF");
 };
 /**CLIENT Specs if's & else if's !!!!ENDS!!!!*****/
 
