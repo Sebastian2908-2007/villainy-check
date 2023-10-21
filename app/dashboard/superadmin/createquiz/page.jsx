@@ -13,7 +13,7 @@ const CreateQuiz = () => {
     const [createdQuestionIds,setCreatedQuestionIds] = useState([]);
     const [createdAnswerIds,setCreatedAnswerIds] = useState([]);
     const [quesAnswerMediator,setQuesAnswerMediator] = useState(null);
-    const [answerCount,setAnswerCount] = useState(8);
+    const [answerCount,setAnswerCount] = useState(7);
     const [recomendEnabler,setRecommendEnabler] = useState(null);
 
     const [workingQuizData,setWorkingQuizData] = useState(null);

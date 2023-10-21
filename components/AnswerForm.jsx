@@ -13,9 +13,9 @@ const AnswerForm = ({
     updateQuizData
 }) => {
   const [answerData, setAnswerData] = useState({
-    answerTxt: 'false',
+    answerTxt: '',
     answerType: '',
-    correct: '',
+    correct: 'false',
   });
 
   const handleAnswerChange = (e) => {
@@ -45,8 +45,8 @@ const AnswerForm = ({
           setAnswerCount(answerCount - 1);
           setAnswerData({
             answerTxt: '',
-            answerType: '',
-            correct: '',
+            answerType: 'far right',
+            correct: 'false',
           });
           await updateQuizData(createdQuizId);
         } else {
@@ -64,7 +64,7 @@ useEffect(
         console.log(currentQuesId);
         if(answerCount === 0){
             setQuesAnswerMediator(false);
-             setAnswerCount(8);
+             setAnswerCount(7);
              setCurrentQuesId(null);
         }
     },[answerCount]);

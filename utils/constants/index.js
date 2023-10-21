@@ -27,7 +27,8 @@ export const answerTypeOptions = [
     "start right",
     "far left",
     "mid left",
-    "start left"
+    "start left",
+    "mid"
 ];
 
 export const trueFalseOptions = [
