@@ -1,4 +1,5 @@
 export const updateUserQuizStatus = async (userId) => {
+    console.log(userId,'In function');
     try{
      const response = await fetch('/api/Users',{
         method:'PUT',

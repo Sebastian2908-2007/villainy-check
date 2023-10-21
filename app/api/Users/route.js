@@ -100,6 +100,7 @@ export async function PUT(request) {
     // Extract the user ID from the request, assuming it's included in the request body
     const { userId, updatedData } = await request.json();
 console.log(updatedData,'BE updated data');
+console.log(userId);
     // Find the user by ID and update it with the provided data
     const updatedUser = await User.findByIdAndUpdate(
       userId,
