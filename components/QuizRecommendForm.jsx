@@ -1,7 +1,8 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react';
-
+import React, { useState,useEffect } from 'react';
+import Select from './Select';
+import { recommendOptions,answerTypeOptions } from '@/utils/constants';
 const QuizRecommendForm = ({recomendEnabler,setRecommendEnabler,createdQuizId,updateQuizData}) => {
   const [recommendData, setRecommendData] = useState({
     typeOfRecommendation: '',
@@ -10,12 +11,13 @@ const QuizRecommendForm = ({recomendEnabler,setRecommendEnabler,createdQuizId,up
   });
 
   const handleRecommendChange = (e) => {
+    console.log(e.target.name);
     setRecommendData({
       ...recommendData,
       [e.target.name]: e.target.value,
     });
   };
-
+useEffect(() => {console.log(recommendData)},[recommendData]);
 
   const handleRecommendSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +73,13 @@ const QuizRecommendForm = ({recomendEnabler,setRecommendEnabler,createdQuizId,up
         <label htmlFor="typeOfRecommendation" className="block font-medium">
           Type of Recommendation:
         </label>
+
+        <Select
+        options={recommendOptions}
+        selectedValue={recommendData.typeOfRecommendation}
+        onChange={handleRecommendChange}
+        />
+
         <input
           type="text"
           id="typeOfRecommendation"

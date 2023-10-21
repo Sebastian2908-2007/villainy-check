@@ -406,7 +406,7 @@ if(typeAPer > 0 && typeBPer > 0) {
         if(between(typeBPer,0,50) && between(typeAPer,0,50)) {
             console.log('mixed a higher start left');
             quizData.recommendation = recommends.filter(rec => {
-                return rec.typeOfRecommendation === 'equals b&a higher start';
+                return rec.typeOfRecommendation === 'equals b&a start';
             })[0];
             console.log(quizData.recommendation,"AFTER SET In IF");
     
@@ -415,7 +415,7 @@ if(typeAPer > 0 && typeBPer > 0) {
           else if(between(typeBPer,50,75) && between(typeAPer,50,75)){
                console.log('mixed a higher mid left');
             quizData.recommendation = recommends.filter(rec => {
-                return rec.typeOfRecommendation === 'equals b&a higher mid';
+                return rec.typeOfRecommendation === 'equals b&a mid';
             })[0];
             console.log(quizData.recommendation,"AFTER SET In IF");
           }
@@ -423,7 +423,7 @@ if(typeAPer > 0 && typeBPer > 0) {
           else if(between(typeBPer,75,100) && between(typeAPer,75,100)){
              console.log('mixed a higher far left');
             quizData.recommendation = recommends.filter(rec => {
-                return rec.typeOfRecommendation === 'equals b&a higher far';
+                return rec.typeOfRecommendation === 'equals b&a far';
             })[0];
             console.log(quizData.recommendation,"AFTER SET In IF");
           }
