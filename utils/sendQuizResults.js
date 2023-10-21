@@ -3,6 +3,7 @@ import { between } from "./between";
 export const sendQuizResults = async (scoresData,recommends,tester) => {
     //console.log(recommends,'RECOMMEnds in send');
     console.log(tester,'tester ata top');
+    console.log(recommends,'REC AT TOP');
    /* const recommends = [
         {
             resultsMeaning
@@ -332,6 +333,8 @@ if(typeAPer > 0 && typeBPer > 0) {
     if(typeAPer > typeBPer) {
         // A higher
         console.log('mixed a higher');
+        console.log(typeAPer);
+        console.log(typeBPer);
         /*quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher';
         })[0];*/
@@ -339,21 +342,21 @@ if(typeAPer > 0 && typeBPer > 0) {
         // we need if statements or switch statement that checks what percentage of the total possible score each
         // variable is to deliver different results and recommendations based on the levels of villainy
         // it will be the same approach or similar to what I'm doing below
-      if(between(typeAPer,0,50) && between(typeBPer,0,50)) {
+      if(between(typeAPer,0,50)) {
         console.log('mixed a higher start right');
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher start right';
         })[0];
         console.log(quizData.recommendation,"AFTER SET In IF");
 
-      }else if(between(typeAPer,50,75) && between(typeBPer,50,75)){
+      }else if(between(typeAPer,50,75)){
            console.log('mixed a higher mid right');
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher mid right';
         })[0];
         console.log(quizData.recommendation,"AFTER SET In IF");
       }
-      else if(between(typeAPer,75,100) && between(typeBPer,75,100)){
+      else if(between(typeAPer,75,100)){
          console.log('mixed a higher far right');
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher far right';
@@ -369,7 +372,7 @@ if(typeAPer > 0 && typeBPer > 0) {
         })[0];*/
         // run more score checks here for varying degrees
 
-        if(between(typeBPer,0,50) && between(typeAPer,0,50)) {
+        if(between(typeBPer,0,50)) {
             console.log('mixed a higher start left',typeBPer);
             quizData.recommendation = recommends.filter(rec => {
                 return rec.typeOfRecommendation === 'mixed b higher start left';
@@ -378,7 +381,7 @@ if(typeAPer > 0 && typeBPer > 0) {
     
           }
           
-          else if(between(typeBPer,50,75) && between(typeAPer,50,75)){
+          else if(between(typeBPer,50,75)){
                console.log('mixed a higher mid left');
             quizData.recommendation = recommends.filter(rec => {
                 return rec.typeOfRecommendation === 'mixed b higher mid left';
@@ -386,7 +389,7 @@ if(typeAPer > 0 && typeBPer > 0) {
             console.log(quizData.recommendation,"AFTER SET In IF");
           }
 
-          else if(between(typeBPer,75,100) && between(typeAPer,75,100)){
+          else if(between(typeBPer,75,100)){
              console.log('mixed a higher far left');
             quizData.recommendation = recommends.filter(rec => {
                 return rec.typeOfRecommendation === 'mixed b higher far left';
