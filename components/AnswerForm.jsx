@@ -1,4 +1,6 @@
 import React, { useState,useEffect } from 'react';
+import { answerTypeOptions,trueFalseOptions } from '@/utils/constants';
+import Select from './Select';
 
 const AnswerForm = ({
     quesAnswerMediator,
@@ -11,7 +13,7 @@ const AnswerForm = ({
     updateQuizData
 }) => {
   const [answerData, setAnswerData] = useState({
-    answerTxt: '',
+    answerTxt: 'false',
     answerType: '',
     correct: '',
   });
@@ -65,7 +67,9 @@ useEffect(
              setAnswerCount(8);
              setCurrentQuesId(null);
         }
-    },[answerCount])
+    },[answerCount]);
+
+    useEffect(() => {console.log(answerData);},[answerData])
   return (
     <form onSubmit={handleAnswerSubmit}>
        {quesAnswerMediator ? <span>{answerCount}</span>:null}
@@ -87,29 +91,29 @@ useEffect(
         <label htmlFor="answerType" className="block font-medium">
           Answer Type:
         </label>
-        <input
-          type="text"
-          id="answerType"
-          name="answerType"
-          value={answerData.answerType}
-          onChange={handleAnswerChange}
-          className="w-full border rounded p-2"
-          required
+
+        <Select
+        options={answerTypeOptions}
+        selectedValue={answerData.answerType}
+        onChange={handleAnswerChange}
+        name={"answerType"}
         />
+
+      
       </div>
       <div className="mb-4">
         <label htmlFor="correct" className="block font-medium">
           Correct:
         </label>
-        <input
-          type="text"
-          id="correct"
-          name="correct"
-          value={answerData.correct}
-          onChange={handleAnswerChange}
-          className="w-full border rounded p-2"
-          required
+
+        <Select
+        options={trueFalseOptions}
+        selectedValue={answerData.correct}
+        onChange={handleAnswerChange}
+        name={"correct"}
         />
+
+     
       </div>
       <button 
       disabled={quesAnswerMediator ? false:true}

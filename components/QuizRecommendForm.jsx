@@ -5,7 +5,7 @@ import Select from './Select';
 import { recommendOptions,answerTypeOptions } from '@/utils/constants';
 const QuizRecommendForm = ({recomendEnabler,setRecommendEnabler,createdQuizId,updateQuizData}) => {
   const [recommendData, setRecommendData] = useState({
-    typeOfRecommendation: '',
+    typeOfRecommendation: 'far right',
     resultsMeaning: '',
     tipsSummary: '',
   });
@@ -78,17 +78,10 @@ useEffect(() => {console.log(recommendData)},[recommendData]);
         options={recommendOptions}
         selectedValue={recommendData.typeOfRecommendation}
         onChange={handleRecommendChange}
+        name={"typeOfRecommendation"}
         />
 
-        <input
-          type="text"
-          id="typeOfRecommendation"
-          name="typeOfRecommendation"
-          value={recommendData.typeOfRecommendation}
-          onChange={handleRecommendChange}
-          className="w-full border rounded p-2"
-          required
-        />
+       
       </div>
       <div className="mb-4">
         <label htmlFor="resultsMeaning" className="block font-medium">
