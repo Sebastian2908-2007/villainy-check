@@ -73,11 +73,11 @@ console.log(state.admin);
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl mb-4 font-semibold">Subject Form</h2>
+    <div className="w-full max-w-md mx-auto p-6 bg-[#999595] rounded-lg shadow-md">
+      <h2 className="text-2xl text-[#fde1e2]  mb-4 font-semibold">Subject Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
             Email:
           </label>
           <input
@@ -89,7 +89,7 @@ console.log(state.admin);
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="password">
             Password:
           </label>
           <input
@@ -101,7 +101,7 @@ console.log(state.admin);
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="firstName">
             First Name:
           </label>
           <input
@@ -113,7 +113,7 @@ console.log(state.admin);
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="lastName">
             Last Name:
           </label>
           <input
@@ -134,7 +134,17 @@ console.log(state.admin);
 
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="
+            bg-[#849b9f]
+            hover:bg-[#fde1e2]
+            hover:text-white
+            text-[#fde1e2]
+            font-bold 
+            py-2 
+            px-4 
+            rounded 
+            focus:outline-none 
+            focus:shadow-outline"
             type="submit"
           >
             Submit

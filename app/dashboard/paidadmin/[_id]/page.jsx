@@ -49,9 +49,10 @@ export default function AdminDash() {
           <button
         onClick={isOpen ? closeModal : openModal}
         className="m-8 
-        bg-blue-500 
-        hover:bg-blue-700 
-        text-white 
+        bg-[#849b9f]
+        hover:bg-[#fde1e2]
+        hover:text-white
+        text-[#fde1e2]
         font-bold 
         py-2 
         px-4 
@@ -66,22 +67,26 @@ export default function AdminDash() {
         <button
           onClick={() => { setOpenUsers(true); }}
           className="
-          text-black
           font-semibold
           py-2
           px-4
           rounded cursor-pointer
-          hover:text-blue-700
-          bg-blue-500 hover:bg-blue-700
-          flex flex-row justify-center
-           m-4
-           w-[50%]
+          bg-[#849b9f]
+          hover:bg-[#fde1e2]
+          hover:text-white
+          text-[#fde1e2]
+          flex flex-row 
+          justify-center
+          m-4
+          w-[50%]
                 "
         >
           View testers
         </button>
         </section>
+        <section className="p-2 min-[360px]:p-4">
         {openUsers && <PaidAllUsers/>}
+        </section>
           </div>
           :
           <div>loading...</div>

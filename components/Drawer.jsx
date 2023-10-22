@@ -50,28 +50,40 @@ if(userCookie) {
 
   return (
     <div className="relative">
-      <button onClick={toggleDrawer} className="hover:text-blue-700 py-2 px-4">
+      <button onClick={toggleDrawer} className="hover:text-[#fde1e2]  py-2 px-4 text-[#999595]">
         {isOpen ? ' ' : <ArrowCircleLeftIcon />}
       </button>
       {isOpen && (
         <div
-          className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-0 transition-transform ease-in-out duration-300"
+          className="
+          fixed 
+          top-0 
+          right-0 
+          h-full 
+          w-64 
+          bg-[#999595] 
+          shadow-lg 
+          transform 
+          translate-x-0 
+          transition-transform 
+          ease-in-out 
+          duration-300
+          "
           ref={drawerRef}
         >
           <div className="p-4 flex justify-between">
-          <h2 className="text-2xl font-semibold text-gray-800 border-b-2 border-blue-500 mb-4 py-2">
-             Admin Navigation
-          </h2>
-
-            <button onClick={closeDrawer} className="text-gray-500">
+          <button onClick={closeDrawer} className="text-[#8b0000] mb-8">
               X
             </button>
+          <h2 className="text-2xl font-semibold text-white border-b-2 border-[#fde1e2] mb-4 py-2">
+             Admin Navigation
+          </h2>
           </div>
           <div className="p-4">
             {/* Replace anchor tags with Link components */}
             <ul>
-              <li>
-                <Link className="text-blue-700 hover:underline" 
+              <li  className='mb-2'>
+                <Link className="text-[#fde1e2] hover:text-white underline" 
                 href={
                     isSuperAdmin ?
                     `/dashboard/superadmin/${userData && userData._id}`
@@ -82,43 +94,43 @@ if(userCookie) {
                 </Link>
               </li>
 
-             {isSuperAdmin ? <li>
-                <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/createquiz">
+             {isSuperAdmin ? <li className='mb-2'>
+                <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/createquiz">
                   Create Quiz
                 </Link>
               </li>
               :
-              <li>
-                <Link className="text-blue-700 hover:underline" href="/dashboard/paidadmin/addtesters">
+              <li className='mb-2'>
+                <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/paidadmin/addtesters">
                   Add Subjects
                 </Link> 
               </li>
               }
             {isSuperAdmin ?
-              <li>
-                <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/settings">
+              <li className='mb-2'>
+                <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/settings">
                  Profile Settings
                 </Link>
               </li>
               :
-              <li>
-                <Link className="text-blue-700 hover:underline" href="/dashboard/paidadmin/settings">
+              <li className='mb-2'>
+                <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/paidadmin/settings">
                  Profile Settings
                 </Link>
               </li>
              }
              {
              isSuperAdmin &&
-             <li>
-             <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/product">
+             <li className='mb-2'>
+             <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/product">
                Products
              </Link>
-           </li>
+           </li >
              }
              {
              isSuperAdmin &&
-             <li>
-             <Link className="text-blue-700 hover:underline" href="/dashboard/superadmin/quizzes">
+             <li className='mb-2'>
+             <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/quizzes">
                All Quizzes
              </Link>
            </li>
