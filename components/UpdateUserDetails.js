@@ -56,11 +56,11 @@ export default function UpdateUserDetails({ userId }) {
 
   return (
     <div>
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-        <h2 className="text-2xl mb-4 font-semibold">Update User Details</h2>
+      <form className="bg-[#999595] shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+        <h2 className="text-2xl text-[#fde1e2] mb-4 font-semibold">Update User Details</h2>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="phone">
             Phone
           </label>
           <input
@@ -74,7 +74,7 @@ export default function UpdateUserDetails({ userId }) {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="industryType">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="industryType">
             Industry Type
           </label>
           <input
@@ -88,7 +88,7 @@ export default function UpdateUserDetails({ userId }) {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="usage">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="usage">
             Usage
           </label>
           <input
@@ -102,7 +102,7 @@ export default function UpdateUserDetails({ userId }) {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="organizationName">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="organizationName">
             Organization Name
           </label>
           <input
@@ -117,7 +117,17 @@ export default function UpdateUserDetails({ userId }) {
 
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="
+            bg-[#849b9f]
+            hover:bg-[#fde1e2]
+            hover:text-white
+            text-[#fde1e2]
+            font-bold 
+            py-2 
+            px-4 
+            rounded 
+            focus:outline-none 
+            focus:shadow-outline"
             type="submit"
           >
             Update
@@ -126,7 +136,7 @@ export default function UpdateUserDetails({ userId }) {
       </form>
 
       {isSuccess && (
-        <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+        <div className="bg-[#fde1e2] border-l-4 border-green-700 text-green-700 p-4 mb-4" role="alert">
           <p className="font-bold">Success!</p>
           <p>Your user details have been updated.</p>
         </div>

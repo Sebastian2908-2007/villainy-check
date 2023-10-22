@@ -83,12 +83,15 @@ if(userCookie) {
             {/* Replace anchor tags with Link components */}
             <ul>
               <li  className='mb-2'>
-                <Link className="text-[#fde1e2] hover:text-white underline" 
+                <Link
+                 onClick={closeDrawer}
+                className="text-[#fde1e2] hover:text-white underline" 
                 href={
                     isSuperAdmin ?
                     `/dashboard/superadmin/${userData && userData._id}`
                     :
                     `/dashboard/paidadmin/${userData && userData._id}`}
+                   
                     >
                   Dashboard
                 </Link>

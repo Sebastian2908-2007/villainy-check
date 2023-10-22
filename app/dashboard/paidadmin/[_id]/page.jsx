@@ -12,6 +12,14 @@ export default function AdminDash() {
     const [data,setData] = useState(null);
     const [openUsers,setOpenUsers] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
+const toggleUsers = () => {
+  if(openUsers) {
+    setOpenUsers(false);
+  }else{
+    setOpenUsers(true);
+  }
+};
+
     const openModal = () => {
       setIsOpen(true);
     };
@@ -38,8 +46,7 @@ export default function AdminDash() {
        <div>
        <UniModal
         title={"Organization Details"}
-        content={<UpdateUserDetails/>}
-        userId={data._id}
+        content={<UpdateUserDetails userId={data._id}/>}
         isOpen={isOpen}
         closeModal={closeModal}
         
@@ -65,7 +72,7 @@ export default function AdminDash() {
         {isOpen ? "Close Modal" : "Edit Org info"}
       </button>
         <button
-          onClick={() => { setOpenUsers(true); }}
+          onClick={() => { toggleUsers(); }}
           className="
           font-semibold
           py-2
