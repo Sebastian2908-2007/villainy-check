@@ -553,7 +553,7 @@ quizData.recipiant = tester.adminEmail;
 quizData.firstName = tester.firstName;
 quizData.lastName = tester.lastName;
 console.log(quizData);
-/*try{
+try{
     fetch('/api/Users',{
         method:'PUT',
         headers: {
@@ -575,5 +575,5 @@ await fetch('/api/Email',{
 });
 }catch(e) {
     console.log(e);
-}*/
+}
 };
