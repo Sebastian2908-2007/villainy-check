@@ -8,17 +8,20 @@ export default function SetGlobalState() {
     const [state, dispatch] = useStoreContext();
     
     const [userData, setUserData] = useState(null);
-    const userCookie = Cookies.get('userinfocookie');
+   
 
     /*const userData = (userData) => {
         setData(userData);
        };*/
 
        useEffect(() => {
+        setTimeout(() => {
     if (userData == undefined) {
+      const userCookie = Cookies.get('userinfocookie');
       const decodedData = decode(userCookie);
         setUserData(decodedData);
     }
+  },3000);
   },[]);
 
   

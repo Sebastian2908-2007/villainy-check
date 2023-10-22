@@ -1,11 +1,28 @@
-
+'use client';
 
 import { useStoreContext } from '@/utils/GlobalState';
-import Link from 'next/link';
+
 
 const PaidAllUsers = () => {
     const [state, dispatch] = useStoreContext();
+    
+ let url = window.location.href;
+ const domainName = url.split('/dashboard')[0];
+ console.log(domainName,'Domain name');
     console.log(state.admin.subjects, "in all users");
+    const copyToClipboard = async (e) => {
+        try {
+            //url = window.location.href;
+            console.log(url,'URL');
+            await navigator.clipboard.writeText(`${domainName}/${e.target.value}`);
+
+            console.log('Text copied to clipboard');    
+            console.log(e.target.value,'Value copied!!!');    
+          } catch (error) {
+            console.error('Failed to copy text: ', error);
+          }
+     
+    };
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -23,9 +40,18 @@ const PaidAllUsers = () => {
                         <p className="mb-2 text-[#fde1e2]">
                             Email: <a className="text-white" href={`mailto:${user.email}`}>{user.email}</a>
                         </p>
-                         <Link href={user.quizLink} className="text-[#fde1e2] underline">
-                         Quiz Link
-                        </Link>
+                        <p>
+                         Click to Copy Quiz Link
+                         </p>
+                         <input 
+                        readOnly
+                         value={user.quizLink} 
+                         className="text-[#fde1e2] 
+                        bg-transparent
+                         "
+                         onClick={copyToClipboard}
+                         />
+                         
                     </div>
                 </div>
             ))}

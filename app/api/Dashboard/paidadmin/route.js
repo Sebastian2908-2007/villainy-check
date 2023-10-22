@@ -19,7 +19,7 @@ export async function GET() {
     let verified;
     const cookieStore = cookies();
     token = cookieStore.get(PAID_ADMIN_COOKIE_NAME);
-console.log(token);
+//console.log(token);
      // if this route is hit and previous cookie is not available then we know user is logging in
      // so we try for that cookie so we can check isPaid data on token
 if(token === undefined) {
