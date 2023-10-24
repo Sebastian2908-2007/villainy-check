@@ -1,81 +1,8 @@
+import Image from "next/image";
 export default function page() {
     return (
-        <>
-       {/* <div className="overflow-hidden bg-[#849b9f] flex flex-row w-[100vw] items-start">
-        <div className="flex flex-col mt-0 max-w-[100%]">
-          <div className="bg-[#f0e7e7] flex flex-col justify-center pr-8 h-16 shrink-0 items-end">
-            <div className="bg-[#849b9f] flex flex-col items-center pt-px pb-1 px-16">
-              <div className="text-sm font-['Inter'] font-bold text-white mr-px">
-                The Human Risk Project
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row items-start">
-            <div className="bg-[#dbd5d5] w-16 shrink-0 h-[732px]" />
-            <div className="bg-[#bbb6b6] self-end flex flex-col justify-center w-[calc(100vw-144px)] h-24 items-center">
-              <div className="bg-[#849b9f] flex flex-col items-start pb-1 px-8">
-                <div className="text-xl font-['Inter'] font-bold text-[#fde1e2] mr-1">
-                  submit
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-[#999595] w-20 shrink-0 h-[796px]" />
-      </div>*/}
-
-
-
-
-      <div className="overflow-hidden bg-[#849b9f] flex flex-row w-[100vw] items-start">
-  <div className="flex flex-col mt-0 max-w-[100%]">
-    <div className="bg-[#f0e7e7] flex flex-col justify-center pr-8 h-16 shrink-0 items-end">
-      <div className="bg-[#849b9f] flex flex-col items-center p-2">
-        <div className="text-[1.1rem] font-['Inter'] font-bold text-white mr-px">
-          The Human Risk Project
-        </div>
-      </div>
-    </div>
-    <div className="flex flex-row items-start">
-      <div className="bg-[#dbd5d5] w-16 shrink-0 h-[732px]" />
-      <div className="self-end flex flex-col justify-between w-[calc(100vw-144px)]  h-[668px] items-center">
-        <div className="flex flex-col gap-10 h-32 shrink-0 items-start">
-          <div className="text-3xl font-['Inter'] font-bold text-white">
-            Question
-          </div>
-          <div className="text-3xl font-['Inter'] font-bold text-white ml-3">
-            Answer
-          </div>
-        </div>
-        <div className="bg-[#bbb6b6] self-stretch flex flex-col justify-center h-24 shrink-0 items-center">
-          <div className="bg-[#849b9f] flex flex-col items-start pb-1 px-8">
-            <div className="text-xl font-['Inter'] font-bold text-[#fde1e2] mr-1">
-              submit
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="bg-[#999595] w-20 shrink-0 h-[796px]" />
-</div>
-
-      </>
-
-
-
-
-
-
-
-
-
-
-
-
-   
-   
-   
+      
+   <div>This is home</div>
     );
 }; 
 ///quiz/6529d0abc0f6782d99937954/user/652d5522914114746615d8ac w-[1155px] 81%

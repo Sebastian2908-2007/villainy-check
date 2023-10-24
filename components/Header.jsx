@@ -1,23 +1,27 @@
-import Link from 'next/link';
-
+import Image from 'next/image';
+import Dropdown from './Dropdown';
 const Header = () => {
   return (
-    <header className="bg-[#999595] p-4">
+    <header className="bg-[#999595]">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          {/* Replace these dummy links with your actual navigation links */}
-          <Link className="text-[#fde1e2] hover:underline" href="/quiz/admin/createquiz">
-           Create a quiz
-          </Link>
-          <Link className="text-[#fde1e2] hover:underline" href="/quiz/currentQuizzes">
-            All quizzes
-          </Link>
-          <Link className="text-[#fde1e2] hover:underline" href="/about">
-            About Us
-          </Link>
+        <div className='
+        relative 
+        h-[15vh] 
+        w-[40%] 
+        min-[360px]:w-[30%] 
+        min-[540px]:w-[20%] 
+        min-[1024px]:w-[10%]
+
+        '>
+        <Image
+        fill={true}
+         src='/newest-logo-two.png'
+         alt='company logo looks like compass star'
+         />
         </div>
-        <div className="text-[#fde1e2] text-2xl font-semibold">Your Logo</div>
-        {/* Add any logo elements here */}
+      <Dropdown/>
+       
+        
       </div>
     </header>
   );
