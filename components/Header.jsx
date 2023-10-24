@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import Dropdown from './Dropdown';
 const Header = () => {
   return (
@@ -13,11 +14,13 @@ const Header = () => {
         min-[1024px]:w-[10%]
 
         '>
+          <Link href="/">
         <Image
         fill={true}
          src='/newest-logo-two.png'
          alt='company logo looks like compass star'
          />
+         </Link>
         </div>
       <Dropdown/>
        
