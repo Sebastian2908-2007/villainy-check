@@ -1,10 +1,211 @@
 import Image from "next/image";
-export default function page() {
-    return (
-      
-   <div>This is home</div>
-    );
-}; 
+import Link from "next/link";
+import React from 'react';
+
+export default function Page() {
+  return (
+    <>
+     <section className="
+            w-full 
+            h-[30vh] 
+            min-[540px]:h-[45vh] 
+            min-[1024px]:h-[75vh]
+            relative
+            "
+            >
+                <Image
+               fill={true}
+                src='/detective.jpg'
+                alt="A villain hunting detective"
+                />
+            </section>
+            <div className="p-4 lg:p-8 xl:p-12">
+  <button className="
+  w-full 
+  md:w-auto 
+  bg-[#fde1e2]
+  text-[#999595] 
+  rounded-md 
+  py-2 px-4 
+  m-2 
+  md:m-0 
+  md:mr-4 
+  hover:bg-[#999595] 
+  hover:text-[#fde1e2] 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-[#fde1e2]
+  ">
+    <Link href='/quiz/public/quizzes'>
+    Free Quiz
+    </Link>
+  </button>
+  <button className="
+  w-full 
+  md:w-auto 
+  bg-[#999595] 
+  text-[#fde1e2] 
+  rounded-md 
+  py-2 
+  px-4 
+  m-2 
+  md:m-0 
+  hover:bg-[#fde1e2] 
+  hover:text-[#999595] 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-[#999595]
+  ">
+    <Link href="/products">
+    Quiz Others
+    </Link>
+  </button>
+</div>
+    <div className="mx-4 md:mx-16 lg:mx-24 xl:mx-52 2xl:mx-96">
+      <h1 className="
+      text-4xl 
+      font-semibold 
+      p-2 
+      mt-4 
+      mb-8 
+      md:mt-8 
+      text-center 
+      text-[#fde1e2]
+      bg-[#849b9f]
+      "
+      >
+        "When Morality Becomes Toxic, We're Here to Point It Out"
+      </h1>
+
+      <section className="mb-12">
+        <h2 className="
+        text-2xl 
+        text-center
+        font-semibold 
+        mb-4
+        p-2
+        text-[#fde1e2]
+        bg-[#999595]
+        ">
+          Individualism: The Morality of Aspiration
+        </h2>
+        <div className="
+        w-full
+        h-[30vh]
+        min-[540px]:h-[45vh]
+        min-[1024px]:h-[60vh] 
+        min-[1366px]:h-[65vh] 
+        relative 
+        mb-8">
+                <Image
+               fill={true}
+                src='/aspiration.jpg'
+                alt="A guy looking at a high peak while the sun rise"
+                />
+            </div>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          This aspect of morality focuses on personal aspiration. It's based on the idea that
+          individuals naturally seek to improve their circumstances. 
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        In this view, any action 
+          that leads to better circumstances is considered "good," while actions moving away from
+          improvement are labeled as "bad." 
+          It's all about pursuing the Good Life, excellence, and realizing one's full potential.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          The morality of aspiration starts with the idea that humans should strive for their best.
+          For instance, when someone encourages another to eat healthily or when
+          someone takes on a challenging book, they are driven by a desire for self-improvement.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          Not aspiring to be better is seen as a personal shortcoming, not a moral failing.
+          Failing to achieve one's potential isn't a crime, as no law can force someone to
+          reach their full potential. The morality of aspiration encourages people to better
+          themselves and follow their interests but doesn't dictate
+          what the "Good Life" means  that's a journey of individual discovery.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          From a psychological standpoint, this morality teaches us to resist excessive shame. 
+          Shame, as a social tool, helps guide acceptable behavior among social animals. 
+          It's a way to learn how to coexist with others. 
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        A well-rounded person must show both 
+          resilience to shame "individualism" and some sensitivity to it "collectivism". The interplay between 
+          these aspects of shame becomes more important when discussing ethical extremes.
+        </p>
+        <h3 className="text-xl text-white p-2 font-semibold mb-4 bg-[#849b9f] min-[540px]:p-4">So Where Does It Go Wrong?</h3>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          Simply put, some folks are too resistant to shame, to the extent that they may easily
+           infringe on others to succeed. &nbsp;
+          <span className="font-semibold">We can identify individuals with this type of villainy.</span>
+        </p>
+      </section>
+
+      <section>
+        <h2 className="
+        text-2xl
+        text-center 
+        font-semibold 
+        mb-4
+        p-2
+        text-[#fde1e2]
+        bg-[#999595]
+        "
+        >Collectivism: The Morality of Duty</h2>
+        <div className="
+        w-full 
+        h-[30vh] 
+        min-[540px]:h-[45vh] 
+        min-[1024px]:h-[60vh] 
+        min-[1366px]:h-[65vh] 
+        relative 
+        mb-8
+        ">
+                <Image
+               fill={true}
+                src='/duty.jpg'
+                alt="A millatary guy to represent duty"
+                />
+            </div>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          The morality of duty starts with what should be condemned,
+           focusing on the basic requirements of social living and our obligations to each other.
+            
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        This morality is based on reciprocity, where there's an implicit agreement not to harm
+             each other, like the way male antelope don't severely injure each other when competing
+              for a mate.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          Acts of honesty are seen as duties, and those who lie are criticized for failing in their unspoken agreement. Failing in terms of the morality of duty means neglecting your responsibilities or unfairly imposing obligations on others.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+          Psychologically, the morality of duty encourages sensitivity to shame, reminding us to consider how our actions affect others.
+        </p>
+        <h3 className="text-xl text-white p-2 font-semibold mb-4 bg-[#849b9f] min-[540px]:p-4">So Where Does It Go Wrong?</h3>
+        <ul className="list-disc ml-8 mb-4 min-[1024px]:mb-8 p-2">
+          <li className="mb-2 text-[#fde1e2] font-bold">Being negligent in one's duties.</li>
+          <li className="mb-2 text-[#fde1e2] font-bold">Or to impose obligations where obligations ought not to be imposed.</li>
+        </ul>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        While the first type of villainy has always been present at a high level, 
+          some of the most damage caused in the 21st century comes directly from this type
+           of villainy.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+           In fact, on an individual level, this type of villainy is ever-present.
+            We can identify it so that you can make informed decisions when it comes to the people 
+            you interact with.
+        </p>
+      </section>
+    </div>
+    </>
+  );
+}
+
 ///quiz/6529d0abc0f6782d99937954/user/652d5522914114746615d8ac w-[1155px] 81%
 
 

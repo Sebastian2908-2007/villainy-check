@@ -5,17 +5,61 @@ const Footer = () => {
     return (
       <footer className="bg-[#849b9f] p-2 text-center w-[100%]">
         <div className="container mx-auto w-[100%]">
-          <div className="flex flex-row justify-evenly mb-2">
+          <div className="
+          flex 
+          flex-row 
+          justify-evenly 
+          mb-2 
+          min-[1024px]:mb-8
+          min-[1024px]:mt-4
+          "
+          >
             <Link
             href="/tos" 
-            className="block px-4 py-2 text-[.7em] text-white hover:bg-gray-100 min-[540px]:text-[1.2em] underline" 
+            className="block 
+            px-4 
+            py-2 
+            text-[.7em] 
+            text-white 
+            text-center
+            hover:bg-gray-100 
+            min-[540px]:text-[1.2em] 
+            border-2
+            border-[#fde1e2]
+            bg-[#999595]
+            
+            " 
             >Terms of Service</Link>
             <Link
             href="/products" 
-            className="block px-4 py-2 text-[.7em] text-white hover:bg-gray-100 min-[540px]:text-[1.2em] underline" 
+            className="block 
+            px-4 
+            py-2 
+            text-[.7em] 
+            text-white 
+            text-center
+            hover:bg-gray-100 
+            min-[540px]:text-[1.2em] 
+            border-2
+            border-[#fde1e2]
+            bg-[#999595]
+            
+            " 
             >Products</Link>
             <a
-             className="block px-4 py-2 text-[.7em] text-white hover:bg-gray-100 min-[540px]:text-[1.2em] underline" 
+             className="block 
+             px-4 
+             py-2 
+             text-[.7em] 
+             text-white
+             text-center 
+             hover:bg-gray-100 
+             min-[540px]:text-[1.2em] 
+             border-2
+             border-[#fde1e2]            
+              bg-[#999595]
+             
+             " 
              target="_blank"
               href="https://advocate-for-rights-and-knowledge-of-americans-arka.ghost.io">
                 Blog
