@@ -67,6 +67,16 @@ const Dropdown = () => {
             >
               About
             </Link>
+            <a
+             className="block 
+             block px-4 py-2 text-[.8em] 
+             text-[#fde1e2] 
+             hover:bg-gray-100
+             " 
+             target="_blank"
+              href="https://advocate-for-rights-and-knowledge-of-americans-arka.ghost.io">
+                Blog
+              </a>
           </div>
         </div>
       )}
