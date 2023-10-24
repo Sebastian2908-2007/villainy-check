@@ -23,17 +23,22 @@ const isUserLoggedIn = async () => {
 };
 useEffect(() => {console.log(quizzerData,"quizzer data in quiz card")},[quizzerData]);
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h2 className="text-2xl mb-4 font-semibold">{quizTitle}</h2>
+    <div className="bg-[#849b9f] shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <h2 className="text-2xl mb-4 text-[#fde1e2] font-semibold">{quizTitle}</h2>
       <div className="mb-6">
-        <p>Quiz Description: (You can add a description here)</p>
+       {/* <p className='text-[#fde1e2]'>Quiz Description: (You can add a description here)</p>*/}
         {/* Add more quiz details as needed */}
       </div>
       <div className="flex items-center justify-between">
 
        {!quizzerData ? <button
-          className="bg-blue-500 
-          hover:bg-blue-700 
+          className="
+          bg-[#999595] 
+          border
+          border-[#fde1e2]
+          hover:bg-[#fde1e2]
+          hover:text-[#999595]
+          hover:border-[#999595]
           text-white 
           font-bold 
           py-2 px-4 
