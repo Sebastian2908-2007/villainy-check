@@ -1,8 +1,9 @@
 import Bio from "@/components/Bio";
 import Image from "next/image";
+import Cta from "@/components/Cta";
 export default function About() {
     return(
-        <div>
+        <>
             <section className="
             w-[100%] 
             h-[30vh] 
@@ -17,6 +18,7 @@ export default function About() {
                 alt="A moon representing hidden knowledge"
                 />
             </section>
+            <Cta/>
             <section className="w-[100%]">
             <div className="bg-[#849b9f] py-12 lg:py-24">
   <div className="container mx-auto px-4">
@@ -74,6 +76,6 @@ export default function About() {
 
             </section>
             <Bio/>
-        </div>
+        </>
     )
 };

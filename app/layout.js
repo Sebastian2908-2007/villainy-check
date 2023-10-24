@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en" style={{ height: '100%' }}>
       <body className={inter.className} style={{ height: '100%' }} >
       <Header/>
-      <main className="mainClass flex min-h-screen flex-col items-center justify-between   pb-[11rem] max-w-[100%]" >
+      <main className="mainClass flex min-h-screen pb-[11rem] max-w-[100%] flex-col items-center justify-between" >
         {children}
       </main>  
       <Footer/>
@@ -26,3 +26,4 @@ export default function RootLayout({ children }) {
     </StoreProvider>
   )
 }
+//flex-col items-center justify-between were in main but took out when doing about page
