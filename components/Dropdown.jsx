@@ -2,8 +2,12 @@
 import { useState,useEffect, useRef  } from 'react';
 import Link from 'next/link';
 import ListIcon from '@mui/icons-material/List';
-
+/**import for conditional stuff conditional*/
+import { decode } from 'jsonwebtoken';
+import Cookies from 'js-cookie';
 const Dropdown = () => {
+  const userCookie = Cookies.get('userinfocookie');
+  console.log(userCookie);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef();
 
@@ -42,6 +46,26 @@ const Dropdown = () => {
       {isOpen && (
         <div className="z-40 origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-[#999595] ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+         {!userCookie  &&
+         <>
+         <Link 
+            href="/login" 
+            className="block px-4 py-2 text-[.8em] text-[#fde1e2] hover:bg-gray-100" 
+            role="menuitem" 
+            onClick={closeDropdown}
+            >
+              login
+            </Link>
+          <Link 
+            href="/signup" 
+            className="block px-4 py-2 text-[.8em] text-[#fde1e2] hover:bg-gray-100" 
+            role="menuitem" 
+            onClick={closeDropdown}
+            >
+              free signup
+            </Link>
+            </>
+            }
             <Link 
             href="/products" 
             className="block px-4 py-2 text-[.8em] text-[#fde1e2] hover:bg-gray-100" 

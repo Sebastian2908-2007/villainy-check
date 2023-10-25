@@ -1,7 +1,10 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import Dropdown from './Dropdown';
+
 const Header = () => {
+  
   return (
     <header className="bg-[#999595]">
       <div className="container mx-auto flex justify-between items-center">
