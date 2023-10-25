@@ -100,3 +100,13 @@ export const verifyFreeLoggedIn = async () => {
   return false;
  }
 };
+/**verify  logged in account (free)*/
+export const verifyPaidLoggedIn = async () => {
+ const response = await fetch('/api/Dashboard/paidadmin');
+ if(response.ok) {
+  const data = await response.json();
+  return data;
+ }else{
+  return false;
+ }
+};

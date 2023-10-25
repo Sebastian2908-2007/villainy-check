@@ -16,14 +16,14 @@ export async function GET() {
     let loginToken;
     let token;
     let isPaid;
-    let verified;
     const cookieStore = cookies();
     token = cookieStore.get(PAID_ADMIN_COOKIE_NAME);
 //console.log(token);
      // if this route is hit and previous cookie is not available then we know user is logging in
      // so we try for that cookie so we can check isPaid data on token
-if(token === undefined) {
-    loginToken = cookieStore.get(COOKIE_NAME);
+     loginToken = cookieStore.get(COOKIE_NAME);
+if(token === undefined && loginToken) {
+    console.log('this works token undef but login token exists');
     const userTknData = decode(loginToken.value);
     isPaid = userTknData.isPaid;
     console.log(isPaid,"isPaid");
@@ -80,6 +80,7 @@ if(token === undefined) {
       );
     }
     }else{
+      if(loginToken) {
         const { value } = loginToken;
   
     // Always check this
@@ -107,7 +108,16 @@ if(token === undefined) {
         }
       );
     }
-
+  }else{
+    return NextResponse.json(
+      {
+        message: "No user logged in",
+      },
+      {
+        status: 401,
+      }
+    );
+  }
     }
   }
 
