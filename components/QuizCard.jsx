@@ -2,6 +2,7 @@
 import { useState,useEffect } from 'react';
 import AuthModal from '@/components/AuthModal';
 import SuccessModal from './SuccessModal';
+import UpgradeModal from './UpgradeModal';
 import { verifyFreeLoggedIn,verifyPaidLoggedIn } from '@/utils/getData';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -9,6 +10,7 @@ import { decode } from 'jsonwebtoken';
 const QuizCard = ({ quiz }) => {
   const { quizTitle,_id } = quiz;
   const [isOpen,setIsOpen] = useState(false);
+  const [isOpenUpgradeModal,setIsOpenUpgradeModal] = useState(false);
   const [isSuccessOpen,setSuccessIsOpen] = useState(false);
   const [quizzerData,setQuizzerData] = useState(null);
   const router = useRouter();
@@ -26,15 +28,20 @@ const isUserLoggedIn = async () => {
     if(user || paidUser) {
       if(paidUser){
         const decodedUserData = decode(paidUser.value);
-        if(decodedUserData.quizComplete){
-          alert('you have already taken the quiz!!! paid admin!!!');
+        /**At this point for times sake if someone has or is paying we will just allow them quizzes
+         * the below if is here for the day we stop doing that
+         */
+        /*if(decodedUserData.quizComplete){
+          //alert('you have already taken the quiz!!! paid admin!!!');
+          setIsOpenUpgradeModal(true);
           return;
-        };
+        };*/
         router.push(`/quiz/${_id}/user/${decodedUserData._id}`);
       }else{
         const decodedUserData = decode(user.value);
         if(decodedUserData.quizComplete){
-          alert('you have already taken the quiz!!! you penny pincher!!!');
+          //alert('you have already taken the quiz!!! you penny pincher!!!');
+          setIsOpenUpgradeModal(true);
           return;
         };
         router.push(`/quiz/${_id}/user/${decodedUserData._id}`);
@@ -140,6 +147,10 @@ useEffect(() => {console.log(quizzerData,"quizzer data in quiz card")},[quizzerD
         </button>}
 
       </div>
+      <UpgradeModal
+      isOpen={isOpenUpgradeModal} 
+      setIsOpen={setIsOpenUpgradeModal}
+      />
       <AuthModal
 content={'To Take Your Free Quiz Now'} 
 title={'Login or Signup'}
