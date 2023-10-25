@@ -49,17 +49,17 @@ const [stripeData,setStripeData] = useState(null);
        const userInfo = decode(userCookie);
        if(userInfo) {
         newProduct.currentUser = true;
-        newProduct.currentUserId = userInfo._id
+      //  newProduct.currentUserId = userInfo._id
         console.log(userInfo,'True current user');
         console.log(newProduct,'new product data');
        }else{
         newProduct.currentUser = false;
-        newProduct.currentUserId = false;
+        //newProduct.currentUserId = false;
         console.log('false current user');
        }
        
         addProductToClientDatabase();
-        /*try {  
+        try {  
           // Create a PaymentIntent or Checkout Session on the server
           const response = await fetch('/api/Product/checkout', {
             method: 'POST',
@@ -75,7 +75,7 @@ const [stripeData,setStripeData] = useState(null);
         
         } catch (error) {
           console.error('Error processing purchase:', error);
-        }*/
+        }
       }
       
 

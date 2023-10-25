@@ -24,7 +24,7 @@ export async function POST(request) {
     try {
       await dbConnect();
 
-      const { productTitle, marketingCopy, quiz, price, type, currentUser, currentUserId } = await request.json();
+      const { productTitle, marketingCopy, quiz, price, type, currentUser} = await request.json();
       console.log(currentUser,"Current useer BE");
       console.log(productTitle, marketingCopy, quiz, price, type);
 

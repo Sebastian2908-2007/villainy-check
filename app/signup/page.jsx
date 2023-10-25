@@ -1,6 +1,8 @@
 'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
+import { MAX_AGE } from '@/utils/constants';
 
 
 export default function Signup() {
@@ -31,6 +33,11 @@ export default function Signup() {
       const data = await response.json();
      
      const token = data.value;
+     if(token) {
+      Cookies.set('userinfocookie',token,{expires: MAX_AGE});
+     }else{
+      console.log('error getting token!');
+     };
      router.push('/dashboard/free');
       
 

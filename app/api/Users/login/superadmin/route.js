@@ -31,6 +31,7 @@ export async function POST(request) {
             firstName: user.firstName,
             email: user.email,
             isSuperAdmin: user.isSuperAdmin,
+            quizComplete: user.quizComplete
           },
           process.env.JWT_SECRET,
           { expiresIn: '3h' }

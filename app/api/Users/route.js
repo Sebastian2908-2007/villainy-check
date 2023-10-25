@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
+
 // Import your Mongoose models here (e.g., User, Product, Quiz, etc.)
 import {User} from '@/db/models';
 import { MAX_AGE } from '@/utils/constants';
@@ -94,14 +95,15 @@ export async function POST(request) {
 }
 
 export async function PUT(request) {
+  let token;
   try {
     // Connect to the MongoDB database
     await dbConnect();
 
     // Extract the user ID from the request, assuming it's included in the request body
     const { userId, updatedData } = await request.json();
-console.log(updatedData,'BE updated data');
-console.log(userId);
+//console.log(updatedData,'BE updated data');
+//console.log(userId);
     // Find the user by ID and update it with the provided data
     const updatedUser = await User.findByIdAndUpdate(
       userId,
@@ -112,6 +114,19 @@ console.log(userId);
     if (!updatedUser) {
       return NextResponse.json({ error: 'User not found.' }, { status: 404 });
     }
+
+    /*token = jwt.sign(
+      {
+        _id: updatedUser._id,
+        firstName: updatedUser.firstName,
+        email: updatedUser.email,
+        isPaid: updatedUser.isPaid,
+        quizComplete: updatedUser.quizComplete
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: '3h' }
+    );
+console.log(updatedUser.isPaid,'updated is paid??? user BE '); ,token: token previous was returned in response*/
 
     return NextResponse.json({ user: updatedUser }, { status: 200 });
   } catch (error) {
