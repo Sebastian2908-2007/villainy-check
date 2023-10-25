@@ -1,6 +1,7 @@
 import Cta from "@/components/Cta";
 import Image from "next/image";
 import React from 'react';
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -33,7 +34,7 @@ export default function Page() {
       bg-[#849b9f]
       "
       >
-        "When Morality Becomes Toxic, We're Here to Point It Out"
+        "When Morality Becomes Toxic, We're Here to Point It Out. We test for villainy"
       </h1>
 
       <section className="mb-12">
@@ -98,7 +99,7 @@ export default function Page() {
         <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
           Simply put, some folks are too resistant to shame, to the extent that they may easily
            infringe on others to succeed. &nbsp;
-          <span className="font-semibold">We can identify individuals with this type of villainy.</span>
+          <span className="font-semibold"><Link className='text-[#849b9f] underline' href="quiz/public/quizzes">We can identify individuals with this type of villainy.</Link></span>
         </p>
       </section>
 
@@ -156,7 +157,7 @@ export default function Page() {
         </p>
         <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
            In fact, on an individual level, this type of villainy is ever-present.
-            We can identify it so that you can make informed decisions when it comes to the people 
+            We can identify it&nbsp;<Link className='text-[#849b9f] underline' href="/products">so that you can make informed decisions</Link>&nbsp;when it comes to the people 
             you interact with.
         </p>
       </section>
