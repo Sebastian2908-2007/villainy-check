@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { decode } from 'jsonwebtoken';
+import Cookies from "js-cookie";
+import { MAX_AGE } from "@/utils/constants";
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -32,6 +34,8 @@ export default function Login() {
       if(userData.isPaid === true) {
       router.push(`/dashboard/paidadmin/${userData._id}`);
       }else{
+        let token = data.value;
+        Cookies.set('userinfocookie',token,{expires: MAX_AGE});
         router.push('/dashboard/free');
       }
     } else {

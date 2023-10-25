@@ -4,6 +4,8 @@ import clientDatabase from '@/utils/dexieDb';
 // utils/stripe.js
 import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+import { decode } from 'jsonwebtoken';
+import Cookies from 'js-cookie';
 
 
 
@@ -14,7 +16,7 @@ const [stripeData,setStripeData] = useState(null);
     return loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
   };*/
 //console.log(product);
-    const newProduct = {
+    let newProduct = {
         _id: product._id ,
         productTitle: product.productTitle ,
         marketingCopy: product.marketingCopy ,
@@ -42,8 +44,22 @@ const [stripeData,setStripeData] = useState(null);
 
 
       async function handleBuyNowClick() {
+       const userCookie = Cookies.get('userinfocookie') ;
+       console.log(userCookie,"user cookie");
+       const userInfo = decode(userCookie);
+       if(userInfo) {
+        newProduct.currentUser = true;
+        newProduct.currentUserId = userInfo._id
+        console.log(userInfo,'True current user');
+        console.log(newProduct,'new product data');
+       }else{
+        newProduct.currentUser = false;
+        newProduct.currentUserId = false;
+        console.log('false current user');
+       }
+       
         addProductToClientDatabase();
-        try {  
+        /*try {  
           // Create a PaymentIntent or Checkout Session on the server
           const response = await fetch('/api/Product/checkout', {
             method: 'POST',
@@ -59,7 +75,7 @@ const [stripeData,setStripeData] = useState(null);
         
         } catch (error) {
           console.error('Error processing purchase:', error);
-        }
+        }*/
       }
       
 

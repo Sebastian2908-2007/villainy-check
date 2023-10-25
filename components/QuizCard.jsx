@@ -4,6 +4,7 @@ import AuthModal from '@/components/AuthModal';
 import SuccessModal from './SuccessModal';
 import { verifyFreeLoggedIn } from '@/utils/getData';
 import Link from 'next/link';
+import { decode } from 'jsonwebtoken';
 const QuizCard = ({ quiz }) => {
   const { quizTitle,_id } = quiz;
   const [isOpen,setIsOpen] = useState(false);
@@ -13,6 +14,7 @@ const QuizCard = ({ quiz }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
+  
 console.log(quiz);
 const isUserLoggedIn = async () => {
     const user = await verifyFreeLoggedIn();
@@ -21,6 +23,20 @@ const isUserLoggedIn = async () => {
         setIsOpen(true);
     }
 };
+
+
+const isLoggedInNoClick = async () => {
+  const user = await verifyFreeLoggedIn();
+  if(user && user._id === undefined) {
+    if(!quizzerData){
+     const decodedUserData = decode(user.value);
+     setQuizzerData(decodedUserData);
+    }else{
+      return;
+    }
+};
+};
+isLoggedInNoClick();
 useEffect(() => {console.log(quizzerData,"quizzer data in quiz card")},[quizzerData]);
   return (
     <div className="bg-[#849b9f] shadow-md rounded px-8 pt-6 pb-8 mb-4">

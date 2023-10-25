@@ -8,7 +8,8 @@ import { headers } from 'next/headers'
 const stripeClient = stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request) {
-  const headersList = headers()
+  const headersList = headers();
+  let endUrl;
  
  //console.log(headersList);
   // this will get the referer url so we can use it f;or redirect upon a successfull transaction
@@ -23,8 +24,15 @@ export async function POST(request) {
     try {
       await dbConnect();
 
-      const { productTitle, marketingCopy, quiz, price, type } = await request.json();
+      const { productTitle, marketingCopy, quiz, price, type, currentUser, currentUserId } = await request.json();
+      console.log(currentUser,"Current useer BE");
       console.log(productTitle, marketingCopy, quiz, price, type);
+
+      if(currentUser) {
+      endUrl = 'success';
+      }else{
+        endUrl = 'signup/admin'
+      }
 
       // Validate the quiz ID
       const ExistingQuiz = await Quiz.findById(quiz);
@@ -71,7 +79,7 @@ export async function POST(request) {
       mode: 'payment' /*`${type}`*/,
       payment_method_types: ['card'],
       line_items: line_items,
-      success_url: `${origin}/signup/admin`,
+      success_url: `${origin}/${endUrl}`,
       cancel_url: `${url}`,
    
     });

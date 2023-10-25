@@ -62,7 +62,8 @@ export async function POST(request) {
         _id: savedUser._id,
         firstName: savedUser.firstName,
         email: savedUser.email,
-        isPaid: savedUser.isPaid
+        isPaid: savedUser.isPaid,
+        quizComplete: savedUser.quizComplete
       },
       process.env.JWT_SECRET,
       { expiresIn: '3h' }

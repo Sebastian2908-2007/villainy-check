@@ -442,6 +442,7 @@ if(typeAPer > 0 && typeBPer > 0) {
 else if(typeBPer > 0 && typeAPer === 0) {
     // only type B villainy or lefts values
     if(between(typeBPer,0,50)) {
+        console.log(recommends,'REC');
         console.log(between(typeBPer,0,50),'typeB start left ran');
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'start left';
