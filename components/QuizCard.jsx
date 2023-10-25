@@ -53,8 +53,13 @@ useEffect(() => {console.log(quizzerData,"quizzer data in quiz card")},[quizzerD
         </button>
         :
         <button
-          className="bg-blue-500 
-          hover:bg-blue-700 
+          className="
+          bg-[#999595] 
+          border
+          border-[#fde1e2]
+          hover:bg-[#fde1e2]
+          hover:text-[#999595]
+          hover:border-[#999595]
           text-white 
           font-bold 
           py-2 px-4 
