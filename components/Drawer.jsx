@@ -111,9 +111,10 @@ if(userCookie) {
               }
             {isSuperAdmin ?
               <li className='mb-2'>
-                <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/settings">
+               {/* <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/settings">
                  Profile Settings
-                </Link>
+            </Link>*/}
+            <div></div>
               </li>
               :
               <li className='mb-2'>
@@ -126,7 +127,7 @@ if(userCookie) {
              isSuperAdmin &&
              <li className='mb-2'>
              <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/product">
-               Products
+               Add Product
              </Link>
            </li >
              }

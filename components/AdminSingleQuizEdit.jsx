@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
+import DeleteWarningModal from './DeleteWarningModal';
 
 export default function AdminSingleQuizEdit({ quiz }) {
   
@@ -12,6 +13,7 @@ export default function AdminSingleQuizEdit({ quiz }) {
   const [isEditingAnswer, setIsEditingAnswer] = useState({});
   const [isEditingRecommendation, setIsEditingRecommendation] = useState({});
   const [workingQuizData, setWorkingQuizData] = useState(quiz);
+  const[warnModalOpen,setWarnModalOpen] = useState(false);
   const toggleEditingQuiz = () => {
     setIsEditingQuiz(!isEditingQuiz);
   };
@@ -222,9 +224,38 @@ console.log(editedRecommendation);
       console.error('An error occurred:', error);
     }
   };
+const onDelete = async () => {
+  try {
+    const quizId = workingQuizData._id;
+    console.log(quizId);
+    
 
+    // Send a DELETE request with the productId in the body
+    const response = await fetch('/api/Quiz', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({quizId}),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error deleting Quiz: ${response.statusText}`);
+    }
+
+    // Handle the response or any necessary state updates
+    console.log('Product deleted successfully.');
+
+    // You might want to clear the product data or perform other actions after deletion
+    setWorkingQuizData(null);
+  } catch (error) {
+    console.error('An error occurred while deleting:', error);
+    // Handle the error if needed
+  }
+};
   const handleDeleteQuiz = async () => {
-    try {
+    setWarnModalOpen(true);
+    /*try {
       const quizId = workingQuizData._id;
       console.log(quizId);
       
@@ -250,11 +281,17 @@ console.log(editedRecommendation);
     } catch (error) {
       console.error('An error occurred while deleting:', error);
       // Handle the error if needed
-    }
+    }*/
   };
 
   return (
-    workingQuizData &&
+    <>
+    <DeleteWarningModal
+    isOpen={warnModalOpen}
+    setIsOpen={setWarnModalOpen}
+    onDelete={onDelete}
+    />
+    {workingQuizData &&
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Current Quiz (Admin View)</h1>
 
@@ -262,7 +299,7 @@ console.log(editedRecommendation);
        
 
 
-        <div className="w-full bg-gray-300 p-4 flex justify-between mb-4">
+        <div className="w-full bg-[#999595] p-4 flex justify-between mb-4">
         <button className="text-blue-500 hover:underline" onClick={toggleEditingQuiz}>
           {isEditingQuiz ? (
             <SaveAsIcon onClick={() => handleEditQuiz(quiz._id)} />
@@ -272,7 +309,7 @@ console.log(editedRecommendation);
         </button>
           
           <button
-          className=" top-2 right-2 text-red-500 hover:text-red-700"
+          className=" top-2 right-2 text-[#8B0000] hover:text-red-700"
           onClick={handleDeleteQuiz}
         >
           Delete
@@ -548,7 +585,8 @@ console.log(editedRecommendation);
         </div>
         <div className="mt-4"></div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 }
 

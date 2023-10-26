@@ -110,3 +110,20 @@ export const verifyPaidLoggedIn = async () => {
   return false;
  }
 };
+export const getProducts = async () => {
+  try{
+ const response = await fetch('/api/Product',{
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+ }
+);
+ if(response.ok) {
+  const {products} = await response.json();
+  return products;
+ }
+}catch(e) {
+  console.log(e);
+}
+};

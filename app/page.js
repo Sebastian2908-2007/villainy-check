@@ -8,16 +8,16 @@ export default function Page() {
     <>
      <section className="
             w-full 
-            h-[30vh] 
-            min-[540px]:h-[45vh] 
+            h-[35vh] 
+            min-[540px]:h-[55vh] 
             min-[1024px]:h-[75vh]
             relative
             "
             >
                 <Image
                fill={true}
-                src='/detective.jpg'
-                alt="A villain hunting detective"
+                src='/new-home-hero.jpg'
+                alt="A formidable lighthouse representing truth in darkness"
                 />
             </section>
   <Cta/>

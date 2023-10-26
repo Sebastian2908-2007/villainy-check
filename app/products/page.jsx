@@ -6,16 +6,16 @@ export default function Products(){
         <div>
             <section className="
             w-full 
-            h-[30vh] 
-            min-[540px]:h-[45vh] 
-            min-[1024px]:h-[65vh]
+            h-[35vh] 
+            min-[540px]:h-[50vh] 
+            min-[1024px]:h-[80vh]
             relative
             "
             >
                 <Image
                fill={true}
-                src='/villan-hero.jpg'
-                alt="two evil villains to represent Type A and Type B villainy"
+                src='/products-hero.jpg'
+                alt="a lighthouse illuminating the darkness with a ship barely visible coming in the background"
                 />
             </section>
             <div className="bg-[#849b9f] py-8 px-4 sm:py-12 sm:px-8">
@@ -27,6 +27,19 @@ export default function Products(){
       Discover an individual's hidden tendencies towards the two types of villainy with our cutting-edge quiz. 
       Gain valuable insights to help you make informed decisions about the people you interact with.
     </p>
+    <div>
+      <a
+      className="
+      px-4 
+      py-2 
+      bg-[#999595] 
+      text-[#fde1e2] 
+      rounded
+      "
+       href="#products">
+        Get Started
+        </a>
+    </div>
   </div>
          </div>
 
@@ -70,8 +83,9 @@ export default function Products(){
     </p>
   </div>
          </div>
-            
+            <div id="products">
             <ProductList/>
+            </div>
             
         </div>
     );
