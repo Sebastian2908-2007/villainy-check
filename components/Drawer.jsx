@@ -139,6 +139,14 @@ if(userCookie) {
              </Link>
            </li>
              }
+             {
+             isSuperAdmin &&
+             <li className='mb-2'>
+             <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/users">
+               All users
+             </Link>
+           </li>
+             }
             </ul>
           </div>
         </div>

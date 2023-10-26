@@ -129,7 +129,7 @@ const ProductEditForm = ({ productData,setDisplayProducts }) => {
 
   return (
     <div className="p-4 border border-gray-300 rounded shadow">
-      <h1 className="text-2xl font-bold mb-4">
+      <h1 className="text-2xl font-bold mb-4 bg-[#849b9f] p-2 text-white">
         {isEditing ? (
           <input
             type="text"

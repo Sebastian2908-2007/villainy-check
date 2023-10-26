@@ -127,3 +127,20 @@ export const getProducts = async () => {
   console.log(e);
 }
 };
+export const getUsers = async () => {
+  try{
+ const response = await fetch('/api/Users',{
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+ }
+);
+ if(response.ok) {
+  const {users} = await response.json();
+  return users;
+ }
+}catch(e) {
+  console.log(e);
+}
+};

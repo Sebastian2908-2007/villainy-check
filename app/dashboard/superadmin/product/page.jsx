@@ -87,7 +87,7 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto px-4 lg:w-2/3">
-      <h2 className="text-2xl font-bold mb-4">Product Form</h2>
+      <h2 className="text-2xl font-bold mb-4 text-[#fde1e2] bg-[#999595]  p-2">Product Form</h2>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="productTitle">
           Product Title:
@@ -164,7 +164,20 @@ const ProductPage = () => {
       </div>
 
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        className="
+        border
+          bg-[#849b9f] 
+          border-[#fde1e2]
+          hover:bg-[#fde1e2] 
+          hover:text-[#999595]
+          hover:border-[#999595] 
+        text-white 
+        font-bold 
+        py-2 
+        px-4 
+        rounded 
+        focus:outline-none 
+        focus:shadow-outline"
         type="button"
         onClick={createProduct}
       >

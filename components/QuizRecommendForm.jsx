@@ -115,18 +115,22 @@ useEffect(() => {console.log(recommendData)},[recommendData]);
       disabled={!recomendEnabler ? true:false}
         type="submit"
         className="
-          py-2
-          px-4
-          rounded
-          hover:bg-blue-600
-          hover:text-white
-          hover:border-blue-600
-          disabled:bg-gray-400
-          disabled:text-gray-700
-          disabled:border-gray-400
-          bg-blue-500
-          text-white border
-          border-blue-500"
+        border
+        bg-[#849b9f] 
+        border-[#fde1e2]
+        hover:bg-[#fde1e2] 
+        hover:text-[#999595]
+        hover:border-[#999595] 
+      text-white 
+      font-bold 
+      py-2 
+      px-4 
+      rounded 
+      focus:outline-none 
+      focus:shadow-outline
+   disabled:bg-gray-400
+   disabled:text-gray-700
+   disabled:border-gray-400"
       >
         Create Recommendation
       </button>

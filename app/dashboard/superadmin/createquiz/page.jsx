@@ -24,7 +24,7 @@ const CreateQuiz = () => {
     };
     return (
       <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">Create Quiz</h1>
+        <h1 className="text-2xl font-bold mb-4 text-[#fde1e2] bg-[#999595]  p-2">Create Quiz</h1>
         <div className="lg:flex">
           {/* Left Side: Forms */}
           <div className="lg:w-1/2 pr-4">
