@@ -30,7 +30,7 @@ export default function DashboardLayout({children}){
     return(
         userData ? 
         <div>
-        {!userData.quizComplete ?<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-gray-800">
+        {!userData.quizComplete ?<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center bg-[#849b9f] p-2 mt-4 text-gray-100">
          {userData.firstName}, you have not quizzed yet!
          </h1>:
             <h1  className="text-2xl 
