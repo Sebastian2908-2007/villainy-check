@@ -1,9 +1,11 @@
 import { updateUserQuizStatus } from "./updateUserQuizStatus";
 import { between } from "./between";
+
 export const sendQuizResults = async (scoresData,recommends,tester) => {
     //console.log(recommends,'RECOMMEnds in send');
     console.log(tester,'tester ata top');
     console.log(recommends,'REC AT TOP');
+   
    /* const recommends = [
         {
             resultsMeaning
@@ -567,13 +569,18 @@ try{
 }
 
 try{
-await fetch('/api/Email',{
+const emailResponse = await fetch('/api/Email',{
     method:'POST',
     headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({quizData: quizData})
 });
+if(emailResponse.ok) {
+    return emailResponse.ok;
+}else{
+    return false;
+}
 }catch(e) {
     console.log(e);
 }

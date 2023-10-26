@@ -2,6 +2,8 @@
 import { useState,useEffect } from "react";
 import { sendQuizResults } from "@/utils/sendQuizResults";
 import { useStoreContext } from '@/utils/GlobalState';
+import { useRouter } from "next/navigation";
+
 export const QuizSlide = ({
     question,
     goToNextSlide,
@@ -21,11 +23,13 @@ export const QuizSlide = ({
     slideCounter,
    //setSlideCounter
 }) => {
- 
+ const router = useRouter();
   const [state, dispatch] = useStoreContext(); 
 const [lastTypeA,setLastTypeA] = useState({amount:0,add:false,subtract:false});
 const [lastTypeB,setLastTypeB] = useState({amount:0,add:false,subtract:false});
 const [lastBalanced,setLastBalanced] = useState({amount:0,add:false,subtract:false});
+const [finishSubmitted,setFinishSubmitted] = useState(null);
+useEffect(() => {console.log(finishSubmitted);},[finishSubmitted])
       
     
 
@@ -728,19 +732,41 @@ onClick={() => handleUnselect()}>Unselect</button>
         
         " />
       </div>:
-      <div className="flex flec-col justify-center bg-[#bbb6b6]">
-        <span className="text-[#fde1e2]">Quiz Complete!</span>
+      <div className="flex flec-col justify-center bg-[#bbb6b6] p-4">
+       {/* <span className="text-[#fde1e2]">Quiz Complete!</span>
         <span className="text-[#fde1e2]">Check out your scores</span>
         <span className="text-[#fde1e2]">Type A Score {displayAnswers.typeA}</span>
         <span className="text-[#fde1e2]">Type B Score {displayAnswers.typeB}</span>
-        <span className="text-[#fde1e2]">Type Balanced Score {displayAnswers.balanced}</span>
+      <span className="text-[#fde1e2]">Type Balanced Score {displayAnswers.balanced}</span>*/}
+      {finishSubmitted ? 
+            <button type="button" className="bg-[#849b9f] font-bold p-2 text-[#fde1e2]  border-2 border-[#fde1e2] rounded " disabled>
+            <svg className="animate-spin h-5 w-full  text-[#fde1e2] fill-current" viewBox="0 0 66 66">
+            <path d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z"><animateTransform attributeName="transform" type="rotate" dur="0.75s" values="0 12 12;360 12 12" repeatCount="indefinite"/></path>
+              </svg>
+ 
+            
+            ...Finishing up
+            </button>
+            
+            :
+
         <button 
-         className="text-xl font-['Inter'] font-bold text-[#fde1e2] mr-1"
-         onClick={() => {sendQuizResults(displayAnswers,state.quizRecs,state.testSubject);
+        // className="p-2 border-2 border-[#fde1e2] text-xl font-['Inter'] font-bold bg-[#849b9f] text-[#fde1e2] mr-1"
+        className='animate-bounce p-2 border-2 border-[#fde1e2] text-xl  font-bold bg-[#849b9f] text-[#fde1e2] mr-1'
+         onClick={ async () => {
+          setFinishSubmitted(true);
+        const successful = await sendQuizResults(displayAnswers,state.quizRecs,state.testSubject);
+         
+        if(successful === true) {
+           setFinishSubmitted(false);
+           router.push('/login');
+           console.log('SUCCESS in btn');
+        };
          console.log(state.testSubject);
          }}>
           Finish
         </button>
+                 }
       </div>
     );
 };

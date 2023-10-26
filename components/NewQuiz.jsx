@@ -123,7 +123,7 @@ const centerMode = between(window.innerWidth,1281,1365);
         
       ))}
     </Slider>
-<div >hello</div>
+
    
 
 
