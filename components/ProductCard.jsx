@@ -41,11 +41,11 @@ const [stripeData,setStripeData] = useState(null);
       async function handleBuyNowClick() {
        const userCookie = Cookies.get('userinfocookie') ;
        const userInfo = decode(userCookie);
+       
        if(userInfo) {
         newProduct.currentUser = true;
        }else{
         newProduct.currentUser = false;
-        //newProduct.currentUserId = false;
        }
        
         addProductToClientDatabase();

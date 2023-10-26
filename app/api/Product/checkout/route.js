@@ -1,6 +1,6 @@
 import dbConnect from '@/db/config/connection';
 import { NextResponse } from 'next/server';
-import {Quiz} from '@/db/models';
+import {Quiz,User} from '@/db/models';
 import stripe from 'stripe'; // Import the Stripe library
 import { headers } from 'next/headers'
 
@@ -26,6 +26,7 @@ export async function POST(request) {
 
       if(currentUser) {
       endUrl = 'success';
+   
       }else{
         endUrl = 'signup/admin'
       }
