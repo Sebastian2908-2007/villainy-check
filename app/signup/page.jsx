@@ -11,6 +11,7 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [formErr,setFormErr] = useState(null);
   const router = useRouter();
 
   const handleSignup = async (e) => {
@@ -54,12 +55,14 @@ try {
     } else {
       // Handle signup failure, e.g., show an error message.
       console.error('Signup failed');
+      setFormErr('something went wrong');
+      setTimeout(() => {setFormErr(null);},3000);
     }
   };
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSignup}>
+      <form className="bg-[#999595] shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSignup}>
         <h2 className="text-2xl mb-4 font-semibold">Sign Up</h2>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -133,11 +136,28 @@ try {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="
+            bg-[#849b9f] 
+            border-[#fde1e2]
+            hover:bg-[#fde1e2] 
+            hover:text-[#999595]
+            hover:border-[#999595]
+            text-white 
+            font-bold 
+            py-2 
+            px-4 
+            rounded 
+            focus:outline-none 
+            focus:shadow-outline
+            mb-2
+            "
             type="submit"
           >
             Sign Up
           </button>
+          {formErr &&
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mt-2">{formErr}</div>
+          }
         </div>
       </form>
     </div>

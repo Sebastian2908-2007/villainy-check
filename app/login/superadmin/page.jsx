@@ -9,6 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [superAdminPass, setSuperAdminPass] = useState(''); // Add superAdminPass state
   const router = useRouter();
+  const [formErr,setFormErr] = useState(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,6 +39,8 @@ export default function Login() {
     } else {
       // Handle login failure, e.g., show an error message.
       console.error('Login failed');
+      setFormErr('login failed check credentials');
+      setTimeout(() => {setFormErr(null);},3000)
     }
   };
 
@@ -107,6 +110,9 @@ export default function Login() {
           >
             Sign In
           </button>
+          {formErr &&
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mt-2">{formErr}</div>
+          }
         </div>
       </form>
     </div>

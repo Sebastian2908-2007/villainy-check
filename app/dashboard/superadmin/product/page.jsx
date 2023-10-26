@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { getSingleProduct } from '@/utils/getData';
 import AdminProductView from '@/components/AdminProductView';
-
+import Select from '@/components/Select';
 
 
 
@@ -131,14 +131,20 @@ const ProductPage = () => {
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="type">
           Type:
         </label>
-        <input
+        <Select
+        options={['payment','subscription']}
+        selectedValue={productData.type}
+        onChange={handleProductDataChange}
+        name={'type'}
+        />
+        {/*<input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="type"
           value={productData.type}
           onChange={handleProductDataChange}
           required
-        />
+        />*/}
       </div>
 
       {/* Quiz Select Dropdown */}

@@ -10,6 +10,7 @@ export default function FreeSignupForm({ closeModal,success,setUserData }) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [formErr,setFormErr] = useState(null);
   //const router = useRouter();
 
   const handleSignup = async (e) => {
@@ -41,13 +42,16 @@ export default function FreeSignupForm({ closeModal,success,setUserData }) {
       } catch (error) {
         console.error('Error decoding JWT:', error.message);
       }
+      closeModal(); // Close the modal after signup
+      success(true);
     } else {
       // Handle signup failure, e.g., show an error message.
       console.error('Signup failed');
+      setFormErr('something went wrong');
+      setTimeout(() => {setFormErr(null);},3000);
     }
 
-    closeModal(); // Close the modal after signup
-    success(true);
+   
   };
 
   return (
@@ -143,6 +147,9 @@ export default function FreeSignupForm({ closeModal,success,setUserData }) {
         >
           Sign Up
         </button>
+        {formErr &&
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mt-2">{formErr}</div>
+          }
       </div>
     </form>
   );
