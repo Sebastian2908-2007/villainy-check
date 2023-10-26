@@ -11,7 +11,7 @@ const [workingQuizData,setWorkingQuizData] = useState(null);
     // Fetch quiz data from the API here
     async function fetchQuizzes() {
       try {
-        const response = await fetch('http://localhost:3000/api/Quiz'); // Replace with your API endpoint
+        const response = await fetch('/api/Quiz'); // Replace with your API endpoint
         const data = await response.json();
         setQuizzes(data.quizzes);
       

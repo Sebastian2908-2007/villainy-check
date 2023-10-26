@@ -74,7 +74,7 @@ export const getSingleUser = async (userId) => {
 
 export async function fetchQuizzes() {
   try {
-    const response = await fetch('http://localhost:3000/api/Quiz'); // Replace with your API endpoint
+    const response = await fetch('/api/Quiz'); // Replace with your API endpoint
     const data = await response.json();
     return data.quizzes;
   
