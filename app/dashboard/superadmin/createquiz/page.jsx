@@ -19,7 +19,6 @@ const CreateQuiz = () => {
     const [workingQuizData,setWorkingQuizData] = useState(null);
     const updateQuizData = async (quizId) => {
       const freshQuizData = await getSingleQuiz(quizId);
-      console.log(freshQuizData,"updateQuizData RAN");
       setWorkingQuizData(freshQuizData);
     };
     return (

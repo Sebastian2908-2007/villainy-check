@@ -22,8 +22,6 @@ export default function SuperAdminDashboardLayout({children}){
         const data = await response.json();
         const decodedUserData = decode(data.value);
         const token = data.value;
-        //console.log(token);
-
         // set a browser cookie for use across profile
         existingCookie = Cookies.get('userinfocookie');
         if(!existingCookie) {

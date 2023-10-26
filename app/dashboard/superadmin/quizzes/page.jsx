@@ -23,7 +23,7 @@ const [workingQuizData,setWorkingQuizData] = useState(null);
 
     fetchQuizzes();
   }, []);
-useEffect(() => {console.log(workingQuizData,"WQD in quizzes")},[workingQuizData]);
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Current Quizzes (Admin View)</h1>

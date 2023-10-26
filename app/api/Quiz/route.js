@@ -54,7 +54,7 @@ export async function DELETE(request, response) {
     await dbConnect(); // Connect to MongoDB
 
     const { quizId } = await request.json(); // Assuming the quiz ID is in the request body
-console.log(quizId);
+
     // Find the quiz by ID
     const quiz = await Quiz.findById(quizId);
 
@@ -87,7 +87,6 @@ console.log(quizId);
 
     return NextResponse.json({ message: 'Quiz, questions, answers, and recommendations deleted.' }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });
   }
 }

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 
 export default function UpdateUserDetails({ userId }) {
-    console.log(userId);
   const [formData, setFormData] = useState({
     phone: '',
     industryType: '',

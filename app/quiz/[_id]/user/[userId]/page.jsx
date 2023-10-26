@@ -30,25 +30,15 @@ export default function TakeQuiz() {
             type: ADD_QUIZRECS_DATA,
             quizRecs: currentQuiz.outcomeRecommendations
          });
-        /*dispatch({
-            type: ADD_IDEALOUTCOME_DATA,
-            idealOutcome: currentQuiz.idealOutcome
-         });*/
-         console.log(currentQuiz.idealOutcome,'KK');
+    
+     
         setQuiz(currentQuiz);
-       // console.log(state.testSubject,"MY SUBJECT IN STATE");
-        }else{
-            console.log('quiz already set');
-           
+   
         }
     };
     getQuizzer();
     getTheQuiz();
     },[dispatch,quiz,quizId,testerId]);
- 
-    //console.log(splitPath);
-    //console.log(testerId,"userId");
-    //console.log(quizId,"QUIZ ID");
     return(
         quiz ?<NewQuiz items={quiz}/>:<button>Start Quiz</button>
     );

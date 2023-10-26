@@ -10,7 +10,6 @@ import { MAX_AGE } from '@/utils/constants';
 
 
 export async function PUT(request) {
-    console.log('updgrade running');
     let token;
     try {
       // Connect to the MongoDB database
@@ -18,8 +17,6 @@ export async function PUT(request) {
   
       // Extract the user ID from the request, assuming it's included in the request body
       const { userId, updatedData } = await request.json();
-  console.log(updatedData,'BE updated data');
-  console.log(userId);
       // Find the user by ID and update it with the provided data
       const updatedUser = await User.findByIdAndUpdate(
         userId,
@@ -55,7 +52,6 @@ export async function PUT(request) {
       const response = {
         value: token,
       };
-  console.log(serialized,"Serialized");
       return new Response(JSON.stringify(response), {
         status: 200,
         headers: { "Set-Cookie": serialized },

@@ -1,5 +1,4 @@
 export const updateUserQuizStatus = async (userId) => {
-    console.log(userId,'In function');
     try{
      const response = await fetch('/api/Users',{
         method:'PUT',
@@ -17,7 +16,6 @@ export const updateUserQuizStatus = async (userId) => {
         return true;
      }
     }catch(e) {
-        console.log(e,'ERR in update quiz status');
         return false;
     }
 };

@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import UniModal from "@/components/UniModal";
 import decode from "jwt-decode";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
     
 const PaidSettings = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,16 +25,16 @@ const PaidSettings = () => {
             if(data === null) {
           const userCookie = Cookies.get('userinfocookie');
           if(userCookie) {
-        console.log(userCookie,"USERCOOKIE")
+      
          decodedData = decode(userCookie);
-          console.log(decodedData);
+      
           userData(decodedData);
           }
             }
         //},3000);
     };
     setUserData();
-    useEffect(()=>{console.log(isOpen)},[isOpen]);
+    
     return(
         data ? 
         <div>

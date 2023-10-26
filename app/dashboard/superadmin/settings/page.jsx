@@ -15,9 +15,7 @@ export default function Settings() {
        };
 
     if (userCookie) {
-       decodedData = decode(userCookie);
-        console.log(decodedData);
-        
+       decodedData = decode(userCookie);   
     }
   
   

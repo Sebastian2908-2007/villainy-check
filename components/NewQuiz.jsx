@@ -1,24 +1,14 @@
 'use client'
 import React from 'react';
 import Slider from 'react-slick';
-import  { useRef,useState,useEffect } from 'react';
+import  { useRef,useState } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import QuizSlide from './QuizSlide';
 import { between } from '@/utils/between';
 import ErrorModal from './ErrorModal';
-//import { useStoreContext } from '@/utils/GlobalState';
-/*
-const closeModal = () => {
-  setError(null);
-};
 
-// Render the Modal component with the error and onClose function
-<Modal error={error} onClose={closeModal} />
-*/
 const NewQuiz = ({ items }) => {
-  //const [state, dispatch] = useStoreContext();
-  //console.log(state.idealOutcome,"MY SUBJECT IN STATE");
     let width  ;
     const sliderRef = useRef();
     const [typeA,setTypeA] = useState(0);
@@ -30,14 +20,8 @@ const NewQuiz = ({ items }) => {
    const [slideCounter,setSlideCounter] = useState(items.questions.length);
 
    const handleReset = () => {
-    //setDisplayAnswers(null);
-   // setTypeA(0);
-   // setTypeB(0);
-   // setBalanced(0);
-    setHasSubmitted(false);
-   
+        setHasSubmitted(false);
         setDisplayAnswers({typeA:typeA,typeB:typeB,balanced:balanced});
-   
         setSlideCounter(slideCounter - 1);
     
  };
@@ -52,16 +36,16 @@ const NewQuiz = ({ items }) => {
             return;
         }
         sliderRef.current.slickNext();
-       // console.log('ref clicked');
+      
         handleReset();
         if(slideCounter === 1) {
           setDisplayAnswers({...displayAnswers,idealOutcome:items.idealOutcome});
-          console.log('Ideal out setter  ran');
+
         }
       };
 
  const quizTitle = items.quizTitle;
-   console.log(items.idealOutcome);
+ 
 
   
 const centerMode = between(window.innerWidth,1281,1365);
@@ -78,7 +62,6 @@ const centerMode = between(window.innerWidth,1281,1365);
     arrows: false,
   };
 
-  //console.log(centerMode);
   if(between(window.innerWidth,540,912)){
  width = '90%';
   }else if(between(window.innerWidth,912,1280)){
@@ -88,12 +71,8 @@ const centerMode = between(window.innerWidth,1281,1365);
     width = '95%';
   }
  
- // useEffect(() => console.log(balanced,'balanced score'),[balanced]);
- // useEffect(() => console.log(typeA,'type A score'),[typeA]);
- // useEffect(() => console.log(typeB,'type B score'),[typeB]);
-  //useEffect(() => console.log(correctType,'correct type'),[correctType]);
-  useEffect(() => console.log(slideCounter,'Number of quiz slides'),[slideCounter]);
-  useEffect(() => console.log(displayAnswers,'Final Quiz Scores'),[displayAnswers]);
+ ;
+  
   return (
     <div className=' w-[100%] mt-[4rem] '>
         <ErrorModal error={error} onClose={closeModal} />

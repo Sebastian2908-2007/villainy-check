@@ -12,11 +12,9 @@ const ProductList = () => {
           // Check if the response status is okay (HTTP 200-299)
           if (!response.ok) {
             throw new Error(`Failed to fetch products: ${response.status}`);
-          }
-      
+          };
           // Parse the response as JSON
           const myProducts = await response.json();
-      console.log(myProducts);
           // Return the array of products
          setProducts(myProducts.products);
         } catch (error) {

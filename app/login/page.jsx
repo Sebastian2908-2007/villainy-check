@@ -30,7 +30,6 @@ export default function Login() {
       // Replace '/dashboard' with your desired route.
       //window.location.href = '/dashboard';
       const data = await response.json();
-      console.log(data);
       const userData = decode(data.value);
       if(userData.isPaid === true) {
       router.push(`/dashboard/paidadmin/${userData._id}`);

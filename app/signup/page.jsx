@@ -36,9 +36,7 @@ export default function Signup() {
      const token = data.value;
      if(token) {
       Cookies.set('userinfocookie',token,{expires: MAX_AGE});
-     }else{
-      console.log('error getting token!');
-     };
+     }
      router.push('/dashboard/free');
       
 

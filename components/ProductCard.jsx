@@ -12,10 +12,7 @@ import Cookies from 'js-cookie';
 
 const ProductCard = ({ product }) => {
 const [stripeData,setStripeData] = useState(null);
-/*const getStripe = () => {
-    return loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-  };*/
-//console.log(product);
+
     let newProduct = {
         _id: product._id ,
         productTitle: product.productTitle ,
@@ -24,18 +21,16 @@ const [stripeData,setStripeData] = useState(null);
         price: product.price ,
         type: product.type ,
       };
-//console.log(newProduct);
+
       async function addProductToClientDatabase() {
         try {
           await clientDatabase.product.add(newProduct);
-          console.log('Product added to the database.');
         } catch (error) {
           console.error('Error adding product:', error);
         }
       }
       useEffect(() => {
         if (stripeData) {
-            console.log(stripeData)
             stripePromise.then((res) => {
                 res.redirectToCheckout({ sessionId: stripeData.sessionId });
             });
@@ -45,17 +40,12 @@ const [stripeData,setStripeData] = useState(null);
 
       async function handleBuyNowClick() {
        const userCookie = Cookies.get('userinfocookie') ;
-       console.log(userCookie,"user cookie");
        const userInfo = decode(userCookie);
        if(userInfo) {
         newProduct.currentUser = true;
-      //  newProduct.currentUserId = userInfo._id
-        console.log(userInfo,'True current user');
-        console.log(newProduct,'new product data');
        }else{
         newProduct.currentUser = false;
         //newProduct.currentUserId = false;
-        console.log('false current user');
        }
        
         addProductToClientDatabase();
@@ -70,7 +60,6 @@ const [stripeData,setStripeData] = useState(null);
           });
       
           const session = await response.json();
-          console.log(session.sessionId);
          setStripeData(session);
         
         } catch (error) {

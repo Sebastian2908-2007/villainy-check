@@ -27,12 +27,10 @@ export default function AddUserForm() {
       return () => clearTimeout(timer);
     }
   }, [successMessage]);
-console.log(state.admin);
   const handleSubmit = async (e) => {
     let decodedData;
     e.preventDefault();
     const userCookie = Cookies.get('userinfocookie');
-    console.log(userCookie);
     if(userCookie){
         decodedData = decode(userCookie);
     }
@@ -56,7 +54,6 @@ console.log(state.admin);
 
       if (response.ok) {
         // Handle success, e.g., show a success message
-        console.log('User created and updated successfully');
         setSuccessMessage('User created and updated successfully');
         // Clear the form inputs
         setEmail('');

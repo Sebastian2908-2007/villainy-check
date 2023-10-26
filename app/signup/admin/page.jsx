@@ -24,7 +24,6 @@ export default function Signup() {
  
   const handlePaidSignup = async (e) => {
     e.preventDefault();
-    //console.log(product[0]._id);
     if(product.length === 0) {
       setFormErr('No product chosen!!!');
       setTimeout(() => {setFormErr(null);},3000);

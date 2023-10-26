@@ -10,7 +10,6 @@ export async function POST(request) {
     let token;
    
     const { email, password, superAdminPass } = await request.json();
-    console.log(process.env.SUPERADMINPASSWORD);
   
     try {
       // Connect to the MongoDB database
@@ -23,7 +22,6 @@ export async function POST(request) {
   
       // Fetch user data from the database
       const user = await User.findOne({ email });
-      console.log(user);
       if (user) {
         token = jwt.sign(
           {
@@ -41,7 +39,7 @@ export async function POST(request) {
       }
   
       const match = await bcrypt.compare(password, user.password);
-  console.log(match);
+
       if (match) {
         const serialized = serialize('superadmincookie', token, {
           httpOnly: true,
@@ -63,7 +61,6 @@ export async function POST(request) {
         return NextResponse.json({ error: 'Improper credentials. Please try again.' }, { status: 403 }); // Forbidden
       }
     } catch (error) {
-      console.log(error);
       return NextResponse.json({ error: 'Server error.' }, { status: 500 }); // Internal Server Error
     }
   }

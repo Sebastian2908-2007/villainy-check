@@ -35,9 +35,7 @@ const ProductPage = () => {
   useEffect(() => {
     fetchQuizData(); // Fetch quiz data when the component mounts
   }, []); // The empty dependency array ensures this runs once after the initial render
-  useEffect(() => {
-    console.log(createdProduct,"CCCCCPPPP"); 
-  }, [createdProduct]); 
+
 
   const handleProductDataChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +47,6 @@ const ProductPage = () => {
   };
 
   const createProduct = async () => {
-    console.log(productData, '***', selectedQuizId);
     try {
       // Combine the product data with the selected quizId
       const newProductData = { ...productData, quizId: selectedQuizId };
@@ -63,7 +60,6 @@ const ProductPage = () => {
 
       if (response.ok) {
         // Handle success, e.g., show a success message
-        console.log('Product created successfully');
 
         // Clear the form or perform any other actions as needed
         setProductData({
@@ -74,7 +70,6 @@ const ProductPage = () => {
         });
         const {product} = await response.json();
        const currentProduct = await getSingleProduct(product._id);
-       console.log(currentProduct,"AFTER SUB");
        SetCreatedProduct(currentProduct);
       } else {
         // Handle failure, e.g., show an error message

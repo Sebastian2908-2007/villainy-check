@@ -80,7 +80,6 @@ export async function POST(request) {
     }
   
     } catch (error) {
-      console.log(error);
       return NextResponse.json({ error: 'Server error.' }, { status: 500 }); // 500 Internal Server Error
     }
   }

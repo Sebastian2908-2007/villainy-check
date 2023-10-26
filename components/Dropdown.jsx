@@ -7,7 +7,6 @@ import { decode } from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 const Dropdown = () => {
   const userCookie = Cookies.get('userinfocookie');
-  console.log(userCookie);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef();
 

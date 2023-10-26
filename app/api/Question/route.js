@@ -26,7 +26,6 @@ export async function POST(request, response) {
     await dbConnect(); // Connect to MongoDB
 
     const { quizId, ques1, ques2 } = await request.json();
-    console.log(quizId,"QUIZ ID BACK");
 
     // Create a new Question document and associate it with the provided quizId
     const newQuestion = new Question({
@@ -83,7 +82,6 @@ export async function DELETE(request, response) {
 
     return NextResponse.json({ message: 'Question and associated answers deleted.' }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });
   }
 }
@@ -116,7 +114,6 @@ export async function PUT(request, response) {
 
     return NextResponse.json({ question: updatedQuestion }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });
   }
 }

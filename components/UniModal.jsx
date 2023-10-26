@@ -1,13 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+
 
 const UniModal = ({content,title,isOpen,closeModal}) => {
   
-  //const [title, setTitle] = useState("Modal Title");
-  //const [content, setContent] = useState("Modal content goes here");
 
- 
-useEffect(() => {console.log(isOpen)},[isOpen]);
   
 
   return (

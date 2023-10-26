@@ -59,7 +59,6 @@ export async function POST(request) {
         return NextResponse.json({ error: 'Improper credentials. Please try again.' }, { status: 403 }); // Forbidden
       }
     } catch (error) {
-        console.log(error);
       return NextResponse.json({ error: 'Server error.' }, { status: 500 }); // 500 Internal Server Error
     }
   }

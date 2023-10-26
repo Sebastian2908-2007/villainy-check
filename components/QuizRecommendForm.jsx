@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import Select from './Select';
 import { recommendOptions,answerTypeOptions } from '@/utils/constants';
 const QuizRecommendForm = ({recomendEnabler,setRecommendEnabler,createdQuizId,updateQuizData}) => {
@@ -11,13 +11,13 @@ const QuizRecommendForm = ({recomendEnabler,setRecommendEnabler,createdQuizId,up
   });
 
   const handleRecommendChange = (e) => {
-    console.log(e.target.name);
+  
     setRecommendData({
       ...recommendData,
       [e.target.name]: e.target.value,
     });
   };
-useEffect(() => {console.log(recommendData)},[recommendData]);
+
 
   const handleRecommendSubmit = async (e) => {
     e.preventDefault();
@@ -46,9 +46,6 @@ useEffect(() => {console.log(recommendData)},[recommendData]);
         // You can set an error state or display an error message to the user
       } else {
         // Successful response, you can handle success here
-        const responseData = await response.json();
-        console.log('Recommendation created:', responseData);
-  
         // Clear the form
         setRecommendData({
           typeOfRecommendation: '',

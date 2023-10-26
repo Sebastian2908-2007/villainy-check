@@ -15,7 +15,6 @@ const Success = () => {
     const decodedData = decode(userCookie);
     const {_id} = decodedData;
     const userId = _id;
-    console.log(userId,"user id");
 
     try {
         const response = await fetch('/api/Users/upgrade', {
@@ -25,9 +24,7 @@ const Success = () => {
         });
   
         if (response.ok) {
-            //console.log(await response.json());
             const data = await response.json();
-            console.log('NEW TOKEN',data);
             const token = data.value;
             Cookies.remove('userinfocookie');
             Cookies.set('userinfocookie',token,{expires: MAX_AGE});

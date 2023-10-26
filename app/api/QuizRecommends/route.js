@@ -44,7 +44,6 @@ export async function POST(request, response) {
 
     return NextResponse.json({ recommendation: savedRecommendation }, { status: 201 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });
   }
 }
@@ -87,7 +86,6 @@ export async function PUT(request, response) {
 
     return NextResponse.json({ recommendation: updatedRecommendation }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });
   }
 }

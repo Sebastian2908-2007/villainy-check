@@ -8,8 +8,6 @@ const Users = () => {
        const users = await getUsers();
        if(!displayUsers){
        setDisplayUsers(users);
-       console.log(users,"in admin dash users page");
-       console.log("in admin dash userpage data ranning");
        };
     };
     getAllUsers();

@@ -14,7 +14,6 @@ export default function PublicQuizzes() {
    
 const quizzes = await fetchQuizzes();
     setQuizzes(quizzes);
-    console.log(quizzes)
    }
    if(myQuizzes === null) {setQuizData();};
   //},[]);

@@ -8,8 +8,6 @@ export default function SuperAdminDashboard() {
        const products = await getProducts();
        if(!displayProducts){
        setDisplayProducts(products);
-       console.log(products,"in admin dash products");
-       console.log("in admin dash products ranning");
        };
     };
     getAllProducts();

@@ -89,7 +89,6 @@ export default function AdminSingleQuizEdit({ quiz }) {
 
       const data = await response.json();
 
-      console.log('Question data updated:', data);
 
       setWorkingQuizData({
         ...workingQuizData,
@@ -176,9 +175,7 @@ export default function AdminSingleQuizEdit({ quiz }) {
         throw  Error(`Error updating quiz data: ${response.statusText}`);
       }
 
-      const data = await response.json();
-
-      console.log('Quiz data updated:', data);
+      //const data = await response.json();
       setWorkingQuizData({ ...workingQuizData, ...updatedData });
       setIsEditingQuiz(false);
     } catch (error) {
@@ -190,7 +187,7 @@ export default function AdminSingleQuizEdit({ quiz }) {
     const editedRecommendation = workingQuizData.outcomeRecommendations.find(
       (r) => r._id === recommendationId
     );
-console.log(editedRecommendation);
+
     try {
       const response = await fetch('/api/QuizRecommends', {
         method: 'PUT',
@@ -227,8 +224,6 @@ console.log(editedRecommendation);
 const onDelete = async () => {
   try {
     const quizId = workingQuizData._id;
-    console.log(quizId);
-    
 
     // Send a DELETE request with the productId in the body
     const response = await fetch('/api/Quiz', {
@@ -244,7 +239,7 @@ const onDelete = async () => {
     }
 
     // Handle the response or any necessary state updates
-    console.log('Product deleted successfully.');
+
 
     // You might want to clear the product data or perform other actions after deletion
     setWorkingQuizData(null);
@@ -257,9 +252,6 @@ const onDelete = async () => {
     setWarnModalOpen(true);
     /*try {
       const quizId = workingQuizData._id;
-      console.log(quizId);
-      
-  
       // Send a DELETE request with the productId in the body
       const response = await fetch('/api/Quiz', {
         method: 'DELETE',
@@ -274,7 +266,6 @@ const onDelete = async () => {
       }
   
       // Handle the response or any necessary state updates
-      console.log('Product deleted successfully.');
   
       // You might want to clear the product data or perform other actions after deletion
       setWorkingQuizData(null);

@@ -8,16 +8,9 @@ const PaidAllUsers = () => {
     
  let url = window.location.href;
  const domainName = url.split('/dashboard')[0];
- console.log(domainName,'Domain name');
-    console.log(state.admin.subjects, "in all users");
     const copyToClipboard = async (e) => {
         try {
-            //url = window.location.href;
-            console.log(url,'URL');
-            await navigator.clipboard.writeText(`${domainName}/${e.target.value}`);
-
-            console.log('Text copied to clipboard');    
-            console.log(e.target.value,'Value copied!!!');    
+            await navigator.clipboard.writeText(`${domainName}/${e.target.value}`);   
           } catch (error) {
             console.error('Failed to copy text: ', error);
           }
@@ -26,7 +19,7 @@ const PaidAllUsers = () => {
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {state.admin.subjects.map((user) => (
+            {state.admin.subjects && state.admin.subjects.map((user) => (
                 <div key={user._id} className="
                 bg-[#999595] 
                 shadow-lg 

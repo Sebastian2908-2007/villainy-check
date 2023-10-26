@@ -12,25 +12,19 @@ import MagickLinkEmail from '@/components/emails/MagickLinkEmail';
 
 /**this is an auth route used in the paid admin layout component it helps with ui security*/
 export async function GET() {
-    console.log("DDDDDDDDDDDDDDDDDDDD");
     let loginToken;
     let token;
     let isPaid;
     const cookieStore = cookies();
     token = cookieStore.get(PAID_ADMIN_COOKIE_NAME);
-//console.log(token);
      // if this route is hit and previous cookie is not available then we know user is logging in
      // so we try for that cookie so we can check isPaid data on token
      loginToken = cookieStore.get(COOKIE_NAME);
 if(token === undefined && loginToken) {
-    console.log('this works token undef but login token exists');
     const userTknData = decode(loginToken.value);
     isPaid = userTknData.isPaid;
-    console.log(isPaid,"isPaid");
 }
 
-
-  console.log(token,"B E");
     if (isPaid === false) {
       return NextResponse.json(
         {
@@ -52,12 +46,10 @@ if(token === undefined && loginToken) {
     
     verify(value, secret,function(err,decoded){
       if(err) {
-        console.log(err,'VERIFY ERR');
-        console.log(decoded,'VERIFY DECODED');
+        console.log(err);
+       
       }
-      else{
-        console.log(decoded)
-      }
+    
     });
       const response = {
         value: value,
@@ -68,7 +60,7 @@ if(token === undefined && loginToken) {
        
       });
     } catch (e) {
-       //console.log(e);
+       
       
       return NextResponse.json(
         {
@@ -98,7 +90,7 @@ if(token === undefined && loginToken) {
        
       });
     } catch (e) {
-        console.log(e);
+       
       return NextResponse.json(
         {
           message: "Something went wrong",
@@ -139,7 +131,6 @@ export async function POST(request) {
       adminEmail,//users admin email
       assignedQuiz// send assignedQuiz
     } = await request.json();
-console.log(adminEmail,"INNNNNNNNNNN BBBBBBBBBBBAAAAAAAAACCCKKK");
 const hashedPassword = await bcrypt.hash(password, 10);
     // Check if the user creating the new user exists
     const creatorUser = await User.findById(userId);
@@ -185,15 +176,14 @@ try {
     subject: `${userToUpdate.firstName} ${userToUpdate.lastName}'s Magic Quiz Link`,
     react: MagickLinkEmail({ newQuizLink }),
   });
-console.log(data);
+
 } catch (error) {
-  console.log('email error',error);
+  console.log('email error');
 }
 
 
     return NextResponse.json({ message: 'User created and updated successfully & quiz link email sent!.' }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });
   }
 }

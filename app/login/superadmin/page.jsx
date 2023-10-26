@@ -30,7 +30,6 @@ export default function Login() {
       const data = await response.json();
      
       const userData = decode(data.value);
-      console.log(userData.isSuperAdmin);
       if (userData.isSuperAdmin === true) {
         router.push(`/dashboard/superadmin/${userData._id}`);
       } else {

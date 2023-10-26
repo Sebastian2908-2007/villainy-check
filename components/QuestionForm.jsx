@@ -6,15 +6,12 @@ const QuestionForm = ({
     createdQuizId,
     quesAnswerMediator,
     setQuesAnswerMediator,
-    currentQuesId,
     setCurrentQuesId,
     setRecommendEnabler,
     recomendEnabler,
     updateQuizData
 }) => {
-    const [isDisabled,setIsDisabled] = useState(false);
     const quizId = createdQuizId;
-    console.log(quizId,"MY QUIZID");
   const [questionData, setQuestionData] = useState({
     ques1: '',
     ques2: '',
@@ -71,12 +68,9 @@ const QuestionForm = ({
           console.error('Error creating question:', response.statusText);
         }
       } catch (error) {
-        console.log(error);
         console.error('Error creating question:', error.message);
       }
   };
-
-useEffect(() => {console.log(createdQuestionIds,"QUESIDS"); console.log(questionData)},[createdQuestionIds,questionData])
   return (
     <div className=''>
     <form onSubmit={handleQuesSubmit}>

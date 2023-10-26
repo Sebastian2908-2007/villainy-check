@@ -102,7 +102,7 @@ const toggleEditingQuiz = () => {
       const data = await response.json();
   
       // Handle the response or update your state as needed
-      console.log('Question data updated:', data);
+      
   
       // Update your state with the edited question data
       setWorkingQuizData({
@@ -124,7 +124,6 @@ const toggleEditingQuiz = () => {
   
 
   const handleEditAnswer = async (questionId, answerId) => {
-    console.log(questionId,answerId,"ID's EDIT ANSWER FUNV");
     const editedAnswer = quiz.questions
       .find((q) => q._id === questionId)
       .answers.find((a) => a._id === answerId);
@@ -178,8 +177,6 @@ const toggleEditingQuiz = () => {
 
 
   const handleEditQuiz = async (quizId) => {
-    console.log(quizId,"IN EDIT HANDLE Q");
-    console.log(workingQuizData,"IN EDIT HANDLE Q");
     try {
       // Prepare the updated data. You should replace this with your actual data.
       const updatedData = {
@@ -205,7 +202,7 @@ const toggleEditingQuiz = () => {
       const data = await response.json();
   
       // Handle the response or update your state as needed
-      console.log('Quiz data updated:', data);
+    
       // Update your state with the edited quiz data
       setWorkingQuizData({ ...workingQuizData, ...updatedData });
       setIsEditingQuiz(false); // Exit edit mode

@@ -3,11 +3,11 @@
 import { useReducer } from 'react';
 
 import {
-    ADD_ADMIN_DATA, ADD_QUIZZER_DATA,ADD_QUIZRECS_DATA,//ADD_IDEALOUTCOME_DATA
+    ADD_ADMIN_DATA, ADD_QUIZZER_DATA,ADD_QUIZRECS_DATA,
 } from './actions';
 
 export const reducer = (state, action) => {
-    //console.log(action,'ACTIOn REDucer');
+
      switch (action.type) {
                  case ADD_ADMIN_DATA:
                      return{
@@ -25,11 +25,7 @@ export const reducer = (state, action) => {
                     ...state,
                     quizRecs : action.quizRecs,
                 };
-           /* case ADD_IDEALOUTCOME_DATA:
-                return{
-                    ...state,
-                    idealOutcome : action.idealOutcome,
-                };*/
+        
                               
 
              // if it's none of these actions, do not update state at all and keep things the same! 

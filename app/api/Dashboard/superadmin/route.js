@@ -5,9 +5,9 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     const cookieStore = cookies();
-  console.log(ADMIN_COOKIE_NAME);
+  
     const token = cookieStore.get(ADMIN_COOKIE_NAME);
-  console.log(token,"Bhmm");
+
     if (!token) {
       return NextResponse.json(
         {

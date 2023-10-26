@@ -1,86 +1,4 @@
 'use client';
-/*import React, { useState } from 'react';
-
-const ProductEditForm = ({ productData }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedData, setEditedData] = useState(productData);
-
-  const handleEditToggle = () => {
-    setIsEditing(!isEditing);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditedData({ ...editedData, [name]: value });
-  };
-
-  const handleSave = () => {
-    // Add code to save the edited data (editedData) here
-    // For example, you can make an API request to update the data on the server
-    // Once saved, you can set isEditing back to false
-    setIsEditing(false);
-  };
-
-  return (
-    <div className="p-4 border border-gray-300 rounded shadow">
-      <h1 className="text-2xl font-bold mb-4">
-        {isEditing ? (
-          <input
-            type="text"
-            name="productTitle"
-            value={editedData.productTitle}
-            onChange={handleInputChange}
-            className="w-full border-b-2 border-blue-500 focus:outline-none"
-          />
-        ) : (
-          productData.productTitle
-        )}
-      </h1>
-
-      <p className="mb-2">
-        {isEditing ? (
-          <textarea
-            name="marketingCopy"
-            value={editedData.marketingCopy}
-            onChange={handleInputChange}
-            className="w-full h-20 border border-gray-300 focus:outline-none"
-          />
-        ) : (
-          productData.marketingCopy
-        )}
-      </p>
-
-      <div className="mt-4">
-        {isEditing ? (
-          <button
-            onClick={handleSave}
-            className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
-          >
-            Save
-          </button>
-        ) : (
-          <button
-            onClick={handleEditToggle}
-            className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
-          >
-            Edit
-          </button>
-        )}
-
-        {isEditing && (
-          <button
-            onClick={handleEditToggle}
-            className="px-4 py-2 bg-gray-500 text-white rounded"
-          >
-            Cancel
-          </button>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default ProductEditForm;*/
 import React, { useState } from 'react';
 import { getProducts } from "@/utils/getData";
 const ProductEditForm = ({ productData,setDisplayProducts }) => {
@@ -88,11 +6,8 @@ const ProductEditForm = ({ productData,setDisplayProducts }) => {
   const [editedData, setEditedData] = useState(productData);
 
   const refetch = async () => {
-    const products = await getProducts();
-   
+    const products = await getProducts(); 
    setDisplayProducts(products);
-   console.log(products,"in admin dash products");
-   console.log("in admin dash products ranning");
 };
 
   const handleEditToggle = () => {

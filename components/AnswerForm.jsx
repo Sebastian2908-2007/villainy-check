@@ -61,7 +61,7 @@ const AnswerForm = ({
   };
 useEffect(
     () => {
-        console.log(currentQuesId);
+    
         if(answerCount === 0){
             setQuesAnswerMediator(false);
              setAnswerCount(7);
@@ -69,7 +69,7 @@ useEffect(
         }
     },[answerCount]);
 
-    useEffect(() => {console.log(answerData);},[answerData])
+
   return (
     <form onSubmit={handleAnswerSubmit}>
        {quesAnswerMediator ? <span>{answerCount}</span>:null}

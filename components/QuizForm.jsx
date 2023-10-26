@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 
 const QuizForm = ({createdQuizId,setCreatedQuizId,updateQuizData}) => {
  
@@ -36,7 +36,6 @@ const QuizForm = ({createdQuizId,setCreatedQuizId,updateQuizData}) => {
   
         const data = await response.json();
         const quizId = data.quiz._id;
-        console.log('Created quiz with ID:', quizId);
         await updateQuizData(quizId);
   
         // Store the quiz _id in state
@@ -50,9 +49,6 @@ const QuizForm = ({createdQuizId,setCreatedQuizId,updateQuizData}) => {
         console.error('An error occurred:', error);
       }
   };
-
-useEffect(()=> {console.log(quizData)},[quizData]);
-useEffect(()=> {console.log(createdQuizId)},[createdQuizId]);
  
   return (
     <>
@@ -71,22 +67,6 @@ useEffect(()=> {console.log(createdQuizId)},[createdQuizId]);
           required
         />
       </div>
-
-     {/* <div className="mb-4">
-        <label htmlFor="idealOutcome" className="block font-medium">
-          Ideal Outcome:
-        </label>
-        <input
-          type="text"
-          id="idealOutcome"
-          name="idealOutcome"
-          value={quizData.idealOutcome}
-          onChange={handleQuizChange}
-          className="w-full border rounded p-2"
-          required
-        />
-  </div>*/}
-
       <button  disabled={createdQuizId && true} type="submit" 
     className="
     disabled:bg-gray-400

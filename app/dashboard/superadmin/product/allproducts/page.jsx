@@ -35,7 +35,7 @@ export default function AdminProductListView() {
       
           // Parse the response as JSON
           const myProducts = await response.json();
-      console.log(myProducts);
+    
           // Return the array of products
          setProducts(myProducts.products);
         } catch (error) {
@@ -45,8 +45,7 @@ export default function AdminProductListView() {
       }
   
  useEffect(()=>{getAllProducts()},[]);
- useEffect(()=>{fetchQuizData()},[]);
- useEffect(()=>{console.log(products)},[products]);     
+ useEffect(()=>{fetchQuizData()},[]);     
   return (
     products && quizzes ?
     <div>

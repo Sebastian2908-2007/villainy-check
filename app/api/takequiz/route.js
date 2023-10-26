@@ -8,16 +8,13 @@ import dbConnect from '@/db/config/connection';
 
 export async function GET() {
   const cookieStore = cookies().getAll();
-  console.log(cookieStore);
     try {
     cookieStore.forEach((cookie) => {
 cookies().delete(cookie.name);
-console.log(`${cookie.name} DELETED`);
     });
     
     return NextResponse.json({ message: 'Quiz, questions, answers, and recommendations deleted.' }, { status: 200 });
     } catch (e) {
-       //console.log(e);
       
       return NextResponse.json(
         {

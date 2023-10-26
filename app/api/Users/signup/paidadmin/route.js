@@ -68,7 +68,6 @@ export async function POST(request) {
       headers: { "Set-Cookie": serialized },
     });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 }); // 500 Internal Server Error
   }
 }

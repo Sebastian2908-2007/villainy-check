@@ -1,5 +1,5 @@
 'use client'
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { sendQuizResults } from "@/utils/sendQuizResults";
 import { useStoreContext } from '@/utils/GlobalState';
 import { useRouter } from "next/navigation";
@@ -29,13 +29,12 @@ const [lastTypeA,setLastTypeA] = useState({amount:0,add:false,subtract:false});
 const [lastTypeB,setLastTypeB] = useState({amount:0,add:false,subtract:false});
 const [lastBalanced,setLastBalanced] = useState({amount:0,add:false,subtract:false});
 const [finishSubmitted,setFinishSubmitted] = useState(null);
-useEffect(() => {console.log(finishSubmitted);},[finishSubmitted])
+
       
     
 
     
-    
-  //useEffect(() => {console.log(lastBalanced)},[lastBalanced]);
+
     
    const handleUnselect = () => {
     if(lastBalanced.add) {
@@ -70,30 +69,20 @@ setLastTypeB({amount:0,add:false,subtract:false});
         if(answer.correct === 'true') {
             //setCorrectType(answer.answerType);
             correctType = answer.answerType;
-           // console.log(answer._id,'correct answer id');
         }
     });
 
-      // console.log(event.target);
        setHasSubmitted(true);
 
        /**this will be our question.answer[].correct */
         const isUserCorrect = event.target.getAttribute('data-correct');
         const answerType = event.target.getAttribute('data-answertype');
-        /**In the case of our data we will have this be our question.correctAnswer */
-        //const correctType = question.correctType;
-       // console.log(isUserCorrect);
-    //console.log(answerType);
-   // console.log(correctType);
-
         if(isUserCorrect === 'true' && answerType === correctType) {
             setBalanced(balanced + 15);
-          //  console.log('adding balanced');
             setLastBalanced({...lastBalanced,amount: 15,add:true});
             return;
             /**added mid to equasion */
         }else if(isUserCorrect === 'false' && correctType === 'far right') {
-           // console.log('FAR RIGHT ran');
               switch(answerType) {
                 case'start left':
                 setTypeB(typeB + 5);
@@ -159,7 +148,6 @@ setLastTypeB({amount:0,add:false,subtract:false});
               }
         }
         else if(isUserCorrect === 'false' && correctType === 'mid right') {
-           // console.log('mid RIGHT ran');
               switch(answerType) {
                 case'start left':
                 setTypeB(typeB + 5);
@@ -227,7 +215,6 @@ setLastTypeB({amount:0,add:false,subtract:false});
         
         
         else if(isUserCorrect === 'false' && correctType === 'start right') {
-          //  console.log('FAR RIGHT ran');
               switch(answerType) {
                 case'start left':
                 setTypeB(typeB + 5);
@@ -300,7 +287,6 @@ setLastTypeB({amount:0,add:false,subtract:false});
         /*!!!!!!!!!!!!!!!**************NEED TO SETLAST BELOW********************************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
         
         else if (isUserCorrect === 'false' && correctType === 'far left') {
-          //  console.log('FAR left ran');
             switch(answerType) {
                 case'start right':
               //  setTypeB(typeB - 5);
@@ -366,7 +352,6 @@ setLastTypeB({amount:0,add:false,subtract:false});
               }      
         }
         else if (isUserCorrect === 'false' && correctType === 'mid left') {
-          //  console.log('FAR left ran');
             switch(answerType) {
                 case'start right':
                // setTypeB(typeB - 5);
@@ -432,7 +417,6 @@ setLastTypeB({amount:0,add:false,subtract:false});
               }      
         }
         else if (isUserCorrect === 'false' && correctType === 'start left') {
-          //  console.log('FAR left ran');
             switch(answerType) {
                 case'start right':
                // setTypeB(typeB - 10);
@@ -500,7 +484,6 @@ setLastTypeB({amount:0,add:false,subtract:false});
 
 
         else if (isUserCorrect === 'false' && correctType === 'mid') {
-         //   console.log('mid ran');
             switch(answerType) {
                 case'start right':
                 //setTypeB(typeB - 5);
@@ -568,14 +551,6 @@ setLastTypeB({amount:0,add:false,subtract:false});
         /**ADD NEWER ELSE IF AND CASES BELOW */
      };
     
-     /*const handleSubmit = (event) => {
-        event.preventDefault();
-    setDisplayAnswers({typeA:typeA,typeB:typeB,balanced:balanced});
-    setHasSubmitted(true);
-   // console.log('handle submit ran');
-    return;
-     };*/
-
 
     return(
         slideCounter >= 1 ?
@@ -760,9 +735,7 @@ onClick={() => handleUnselect()}>Unselect</button>
         if(successful === true) {
            setFinishSubmitted(false);
            router.push('/login');
-           console.log('SUCCESS in btn');
         };
-         console.log(state.testSubject);
          }}>
           Finish
         </button>

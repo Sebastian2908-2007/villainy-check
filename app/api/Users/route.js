@@ -89,7 +89,6 @@ export async function POST(request) {
     });
   
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 }); // 500 Internal Server Error
   }
 }
@@ -102,8 +101,6 @@ export async function PUT(request) {
 
     // Extract the user ID from the request, assuming it's included in the request body
     const { userId, updatedData } = await request.json();
-//console.log(updatedData,'BE updated data');
-//console.log(userId);
     // Find the user by ID and update it with the provided data
     const updatedUser = await User.findByIdAndUpdate(
       userId,
@@ -115,18 +112,7 @@ export async function PUT(request) {
       return NextResponse.json({ error: 'User not found.' }, { status: 404 });
     }
 
-    /*token = jwt.sign(
-      {
-        _id: updatedUser._id,
-        firstName: updatedUser.firstName,
-        email: updatedUser.email,
-        isPaid: updatedUser.isPaid,
-        quizComplete: updatedUser.quizComplete
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: '3h' }
-    );
-console.log(updatedUser.isPaid,'updated is paid??? user BE '); ,token: token previous was returned in response*/
+   
 
     return NextResponse.json({ user: updatedUser }, { status: 200 });
   } catch (error) {

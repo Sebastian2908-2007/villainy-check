@@ -12,11 +12,7 @@ export default function DashboardLayout({children}){
     useEffect(() => {
         getUser();
     },[]);
-    useEffect(() => {
-      if(userData) {
-      console.log(userData.quizComplete);
-      };
-    },[userData]);
+ 
 
     const getUser = async () => {
       const response = await fetch('/api/Dashboard/free');
@@ -24,8 +20,6 @@ export default function DashboardLayout({children}){
         const data = await response.json();
         const decodedUserData = decode(data.value);
         setUserData(decodedUserData);
-        console.log(decodedUserData);
-        
         return;
       }
       else{

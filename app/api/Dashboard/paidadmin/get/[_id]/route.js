@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
     await dbConnect();
 
     const { _id } = params; // Get the user ID from the route parameters
-console.log(_id,"IN ROUTE");
+
     // Fetch the user document by _id and populate any referenced data fields (e.g., productType, subjects, etc.)
     const user = await User.findById(_id)
       .populate('productType') // Assuming productType is a reference to the 'Product' model

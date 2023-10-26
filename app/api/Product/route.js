@@ -70,7 +70,7 @@ export async function PUT(request) {
     await dbConnect(); // Connect to MongoDB
 
     const { productId, updatedData } = await request.json();
-console.log(productId, updatedData);
+
     // Find the product by ID and update it with the provided data
     const updatedProduct = await Product.findByIdAndUpdate(
       productId,
@@ -110,7 +110,6 @@ export async function DELETE(request) {
 
     return NextResponse.json({ message: 'Product deleted.' }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: 'Server error.' }, { status: 500 });
   }
 }

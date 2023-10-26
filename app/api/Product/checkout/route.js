@@ -10,12 +10,10 @@ const stripeClient = stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(request) {
   const headersList = headers();
   let endUrl;
- 
- //console.log(headersList);
   // this will get the referer url so we can use it f;or redirect upon a successfull transaction
   const url = headersList.get('referer');
   const origin = headersList.get('origin');
-  //console.log(url,'FFFFFSDGJSD;LFGJKSDF;IOGSDF;SDLFGJ;;SDFKL;');
+
        
   //const {origin} = url;
     // initialize empty line items array
@@ -25,8 +23,6 @@ export async function POST(request) {
       await dbConnect();
 
       const { productTitle, marketingCopy, quiz, price, type, currentUser} = await request.json();
-      console.log(currentUser,"Current useer BE");
-      console.log(productTitle, marketingCopy, quiz, price, type);
 
       if(currentUser) {
       endUrl = 'success';

@@ -1,140 +1,3 @@
-/*import React, { useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveAsIcon from '@mui/icons-material/SaveAs';*/
-
-/*import React, { useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveIcon from '@mui/icons-material/Save';
-
-export default function AdminProductView({ incomingProduct,quizzes }) {
-  // State to toggle editing mode for the product
-  const [isEditingProduct, setIsEditingProduct] = useState(false);
-  const [product, setProduct] = useState(incomingProduct);
-
-  const toggleEditingProduct = () => {
-    setIsEditingProduct(!isEditingProduct);
-  };
-
-  const handleEditProduct = async () => {
-    try {
-      // Prepare the updated data. You should replace this with your actual data.
-      const updatedData = {
-        productTitle: product.productTitle,
-        marketingCopy: product.marketingCopy,
-        price: product.price,
-        type: product.type,
-        // Add or update other fields as needed
-      };
-console.log(updatedData);
-      const productId = product._id;
-
-      // Send a PUT request to update the product data
-      const response = await fetch(`/api/Product/`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ productId, updatedData }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error updating product data: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-
-      // Handle the response or update your state as needed
-      console.log('Product data updated:', data);
-
-      // Exit edit mode
-      setIsEditingProduct(false);
-    } catch (error) {
-      console.error('An error occurred:', error);
-      // Handle the error if needed
-    }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    // Update the product state with the new value
-    setProduct({ ...product, [name]: value });
-  };
-
-  return (
-    product && (
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">Product View</h1>
-
-        <div key={product._id} className="border p-4 rounded-md shadow-md w-full">
-          <button className="text-blue-500 hover:underline" onClick={toggleEditingProduct}>
-            {isEditingProduct ? (
-              <SaveIcon onClick={handleEditProduct} />
-            ) : (
-              <EditIcon />
-            )}
-          </button>
-          <h2 className="text-lg font-semibold">
-            Product Title:{' '}
-            {isEditingProduct ? (
-              <input
-                name="productTitle"
-                className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
-                type="text"
-                value={product.productTitle}
-                onChange={handleInputChange}
-              />
-            ) : (
-              product.productTitle
-            )}
-          </h2>
-          <p className="text-gray-500 mb-2">
-            Marketing Copy:{' '}
-            {isEditingProduct ? (
-              <input
-                name="marketingCopy"
-                className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
-                type="text"
-                value={product.marketingCopy}
-                onChange={handleInputChange}
-              />
-            ) : (
-              product.marketingCopy
-            )}
-          </p>
-          <p className="text-gray-500 mb-2">
-            Price:{' '}
-            {isEditingProduct ? (
-              <input
-                name="price"
-                className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
-                type="text"
-                value={product.price}
-                onChange={handleInputChange}
-              />
-            ) : (
-              product.price
-            )}
-          </p>
-          <p className="text-gray-500 mb-2">
-            Type:{' '}
-            {isEditingProduct ? (
-              <input
-                name="type"
-                className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
-                type="text"
-                value={product.type}
-                onChange={handleInputChange}
-              />
-            ) : (
-              product.type
-            )}
-          </p>
-        </div>
-      </div>
-    )
-  );
-}*/
-
 import React, { useState,useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
@@ -172,7 +35,7 @@ export default function AdminProductView({ incomingProduct, quizzes }) {
       }
   
       // Handle the response or any necessary state updates
-      console.log('Product deleted successfully.');
+    
   
       // You might want to clear the product data or perform other actions after deletion
       setProduct(null);
@@ -225,7 +88,7 @@ export default function AdminProductView({ incomingProduct, quizzes }) {
       const data = await response.json();
 
       // Handle the response or update your state as needed
-      console.log('Product data updated:', data);
+     
 
       // Exit edit mode
       setIsEditingProduct(false);
