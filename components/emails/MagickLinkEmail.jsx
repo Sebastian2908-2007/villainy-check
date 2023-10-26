@@ -28,7 +28,7 @@ export default function MagickLinkEmail({newQuizLink}) {
       <Container style={container}>
         <Heading style={h1}>Take your Quiz with this link</Heading>
         <Link
-          href={`http://localhost:3000/${newQuizLink}`}
+          href={`${process.env.NEXT_PUBLIC_DOMAIN}/${newQuizLink}`}
           target="_blank"
           style={{
             ...link,
