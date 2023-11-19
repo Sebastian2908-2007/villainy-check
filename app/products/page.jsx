@@ -6,7 +6,7 @@ export default function Products(){
         <div>
             <section className="
             w-full 
-            h-[35vh] 
+            h-[40vh] 
             min-[540px]:h-[50vh] 
             min-[1024px]:h-[80vh]
             relative
@@ -14,8 +14,8 @@ export default function Products(){
             >
                 <Image
                fill={true}
-                src='/products-hero.jpg'
-                alt="a lighthouse illuminating the darkness with a ship barely visible coming in the background"
+                src='/real-products-hero.png'
+                alt="a lighthouse"
                 />
             </section>
             <div className="bg-[#849b9f] py-8 px-4 sm:py-12 sm:px-8">

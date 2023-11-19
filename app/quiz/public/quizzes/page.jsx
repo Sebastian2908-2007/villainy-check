@@ -22,19 +22,20 @@ const quizzes = await fetchQuizzes();
   return (
     <>
     <section className="
-     w-full 
-     h-[30vh] 
-     min-[540px]:h-[45vh] 
-     min-[1024px]:h-[75vh]
-     relative
-     "
-     >
-         <Image
-        fill={true}
-         src='/quiz-1.jpg'
-         alt="two evil villains to represent Type A and Type B villainy"
-         />
-     </section>
+            w-full 
+            h-[50vh] 
+            min-[540px]:h-[60vh] 
+            min-[1024px]:h-[90vh]
+            relative
+            "
+            >
+                <Image
+               fill={true}
+                src='/quizzes-hero.jpg'
+                alt="old measuring tools with text overlay"
+                />
+            </section>
+  
     
 
     

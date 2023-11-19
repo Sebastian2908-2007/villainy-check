@@ -16,7 +16,7 @@ export default function Page() {
             >
                 <Image
                fill={true}
-                src='/new-home-hero.jpg'
+                src='/home-hero-2.jpg'
                 alt="A formidable lighthouse representing truth in darkness"
                 />
             </section>
