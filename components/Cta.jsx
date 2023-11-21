@@ -6,6 +6,12 @@ export default function Cta() {
         p-4
         lg:p-8
         xl:p-12
+        flex
+        flex-col
+        items-center
+        w-[100%]
+        min-[768px]:flex-row
+        min-[768px]:w-auto
         ">
         <button className="
         w-full 

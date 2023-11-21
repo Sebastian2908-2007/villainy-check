@@ -176,7 +176,7 @@ export default function Page() {
           If the morality of aspiration invades the province of duty, men may begin to weigh and
            qualify their obligations by standards of their own and we may end with the poet tossing
             his wife into the river in the belief – perhaps quite justified – that he will be able
-             to write better poetry in her absence.<strong className="text-lg">Fuller's Morality of Law p. 27-28</strong>     
+             to write better poetry in her absence.&nbsp;<strong className="text-lg">Fuller's Morality of Law p. 27-28</strong>     
         </p>
         <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
         The Puritans attempted to draw the line higher in an attempt to force more obligation than necessary on humanity. Psychologically (shame), the over-socialized acts similarly by attempting to impose the social consequences of shame where it ought to not belong.
@@ -279,7 +279,7 @@ export default function Page() {
         bg-[#999595]
         ">or into the language of caution or hostile trade </h3>
         <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
-        So soon as it becomes perfectly clear that you have no intention whatever of treating me as you yourself would wish to be treated, then I shall consider myself as relieved from the obligation to treat you as I would wish to be treated.<strong className="text-lg">Fuller, p.21</strong>
+        So soon as it becomes perfectly clear that you have no intention whatever of treating me as you yourself would wish to be treated, then I shall consider myself as relieved from the obligation to treat you as I would wish to be treated.&nbsp;<strong className="text-lg">Fuller, p.21</strong>
         </p>
         <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
         The Golden Rule is more than a statement about explicit bargains, but of a code of reciprocity that exists throughout society, not merely just that of explicit bargains. There is no bargain between the voter and the rest of society, yet the argument of reciprocity is used regardless. The man who does not vote cannot convince others to vote because he has not upheld his end of the bargain.  
@@ -306,8 +306,9 @@ export default function Page() {
         The morality of duty is simply the social living of Human Nature. It is reciprocity between individuals. Since duty has been intrinsically linked to reciprocity, three rules are established that optimize and define what a duty is: 
         </p>
         
-        <ul className="list-disc bg-white ml-8 mb-4 min-[1024px]:mb-8 p-2">
-          <li className="mb-2  font-bold">
+        <ul className="list-disc 
+         ml-8 mb-4 min-[1024px]:mb-8 p-2">
+          <li className="mb-2 font-bold">
           A duty is created. It is the voluntary agreement between parties affected. Otherwise, it is tyranny or criminal.  
           </li>
           <li className="mb-2  font-bold">
@@ -378,6 +379,7 @@ export default function Page() {
       </p>
       <p className="italic mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
       If the morality of duty reaches upward beyond its proper sphere the iron hand of imposed obligation may stifle experiment, inspiration, and spontaneity. If the morality of aspiration invades the province of duty, men may begin to weigh and qualify their obligations by standards of their own and we may end with the poet tossing his wife into the river in the belief – perhaps quite justified – that he will be able to write better poetry in her absence 
+      &nbsp;
       <strong className="text-lg">Fuller, p. 27-28 </strong>
       </p>
       <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
@@ -386,7 +388,7 @@ export default function Page() {
       <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
       Marginal utility is the way in which we best use our means – time, labor, land, Capital goods, etc. Nothing is sacred in this principle. We prioritize means in a flexible way, depending on the circumstances.
       <span className="italic mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
-      "All existing arrangements are subject to being reordered in the interest of increased economic return." <strong className="text-lg">Fuller, p. 28 </strong>
+      "All existing arrangements are subject to being reordered in the interest of increased economic return."&nbsp; <strong className="text-lg">Fuller, p. 28 </strong>
       </span>
       </p>
       <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
@@ -397,13 +399,13 @@ export default function Page() {
       </p>
       <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
       If marginal utility expands to include the economics of exchange, then property and contract become subjective and whimsical constructs. We could not have property rights. Nor could we have the right to agree to or decline a contract.
-      <span className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8 text-2xl">
+      <span className="mb-4 min-[1024px]:mb-8  p-2 text-center min-[540px]:p-8 text-2xl">
       This is the identical scenario as when the morality of aspiration overrides the morality of duty, or the villain-who-neglects. 
       </span>
       </p>
       <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
       If the reverse is the case and the economics of exchange expands to include marginal utility, then the sanctity of property and contract are not held in their proper place. As a result, efforts to direct resources to their most efficient use (marginal utility) is frustrated by interests of (1) those claiming property illegitimately; or by (2) those imposing contractual obligations; or by (3) those limiting contractual arrangements.
-      <span className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8 text-2xl">This is the identical scenario as when the morality of duty encroaches upon the territory of the morality of aspiration, or the villain-who-imposes. </span>
+      <span className="mb-4 min-[1024px]:mb-8 p-2 text-center min-[540px]:p-8 text-2xl">This is the identical scenario as when the morality of duty encroaches upon the territory of the morality of aspiration, or the villain-who-imposes. </span>
       </p>
       <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
       Societies with [more] free markets tend to have legal systems that reflect their economic systems. The economic organization of free society is determined by reciprocal exchange where the citizen is the economic trader engaging other economic traders in reciprocal exchanges.
