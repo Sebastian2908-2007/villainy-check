@@ -10,7 +10,7 @@ export async function POST(request) {
     const {recommendation,firstName,lastName,recipiant} = quizData;
   try {
     const data = await resend.emails.send({
-      from: 'sebastian@topdev.tech',
+      from: 'contact@olddeel.org',
       to:`${recipiant}`,
       subject: `${firstName} ${lastName}'s test results`,
       react: ResultsEmail({ recommendation,firstName,lastName }),

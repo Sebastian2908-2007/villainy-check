@@ -90,9 +90,9 @@ import {
             <Heading as="h2" style={title}>
               Our recommendations and Insights into these results
             </Heading>
-            <Text style={paragraph}>
+            {/*<Text style={paragraph}>
               {`The Meaning of these ${typeOfRecommendation} Results:`}
-            </Text>
+            </Text>*/}
             <Text style={paragraph}>
            {resultsMeaning}
             </Text>
