@@ -575,9 +575,13 @@ setLastTypeB({amount:0,add:false,subtract:false});
           </div>
           <div className="flex flex-row items-start h-[auto] min-[375px]:h-[auto]">
 
-            <div className="bg-[#dbd5d5] w-16 shrink-0 h-[1761px] 
-            min-[360px]:h-[1167px]
-            min-[375px]:h-[1067px] 
+            <div className="
+            bg-[#dbd5d5]
+            w-16 shrink-0
+            h-[1571px] 
+            min-[360px]:h-[1007px]
+            min-[375px]:h-[947px] 
+            min-[430px]:h-[870px]
             min-[540px]:h-[817px]
             min-[768px]:h-[748px]
 
@@ -699,13 +703,20 @@ onClick={() => handleUnselect()}>Unselect</button>
             </div>
           </div>
         </div>
-        <div className="bg-[#999595] w-20 shrink-0 h-[1825px]
-        min-[360px]:h-[1231px]
-        min-[375px]:h-[1131px]
+
+        <div className="
+        bg-[#999595] w-20 
+        shrink-0 
+        h-[1635px]
+        min-[360px]:h-[1071px]
+        min-[375px]:h-[1011px]
+        min-[430px]:h-[934px]
         min-[540px]:h-[881px]
         min-[768px]:h-[811px]
         
-        " />
+        " >
+          </div>
+          
       </div>:
       <div className="flex flec-col justify-center bg-[#bbb6b6] p-4">
        {/* <span className="text-[#fde1e2]">Quiz Complete!</span>
