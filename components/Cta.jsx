@@ -13,26 +13,8 @@ export default function Cta() {
         min-[768px]:flex-row
         min-[768px]:w-auto
         ">
-       {/* <button className="
-        w-full 
-        md:w-auto 
-        bg-[#fde1e2]
-        text-[#999595] 
-        rounded-md 
-        py-8
-        px-8 
-        min-[768px]:py-12
-        min-[768px]:px-12
-        m-2 
-        md:m-0 
-        md:mr-4 
-        hover:bg-[#999595] 
-        hover:text-[#fde1e2] 
-        focus:outline-none 
-        focus:ring-2 
-        focus:ring-[#fde1e2]
-        ">*/}
-          <Link className="
+     
+         {/* <Link className="
           min-[768px]:text-2xl
           w-full 
         md:w-auto 
@@ -54,31 +36,14 @@ export default function Cta() {
         focus:ring-[#fde1e2]
           " href='/quiz/public/quizzes'>
           Quiz the self
-          </Link>
-        {/*</button>*/}
-        {/*<button className="
-        w-full 
-        md:w-auto 
-        bg-[#999595] 
-        text-[#fde1e2] 
-        rounded-md 
-        py-8 
-        px-8 
-        min-[768px]:py-12
-        min-[768px]:px-12
-        m-2 
-        md:m-0 
-        hover:bg-[#fde1e2] 
-        hover:text-[#999595] 
-        focus:outline-none 
-        focus:ring-2 
-        focus:ring-[#999595]
-        ">*/}
+          </Link>*/}
+      
+        
           <Link className="min-[768px]:text-2xl
           w-full 
           md:w-auto 
-          bg-[#999595] 
-          text-[#fde1e2] 
+          bg-[#fde1e2]
+        text-[#999595] 
           rounded-md 
           py-8 
           px-8 
@@ -93,9 +58,9 @@ export default function Cta() {
           focus:ring-2 
           focus:ring-[#999595]
           " href="/products">
-          Quiz Others
+          Quiz Your Team
           </Link>
-        {/*</button>*/}
+       
       </div>
     );
 };

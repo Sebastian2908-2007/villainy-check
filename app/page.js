@@ -34,7 +34,7 @@ export default function Page() {
       bg-[#849b9f]
       "
       >
-        "We test for harmful, unproductive, and self-sabotaging behavior"
+        Understand & Improve Your Team
       </h1>
 
       <section className="mb-12">
@@ -47,8 +47,16 @@ export default function Page() {
         text-[#fde1e2]
         bg-[#999595]
         ">
-          The Theoretical Foundation
+          Better Leadership & Management
         </h2>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        Quizzing employees and peers will enable your company to
+         have wiser management and better teams.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        The idea is to keep the same team, but not have the same team in the future - everyone in that team ought to
+         be a better and more productive person 3 months from now.
+        </p>
         <div className="
         w-full
         h-[30vh]
@@ -59,11 +67,55 @@ export default function Page() {
         mb-8">
                 <Image
                fill={true}
-                src='/aspiration.jpg'
-                alt="A guy looking at a high peak while the sun rise"
+                src='/motto.jpg'
+                alt="Understand your team and protect your business with Old Deel"
+                sizes='80vw'
                 />
             </div>
-            <h3 className="
+            <h2 className="
+        text-2xl 
+        text-center
+        font-semibold 
+        mb-4
+        p-2
+        text-[#fde1e2]
+        bg-[#999595]
+        ">
+          Protect Your Business
+        </h2>
+        <h3 className="
+        text-xl 
+        text-center
+        font-semibold 
+        mb-4
+        p-2
+        text-[#fde1e2]
+        bg-[#999595]
+        ">
+          from the Unproductive, Litigious, & Dishonest 
+      </h3>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        The primary threat to the modern business is the arbitrary lawsuit. We happen to live in an overly 
+        litigious society where law has established precedents not based on careful argumentation.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        A secondary threat to the modern business is unprincipled people who can wield the 
+        legal apparatus as leverage for employment rather than earn it on their own merit.
+        </p>
+        <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8">
+        A tertiary threat is the unproductive who wastes company time and resources. Together, these threats combine to 
+        form the human risk element in business, and we can greatly mitigate it.
+        </p>
+      </section>
+    </div>
+    </>
+  );
+}
+
+
+/**Theory code and text*/
+/*
+<h3 className="
         text-xl 
         text-center
         font-semibold 
@@ -425,121 +477,5 @@ export default function Page() {
       <p className="mb-4 min-[1024px]:mb-8 bg-white p-2 text-center min-[540px]:p-8 text-2xl">
       The solution to the villain-who-imposes is to have some resiliency to shame; to clearly state that you are under no obligation to follow his beliefs and that your property and body and freedom to contract are not his to control. The solution to the villain-who-neglects is to impose shame unto him and to clearly state that your property and body and freedom to contract are not his to take. As for the paradoxical villain, who does not believe in logical consistency and truth (reality), no known solutions have ever been discovered for dealing with his ilk. 
       </p>
-      
-      </section>
-    </div>
-    </>
-  );
-}
 
-///quiz/6529d0abc0f6782d99937954/user/652d5522914114746615d8ac w-[1155px] 81%
-
-
-
-
-
-
-/**figma large not responsive */
-{/*
-
-     <div className="overflow-hidden bg-[#849b9f] flex flex-row w-full items-start">
-        <div className="flex flex-col mt-0 w-[1220px]">
-          <div className="bg-[#f0e7e7] flex flex-col justify-center pr-8 h-16 shrink-0 items-end">
-            <div className="bg-[#849b9f] flex flex-col items-center pt-px pb-1 px-16">
-              <div className="text-xl font-['Inter'] font-bold text-white mr-px">
-                The Human Risk Project
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row items-start">
-            <div className="bg-[#dbd5d5] w-16 shrink-0 h-[732px]" />
-            <div className="bg-[#bbb6b6] self-end flex flex-col justify-center w-[1155px] h-24 items-center">
-              <div className="bg-[#849b9f] flex flex-col items-start pb-1 px-8">
-                <div className="text-xl font-['Inter'] font-bold text-[#fde1e2] mr-1">
-                  submit
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-[#999595] w-20 shrink-0 h-[789px]" />
-      </div>
-
-*/}
-
-/*****FIGMA android quiz slide??? */
-{/*
-
-     <div
-        id="AndroidLargeRoot"
-        className=" bg-white relative flex flex-col w-full items-center pt-16 pb-20 px-16"
-      >
-        <div className="w-[360px] h-[716px] absolute top-0 left-0 flex flex-row items-start">
-          <div className="bg-[#f0e7e7] flex flex-col justify-center w-[283px] h-16 px-3">
-            <div className="bg-[#849b9f] flex flex-col ml-px items-start pb-px px-3">
-              <div className="text-xl font-['Inter'] font-bold text-white">
-                The Human Risk Project
-              </div>
-            </div>
-          </div>
-          <div className="bg-[#999595] w-20 shrink-0 h-[716px]" />
-        </div>
-        <div className="w-16 h-[741px] bg-[#dbd5d5] absolute top-16 left-0" />
-        <div className="bg-[#849b9f] relative flex flex-col gap-5 w-full h-[657px] shrink-0 items-center pl-8 py-16">
-          <div className="text-3xl font-['Inter'] font-bold text-white self-start ml-2">
-            Question
-          </div>
-          <div className="text-3xl font-['Inter'] font-bold text-white">Answer</div>
-        </div>
-        <div className="w-[291px] h-20 bg-[#bbb6b6] absolute top-[716px] left-16 flex flex-col justify-center pr-3 items-end">
-          <div className="bg-[#849b9f] flex flex-col w-1/2 items-start pt-px pb-1 px-8">
-            <div className="text-xl font-['Inter'] font-bold text-[#fde1e2]">
-              submit
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-*/}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***figma test comp  */
-   {/*} <div className="flex flex-col w-full">
-        <div className="bg-[#3d6098] flex flex-col gap-4 h-[390px] shrink-0 items-end p-16 rounded-[26px]">
-          <div className="text-4xl font-['Inter'] font-bold text-[#fffdfd] mr-16">
-            Web development with a twist
-          </div>
-          <div className="self-stretch flex flex-row ml-4 gap-20 items-start">
-            <img
-              src="https://file.rendit.io/n/jOpZ8tvtJoALFJZVwAzc.svg"
-              id="Discussspx"
-            />
-            <div className="flex flex-row gap-20 w-[444px] items-start">
-              <img
-                src="https://file.rendit.io/n/ZYqjQI386ZWCdKEWyDvd.svg"
-                id="Billspx"
-              />
-              <img
-                src="https://file.rendit.io/n/j9uqv1mKt2imX9hUVcCw.svg"
-                id="Starspx"
-                className="mt-1"
-              />
-            </div>
-          </div>
-        </div>
-      </div>*/}
+*/
