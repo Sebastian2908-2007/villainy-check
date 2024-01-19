@@ -18,9 +18,13 @@ const Dropdown = () => {
 
     // Close the dropdown when clicking outside
     useEffect(() => {
+      //console.log(dropdownRef.current);
+      
         function handleClickOutside(event) {
           if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setIsOpen(false);
+            console.log('clicking outside');
+           // console.log(event.target);
           }
         }
     
@@ -28,7 +32,7 @@ const Dropdown = () => {
         return () => {
           document.removeEventListener('mousedown', handleClickOutside);
         };
-      }, [isOpen]);
+      }, [isOpen,dropdownRef]);
 
   return (
     <div className="relative inline-block text-left">
@@ -43,8 +47,27 @@ const Dropdown = () => {
       </div>
 
       {isOpen && (
-        <div className="z-40 origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-[#999595] ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+        <div className="
+         z-50
+         origin-top-right
+         absolute right-0
+         mt-2 w-32
+         rounded-md
+         shadow-lg 
+         bg-[#999595] 
+         ring-1 
+         ring-black 
+         ring-opacity-5 
+         focus:outline-none
+         "
+         
+         >
+          <div 
+          className="py-1" 
+          role="menu" 
+          aria-orientation="vertical" 
+          aria-labelledby="options-menu" 
+          ref={dropdownRef}>
          {!userCookie  &&
          <>
          <Link 
