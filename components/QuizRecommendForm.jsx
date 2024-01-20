@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import Select from './Select';
-import { recommendOptions,answerTypeOptions } from '@/utils/constants';
-const QuizRecommendForm = ({recomendEnabler,setRecommendEnabler,createdQuizId,updateQuizData}) => {
+import { recommendOptions } from '@/utils/constants';
+const QuizRecommendForm = ({recomendEnabler,createdQuizId,updateQuizData}) => {
   const [recommendData, setRecommendData] = useState({
-    typeOfRecommendation: 'far right',
+    typeOfRecommendation: 'far right ideal left',
     resultsMeaning: '',
     tipsSummary: '',
   });

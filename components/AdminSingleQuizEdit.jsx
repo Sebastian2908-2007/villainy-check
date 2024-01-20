@@ -323,22 +323,6 @@ const onDelete = async () => {
           )}
         </h2>
 
-        {/*<p className="text-gray-500 mb-2">
-          Ideal Outcome:{' '}
-          {isEditingQuiz ? (
-            <input
-              className="p-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-400 focus:border-blue-400 flex-grow"
-              type="text"
-              value={workingQuizData.idealOutcome}
-              onChange={(e) =>
-                setWorkingQuizData({ ...workingQuizData, idealOutcome: e.target.value })
-              }
-            />
-          ) : (
-            workingQuizData.idealOutcome
-          )}
-          </p>*/}
-
         <div className="space-y-2">
           {workingQuizData.questions.map((question) => (
             <div key={question._id}>
@@ -564,9 +548,9 @@ const onDelete = async () => {
                     </div>
                   ) : (
                     <div>
-                      <p className="text-md font-medium">Type: {recommendation.typeOfRecommendation}</p>
-                      <p className="text-md ">Results Meaning: {recommendation.resultsMeaning}</p>
-                      <p className="text-md ">Tips Summary: {recommendation.tipsSummary}</p>
+                      <p className="text-md font-bold">Type: {recommendation.typeOfRecommendation}</p>
+                      <p className="text-md "><span className='font-bold'>Results Meaning:</span> {recommendation.resultsMeaning}</p>
+                      <p className="text-md "><span className='font-bold'>Tips Summary:</span> {recommendation.tipsSummary}</p>
                     </div>
                   )}
                 </div>

@@ -97,7 +97,7 @@ export async function DELETE(request) {
     await dbConnect(); // Connect to MongoDB
 
     const { productId } = await request.json(); // Assuming the product ID is in the request body
-
+console.log(productId,"in route");
     // Find the product by ID
     const product = await Product.findById(productId);
 

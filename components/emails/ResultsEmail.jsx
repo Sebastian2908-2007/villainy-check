@@ -76,14 +76,7 @@ import {
             <Heading as="h2" style={title}>
               Searching for solutions
             </Heading>
-            <Text style={paragraph}>
-            In the realm of our company, Lon Fuller's work becomes a compass for navigating
-             complex challenges. By adhering to the principles of legality, morality, and justice, we employ Fuller's
-              insights to guide our search for solutions that are not only legally sound but also ethically
-               robust. With Fuller's wisdom as our North Star, we embark on a quest to
-                harmonize law and ethics, ensuring that our solutions are grounded in both justice
-                 and righteousness. It is our most sincere hope that you will use our state of the art testing to do the same{' '}
-            </Text>
+        
   
             <Hr style={divider} />
   

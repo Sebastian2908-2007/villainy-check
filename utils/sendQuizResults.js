@@ -6,6 +6,323 @@ export const sendQuizResults = async (scoresData,recommends,tester) => {
     let quizData = {};
     const {typeA,typeB,balanced,idealOutcome} = scoresData;
 
+function percentage(value1,value2) {
+  let percentage = (value2 - value1) / (value1) * 100;
+  const finalValue = 100 + percentage;
+  return finalValue;
+};
+const typeAPer = percentage(idealOutcome,typeA);
+const typeBPer = percentage(idealOutcome,typeB);
+const sp = 3;
+const mp = 12;
+const hp = 28;
+
+
+//Below runs on both villainys being greater than SP
+if(typeAPer >= sp && typeBPer >= sp) {
+       
+      if(typeAPer === sp && between(typeBPer,sp,mp)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'start right mid left';
+        })[0];
+      }
+      else if(typeAPer === sp && between(typeBPer,mp,hp)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'start right far left';
+        })[0];
+      }
+      else if(between(typeAPer,sp,mp) && between(typeBPer,mp,hp)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'mid right far left';
+        })[0];
+      }
+      else if(between(typeAPer,sp,mp) && typeBPer === sp){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'mid right start left ';
+        })[0];
+      }
+      else if(between(typeAPer,mp,hp) && typeBPer === sp){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'far right start left';
+        })[0];
+      }
+      else if(between(typeAPer,mp,hp) && between(typeBPer,sp,mp)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'far right mid left';
+        })[0];
+      }
+      /**SEVERE */
+      if(typeAPer === sp && between(typeBPer,hp,100)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe left start right';
+        })[0];
+      }
+      if(typeBPer === sp && between(typeAPer,hp,100)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe Right start left';
+        })[0];
+      }
+
+      else if(between(typeAPer,sp,mp) && between(typeBPer,hp,100)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe left mid right';
+        })[0];
+      }
+      else if(between(typeAPer,mp,hp) && between(typeBPer,hp,100)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe left far right';
+        })[0];
+      }
+
+
+      else if(between(typeBPer,sp,mp) && between(typeAPer,hp,100)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe Right mid left';
+        })[0];
+      }
+      else if(between(typeBPer,mp,hp) && between(typeAPer,hp,100)){
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe Right far left';
+        })[0];
+      }
+
+    else if(typeBPer === typeAPer){
+        // Type A & B equals
+        if(typeAPer === sp && typeBPer === sp) {
+            quizData.recommendation = recommends.filter(rec => {
+                return rec.typeOfRecommendation === 'start right start left';
+            })[0];
+          }
+          
+          else if(between(typeAPer,sp,mp) && between(typeBPer,sp,mp)) {
+            quizData.recommendation = recommends.filter(rec => {
+                return rec.typeOfRecommendation === 'mid right mid left';
+            })[0];
+          }
+
+          else if(between(typeAPer,mp,hp) && between(typeBPer,mp,hp)){
+            quizData.recommendation = recommends.filter(rec => {
+                return rec.typeOfRecommendation === 'far right far left';
+            })[0];
+          }
+    }
+ 
+}
+
+// below runs when typeB or left villainy is the only villainy present
+else if(typeBPer >= sp && typeAPer < sp) {
+    // only type B villainy or lefts values
+    if(typeBPer === sp) {
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'ideal right start left';
+        })[0];
+    };
+
+    if(between(typeBPer,sp,mp)) {
+    quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'ideal right mid left';
+        })[0];
+    };
+
+    if(between(typeBPer,mp,hp)) {
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'ideal right far left';
+        })[0];
+    };
+    if(between(typeBPer,hp,100)) {
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe left ideal right';
+        })[0];
+    };
+
+}
+
+
+// below runs when typeA or right villainy is the only villainy present
+else if(typeAPer >= sp && typeBPer < sp) {
+    // only type A villainy or rights values
+    if(typeAPer === sp) {
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'start right ideal left';
+        })[0];
+    };
+
+    if(between(typeAPer,sp,mp)) {
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'mid right ideal left';
+        })[0];
+    };
+
+    if(between(typeAPer,mp,hp)) {
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'far right ideal left';
+        })[0];
+    };
+    if(between(typeAPer,hp,100)) {
+        quizData.recommendation = recommends.filter(rec => {
+            return rec.typeOfRecommendation === 'severe Right ideal left';
+        })[0];
+    };
+ 
+}
+
+
+// below runs when no villainy is present
+else if(typeAPer === 0 && typeBPer === 0) {
+ quizData.recommendation = recommends.filter(rec => {
+    return rec.typeOfRecommendation === 'Ideal';
+})[0];
+};
+
+
+
+/**Decide wether we should send to an admin or a user*/
+if(tester.isSubject) {
+quizData.recipiant = tester.adminEmail;
+}else{
+    quizData.recipiant = tester.email;
+};
+/**Decide wether we should send to an admin or a user ends*/
+quizData.firstName = tester.firstName;
+quizData.lastName = tester.lastName;
+try{
+    fetch('/api/Users',{
+        method:'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({userId:tester._id,updatedData: {quizRecommendations: quizData.recommendation._id}})
+    });
+}catch(e) {
+    console.log(e);
+}
+
+try{
+const emailResponse = await fetch('/api/Email',{
+    method:'POST',
+    headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({quizData: quizData})
+});
+if(emailResponse.ok) {
+    return emailResponse.ok;
+}else{
+    return false;
+}
+}catch(e) {
+    console.log(e);
+}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********OLD STUFFF */
+
+/*import { updateUserQuizStatus } from "./updateUserQuizStatus";
+import { between } from "./between";
+
+export const sendQuizResults = async (scoresData,recommends,tester) => {  
+    await updateUserQuizStatus(tester._id);
+    let quizData = {};
+    const {typeA,typeB,balanced,idealOutcome} = scoresData;
+
 function percentage(value1,value2)
 {
   let percentage = (value2 - value1) / (value1) * 100;
@@ -14,22 +331,20 @@ function percentage(value1,value2)
 }
 const typeAPer = percentage(idealOutcome,typeA);
 const typeBPer = percentage(idealOutcome,typeB);
-const balancedPer = percentage(idealOutcome,balanced);
+//const balancedPer = percentage(idealOutcome,balanced);
+const sp = 3;
+const mp = 12;
+const hp = 28;
 
-/*!!!!!!RESULTS RECOMMENDS DECISION!!!!!!!******/
 
-/**CLIENT Specs if's & else if's*/
 
-/**NEW RECOMMEND TYPES BELOW */
-//Below runs on both villainys being greater than 0
-if(typeAPer > 0 && typeBPer > 0) {
-    // Both villainys FIELD IDEAS:"both a higher" "both b higher"
+//Below runs on both villainys being greater than SP
+if(typeAPer > sp && typeBPer > sp) {
+   
+
+    
     if(typeAPer > typeBPer) {
-        // A higher
-        // run more score checks here for varying degrees
-        // we need if statements or switch statement that checks what percentage of the total possible score each
-        // variable is to deliver different results and recommendations based on the levels of villainy
-        // it will be the same approach or similar to what I'm doing below
+        
       if(between(typeAPer,0,50)) {
         quizData.recommendation = recommends.filter(rec => {
             return rec.typeOfRecommendation === 'mixed a higher start right';
@@ -92,7 +407,7 @@ if(typeAPer > 0 && typeBPer > 0) {
     }
  
 }
-/**NEW RECOMMEND TYPES ABOVE */
+//NEW RECOMMEND TYPES ABOVE 
 
 
 // below runs when typeB or left villainy is the only villainy present
@@ -117,6 +432,8 @@ else if(typeBPer > 0 && typeAPer === 0) {
     }
 
 }
+
+
 // below runs when typeA or right villainy is the only villainy present
 else if(typeAPer > 0 && typeBPer === 0) {
     // only type A villainy or rights values
@@ -139,6 +456,8 @@ else if(typeAPer > 0 && typeBPer === 0) {
     }
  
 }
+
+
 // below runs when no villainy is present
 else if(typeAPer === 0 && typeBPer === 0) {
  // no villainy "Ideal"
@@ -148,18 +467,16 @@ else if(typeAPer === 0 && typeBPer === 0) {
 })[0];
 
 };
-/**CLIENT Specs if's & else if's !!!!ENDS!!!!*****/
-
-/*!!!!!!RESULTS RECOMMENDS DECISION ENDS!!!!!!!******/
 
 
-/**Decide wether we should send to an admin or a user*/
+
+//Decide wether we should send to an admin or a user
 if(tester.isSubject) {
 quizData.recipiant = tester.adminEmail;
 }else{
     quizData.recipiant = tester.email;
 }
-/**Decide wether we should send to an admin or a user ends*/
+///Decide wether we should send to an admin or a user ends
 quizData.firstName = tester.firstName;
 quizData.lastName = tester.lastName;
 try{
@@ -191,3 +508,5 @@ if(emailResponse.ok) {
     console.log(e);
 }
 };
+};
+*/

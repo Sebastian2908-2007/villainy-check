@@ -104,6 +104,18 @@ export const verifyPaidLoggedIn = async () => {
   return false;
  }
 };
+/**Added Jan 24 for super admin quiz ability*/
+export const verifySuperAdmin = async () => {
+ const response = await fetch('/api/Dashboard/superadmin');
+ if(response.ok) {
+  const data = await response.json();
+  return data;
+ }else{
+  return false;
+ }
+};
+
+
 export const getProducts = async () => {
   try{
  const response = await fetch('/api/Product',{

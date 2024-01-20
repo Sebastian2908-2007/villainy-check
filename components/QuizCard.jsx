@@ -3,7 +3,7 @@ import { useState } from 'react';
 import AuthModal from '@/components/AuthModal';
 import SuccessModal from './SuccessModal';
 import UpgradeModal from './UpgradeModal';
-import { verifyFreeLoggedIn,verifyPaidLoggedIn } from '@/utils/getData';
+import { verifyFreeLoggedIn,verifyPaidLoggedIn,verifySuperAdmin } from '@/utils/getData';
 import { useRouter } from 'next/navigation';
 import { decode } from 'jsonwebtoken';
 const QuizCard = ({ quiz }) => {
@@ -17,13 +17,21 @@ const QuizCard = ({ quiz }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  
+
+  /**SUPER ADMIN ADDED JAN 24' */
+const isSuperAdmin = async () => {
+  const superAdmin = await verifySuperAdmin();
+  if(superAdmin) {
+const decodedUserData = decode(superAdmin.value);
+router.push(`/quiz/${_id}/user/${decodedUserData._id}`);
+  }
+};
 
 /**In function below we can push with the router a user who is already indeed logged in*/
 const isUserLoggedIn = async () => {
     const user = await verifyFreeLoggedIn();
     const paidUser = await verifyPaidLoggedIn();
-
+   
     if(user || paidUser) {
       if(paidUser){
         const decodedUserData = decode(paidUser.value);
@@ -69,7 +77,7 @@ const isUserLoggedIn = async () => {
           rounded focus:outline-none 
           focus:shadow-outline"
           onClick={() => {
-          //setIsOpen(true);
+          isSuperAdmin();
           isUserLoggedIn();
           }}
           
