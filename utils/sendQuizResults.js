@@ -51,38 +51,38 @@ if(typeAPer >= sp && typeBPer >= sp) {
             return rec.typeOfRecommendation === 'far right mid left';
         })[0];
       }
-      /**SEVERE */
+     
       if(typeAPer === sp && between(typeBPer,hp,100)){
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe left start right';
+            return rec.typeOfRecommendation === 'start right far left';
         })[0];
       }
       if(typeBPer === sp && between(typeAPer,hp,100)){
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe Right start left';
+            return rec.typeOfRecommendation === 'far right start left';
         })[0];
       }
 
       else if(between(typeAPer,sp,mp) && between(typeBPer,hp,100)){
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe left mid right';
+            return rec.typeOfRecommendation === 'mid right far left';
         })[0];
       }
       else if(between(typeAPer,mp,hp) && between(typeBPer,hp,100)){
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe left far right';
+            return rec.typeOfRecommendation === 'far right far left';
         })[0];
       }
 
 
       else if(between(typeBPer,sp,mp) && between(typeAPer,hp,100)){
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe Right mid left';
+            return rec.typeOfRecommendation === 'far right mid left';
         })[0];
       }
       else if(between(typeBPer,mp,hp) && between(typeAPer,hp,100)){
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe Right far left';
+            return rec.typeOfRecommendation === 'far right far left';
         })[0];
       }
 
@@ -131,7 +131,7 @@ else if(typeBPer >= sp && typeAPer < sp) {
     };
     if(between(typeBPer,hp,100)) {
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe left ideal right';
+            return rec.typeOfRecommendation === 'ideal right far left';
         })[0];
     };
 
@@ -160,7 +160,7 @@ else if(typeAPer >= sp && typeBPer < sp) {
     };
     if(between(typeAPer,hp,100)) {
         quizData.recommendation = recommends.filter(rec => {
-            return rec.typeOfRecommendation === 'severe Right ideal left';
+            return rec.typeOfRecommendation === 'far right ideal left';
         })[0];
     };
  
