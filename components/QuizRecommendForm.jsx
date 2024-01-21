@@ -4,6 +4,7 @@ import React, { useState,useEffect } from 'react';
 import Select from './Select';
 import { recommendOptions } from '@/utils/constants';
 import Tiptap from './TipTap';
+import TiptapTwo from './TipTapTwo';
 const QuizRecommendForm = ({recomendEnabler,createdQuizId,updateQuizData}) => {
   const [recommendData, setRecommendData] = useState({
     typeOfRecommendation: 'far right ideal left',
@@ -66,7 +67,7 @@ const QuizRecommendForm = ({recomendEnabler,createdQuizId,updateQuizData}) => {
 
 useEffect(() => {console.log(recommendData)},[recommendData]);
   return (
-    <form onSubmit={handleRecommendSubmit}>
+    <div >
       <div className="mb-4">
         <label htmlFor="typeOfRecommendation" className="block font-medium">
           Type of Recommendation:
@@ -83,7 +84,7 @@ useEffect(() => {console.log(recommendData)},[recommendData]);
       </div>
       <div className="mb-4">
         <label htmlFor="resultsMeaning" className="block font-medium">
-          Results Meaning:
+        Our Recommendations:
         </label>
         {/*<input
           type="text"
@@ -98,9 +99,9 @@ useEffect(() => {console.log(recommendData)},[recommendData]);
       </div>
       <div className="mb-4">
         <label htmlFor="tipsSummary" className="block font-medium">
-          Tips Summary:
+        How to coach this person:
         </label>
-        <input
+        {/*<input
           type="text"
           id="tipsSummary"
           name="tipsSummary"
@@ -108,7 +109,8 @@ useEffect(() => {console.log(recommendData)},[recommendData]);
           onChange={handleRecommendChange}
           className="w-full border rounded p-2"
           required
-        />
+      />*/}
+      <TiptapTwo setRecommendData={setRecommendData} recommendData={recommendData} />
       </div>
       <button
       disabled={!recomendEnabler ? true:false}
@@ -130,10 +132,11 @@ useEffect(() => {console.log(recommendData)},[recommendData]);
    disabled:bg-gray-400
    disabled:text-gray-700
    disabled:border-gray-400"
+   onClick={handleRecommendSubmit}
       >
         Create Recommendation
       </button>
-    </form>
+    </div>
   );
 };
 

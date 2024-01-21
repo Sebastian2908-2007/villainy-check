@@ -5,7 +5,6 @@ console.log(resultsMeaning,'in comp');
     return(
         <div>
          {parse(resultsMeaning)}
-         <div>BOOB</div>
         </div>
     );
 };

@@ -15,6 +15,7 @@ import {
     Row,
   } from '@react-email/components';
  import MyHtml from './MyHtml';
+ import MyOtherHtml from './MyOtherHtml';
   import * as React from 'react'
 
  
@@ -82,7 +83,7 @@ import {
             <Hr style={divider} />
   
             <Heading as="h2" style={title}>
-              Our recommendations and Insights into these results
+            Our Recommendations
             </Heading>
             
             <div>
@@ -91,12 +92,12 @@ import {
             <Hr style={divider} />
   
             <Heading as="h2" style={title}>
-              Our Tips Based on these results
+            How to coach this person
             </Heading>
   
             <Section >
             <p style={paragraph}>
-              {tipsSummary}
+            <MyOtherHtml tipsSummary={tipsSummary}/>
             </p>
             </Section>
           </Section>

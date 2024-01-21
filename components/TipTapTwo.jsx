@@ -99,7 +99,7 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-const Tiptap = ({ setRecommendData,recommendData }) => {
+const TiptapTwo = ({ setRecommendData,recommendData }) => {
   const editor = useEditor({
     extensions: [StarterKit, Underline],
     content: ``,
@@ -116,7 +116,7 @@ const Tiptap = ({ setRecommendData,recommendData }) => {
       //handleRecommendChange(html);
       setRecommendData({
         ...recommendData,
-        resultsMeaning: html,
+        tipsSummary: html,
         
       });
     },
@@ -129,4 +129,4 @@ const Tiptap = ({ setRecommendData,recommendData }) => {
     </div>
   );
 };
-export default Tiptap;
+export default TiptapTwo;
