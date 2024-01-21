@@ -1,3 +1,4 @@
+
 import {
     Body,
     Column,
@@ -13,8 +14,9 @@ import {
     Text,
     Row,
   } from '@react-email/components';
-  import * as React from 'react';
-  
+ import MyHtml from './MyHtml';
+  import * as React from 'react'
+
  
   
   const baseUrl = process.env.VERCEL_URL
@@ -40,11 +42,18 @@ import {
       },
     ],
   };
+
+
+
   
   export const ResultsEmail = ({
     recommendation,firstName,lastName
   }) => {
     const {typeOfRecommendation,resultsMeaning,tipsSummary} = recommendation;
+  
+
+ 
+   
     return (
     
     <Html>
@@ -52,23 +61,15 @@ import {
       <Preview>Test results</Preview>
       <Body style={main}>
         <Container style={container}>
-          {/*<Section style={logo}>
-            <Img width={146} src={`http://localhost:3000//static/stack-overflow-logo.png`} />
-          </Section>*/}
+         
           <Row style={header}>
             <Column style={headerContent}>
               <Heading style={headerContentTitle}>
             ~Helping ourselves understand people, and ourselves~
               </Heading>
-              <Text style={headerContentSubtitle}>
+              <p style={headerContentSubtitle}>
                 Tips and tricks For whats been found&nbsp;{firstName}&nbsp;{lastName}
-              </Text>
-            </Column>
-            <Column style={headerImageContainer}>
-              {/*<Img
-                width={340}
-                src={`${baseUrl}/static/stack-overflow-header.png`}
-              />*/}
+              </p>
             </Column>
           </Row>
   
@@ -83,22 +84,10 @@ import {
             <Heading as="h2" style={title}>
               Our recommendations and Insights into these results
             </Heading>
-            {/*<Text style={paragraph}>
-              {`The Meaning of these ${typeOfRecommendation} Results:`}
-            </Text>*/}
-            <Text style={paragraph}>
-           {resultsMeaning}
-            </Text>
-            {/*<ul>
-              {tips?.map((tip) => (
-                <li key={tip.id}>
-                  <Text style={paragraph}>{tip.description}</Text>
-                </li>
-              ))}
-              </ul>*/}
-  
-           
-  
+            
+            <div>
+           <MyHtml resultsMeaning={resultsMeaning}/>
+            </div>
             <Hr style={divider} />
   
             <Heading as="h2" style={title}>
@@ -106,17 +95,17 @@ import {
             </Heading>
   
             <Section >
-            <Text style={paragraph}>
+            <p style={paragraph}>
               {tipsSummary}
-            </Text>
+            </p>
             </Section>
           </Section>
         </Container>
   
         <Section style={footer}>
-          <Text style={footerText}>
+          <p style={footerText}>
             You're receiving this email because Someone under your account has finished their quiz
-          </Text>
+          </p>
   
           <Link href="/" style={footerLink}>
             Unsubscribe from emails like this{' '}
@@ -134,11 +123,11 @@ import {
           <Hr style={footerDivider} />
   
          {/* <Img width={111} src={`${baseUrl}/static/stack-overflow-logo-sm.png`} />*/}
-          <Text style={footerAddress}>
+          <p style={footerAddress}>
             <strong>Human Risk Project</strong>, 1111 William Street, 888th Floor, New
             Tuskaloo, AR 11188
-          </Text>
-          <Text style={footerHeart}>{'<3'}</Text>
+          </p>
+          <p style={footerHeart}>{'<3'}</p>
         </Section>
       </Body>
     </Html>
@@ -274,4 +263,3 @@ import {
     maxWidth: 'min-content',
     margin: '0 0 32px 0',
   };
-  

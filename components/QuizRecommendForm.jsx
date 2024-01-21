@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Select from './Select';
 import { recommendOptions } from '@/utils/constants';
+import Tiptap from './TipTap';
 const QuizRecommendForm = ({recomendEnabler,createdQuizId,updateQuizData}) => {
   const [recommendData, setRecommendData] = useState({
     typeOfRecommendation: 'far right ideal left',
@@ -63,7 +64,7 @@ const QuizRecommendForm = ({recomendEnabler,createdQuizId,updateQuizData}) => {
     }
   };
 
-
+useEffect(() => {console.log(recommendData)},[recommendData]);
   return (
     <form onSubmit={handleRecommendSubmit}>
       <div className="mb-4">
@@ -84,7 +85,7 @@ const QuizRecommendForm = ({recomendEnabler,createdQuizId,updateQuizData}) => {
         <label htmlFor="resultsMeaning" className="block font-medium">
           Results Meaning:
         </label>
-        <input
+        {/*<input
           type="text"
           id="resultsMeaning"
           name="resultsMeaning"
@@ -92,7 +93,8 @@ const QuizRecommendForm = ({recomendEnabler,createdQuizId,updateQuizData}) => {
           onChange={handleRecommendChange}
           className="w-full border rounded p-2"
           required
-        />
+        />*/}
+        <Tiptap setRecommendData={setRecommendData} recommendData={recommendData}/>
       </div>
       <div className="mb-4">
         <label htmlFor="tipsSummary" className="block font-medium">
