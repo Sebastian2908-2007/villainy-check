@@ -8,7 +8,7 @@ import { Text } from '@react-email/text';
 import { Html } from "@react-email/html";
 
 
-import Text from '@tiptap/extension-text'
+
 
 import * as React from "react";
 
