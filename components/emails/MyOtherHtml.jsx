@@ -4,7 +4,6 @@ console.log(tipsSummary,'in comp Summary');
     return(
         <div>
          {parse(tipsSummary)}
-         <div>BOOB</div>
         </div>
     );
 };

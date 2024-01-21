@@ -106,7 +106,7 @@ const Tiptap = ({ setRecommendData,recommendData }) => {
  
     editorProps: {
         attributes: {
-          class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto h-64 w-full bg-white',
+          class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto h-64 w-full overflow-scroll bg-white',
         },
       },
 
