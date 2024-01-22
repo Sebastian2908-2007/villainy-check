@@ -1,6 +1,6 @@
 
 
-export default function ScoreRange({resultType}) {
+export default function ScoreRange({resultType,firstName, lastName}) {
     console.log(resultType.split(' '));
     const results = resultType.split(' ');
     let typeBIdeal = false;
@@ -62,11 +62,11 @@ switch (results[2]) {
 };
 
     return(
-     <div className="w-[50%]">
-        <h1 className="text-lg font-bold font-serif">The Tester's Score</h1>
-        <h2 className="font-semibold mb-2 mt-2">One-who-imposes villainy:</h2>
-        <ul className="list-disc">
-            <li>
+     <div className="w-[100%]">
+        <h1 className="text-xl font-bold font-serif text-center">{firstName}&nbsp;{lastName}'s Score</h1>
+        <h2 className="font-semibold text-base mb-2 font-serif mt-2 p-2">One-who-imposes villainy:</h2>
+        <ul className="list-disc font-serif">
+            <li classname='text-center'>
                 <div className="w-full">
                     <span className={!typeBIdeal ? '':'text-red-600 underline font-bold'}>Ideal</span>
                     <span 
@@ -96,9 +96,9 @@ switch (results[2]) {
                 </div>
             </li>
         </ul>
-        <h2 className="font-semibold mb-2 mt-2">One-who-neglects villainy: </h2>
-        <ul className="list-disc">
-            <li>
+        <h2 className="font-semibold mb-2 text-base font-serif mt-2 p-2">One-who-neglects villainy: </h2>
+        <ul className="list-disc w-full font-serif">
+            <li classname='text-center w-full'>
                 <div className="w-full">
                     <span className={!typeAIdeal ? '':"text-red-600 underline font-bold"}>Ideal</span>
                     <span className={!typeAMild ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>Mild</span>

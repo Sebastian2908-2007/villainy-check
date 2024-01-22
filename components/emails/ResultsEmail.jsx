@@ -4,15 +4,9 @@ import {
     Column,
     Container,
     Head,
-    Heading,
     Hr,
-    Html,
-    Img,
-    Link,
     Preview,
     Section,
-    Text,
-    Row,
     Tailwind
   } from '@react-email/components';
  import MyHtml from './MyHtml';
@@ -86,60 +80,59 @@ far right mid left  =
 
   
   export const ResultsEmail = ({
-    recommendation,firstName,lastName
+   recommendation,firstName,lastName
   }) => {
     const {typeOfRecommendation,resultsMeaning,tipsSummary} = recommendation;
-  
-
- console.log(typeOfRecommendation);
+  /*const typeOfRecommendation = 'ideal right mid left';
+const resultsMeaning = '<div>some stuff</div>';
+const tipsSummary ='<ul><li>item one</li><li>item one</li><li>item one</li></ul>';
+const firstName = 'Sebastian';
+const lastName = 'Bowen';*/
+ //console.log(typeOfRecommendation);
    
     return (
-    
-    <Html>
+      <Tailwind>
+    <html className='font-serif'>
       <Head />
       <Preview>Test results</Preview>
       <Body style={main}>
         <Container style={container}>
          
-          <Row style={header}>
-            {/*<Column style={headerContent}>
-              <Heading style={headerContentTitle}>
+          <div className='w-full p-8'>
+           <Column style={headerContent}>
+              {/*<Heading style={headerContentTitle}>
             ~Helping ourselves understand people, and ourselves~
-              </Heading>
-              <p style={headerContentSubtitle}>
-                Tips and tricks For whats been found&nbsp;{firstName}&nbsp;{lastName}
-              </p>
-            </Column>*/}
-            <Tailwind>
-    <ScoreRange resultType={typeOfRecommendation}/>
-    </Tailwind>
-          </Row>
+              </Heading>*/}
+              <ScoreRange resultType={typeOfRecommendation} firstName={firstName} lastName={lastName}/>
+            </Column>
+           
+    
+    
+          </div>
   
           <Section style={content}>
-            <Heading as="h2" style={title}>
-              Searching for solutions
-            </Heading>
+          
         
   
             <Hr style={divider} />
   
-            <Heading as="h2" style={title}>
+            <h2 className='font-serif text-base'>
             Our Recommendations
-            </Heading>
+            </h2>
             
-            <div>
+           
            <MyHtml resultsMeaning={resultsMeaning}/>
-            </div>
+          
             <Hr style={divider} />
   
-            <Heading as="h2" style={title}>
+            <h2 className='font-serif text-base'>
             How to coach this person
-            </Heading>
+            </h2>
   
             <Section >
-            <p style={paragraph}>
+            
             <MyOtherHtml tipsSummary={tipsSummary}/>
-            </p>
+            
             </Section>
           </Section>
         </Container>
@@ -149,30 +142,15 @@ far right mid left  =
             You're receiving this email because Someone under your account has finished their quiz
           </p>
   
-          <Link href="/" style={footerLink}>
-            Unsubscribe from emails like this{' '}
-          </Link>
-          <Link href="/" style={footerLink}>
-            Edit email settings{' '}
-          </Link>
-          <Link href="/" style={footerLink}>
-            Contact us
-          </Link>
-          <Link href="/" style={footerLink}>
-            Privacy
-          </Link>
+         
   
           <Hr style={footerDivider} />
   
-         {/* <Img width={111} src={`${baseUrl}/static/stack-overflow-logo-sm.png`} />*/}
-          <p style={footerAddress}>
-            <strong>Human Risk Project</strong>, 1111 William Street, 888th Floor, New
-            Tuskaloo, AR 11188
-          </p>
-          <p style={footerHeart}>{'<3'}</p>
+        
         </Section>
       </Body>
-    </Html>
+    </html>
+    </Tailwind>
   );
             };
   
@@ -181,39 +159,12 @@ far right mid left  =
   const main = {
     backgroundColor: '#f3f3f5',
     fontFamily: 'HelveticaNeue,Helvetica,Arial,sans-serif',
+    padding: '10px'
   };
   
   const headerContent = { padding: '20px 30px 15px' };
+ 
   
-  const headerContentTitle = {
-    color: '#fff',
-    fontSize: '27px',
-    fontWeight: 'bold',
-    lineHeight: '27px',
-  };
-  
-  const headerContentSubtitle = {
-    color: '#fff',
-    fontSize: '17px',
-  };
-  
-  const headerImageContainer = {
-    padding: '30px 10px',
-  };
-  
-  const title = {
-    margin: '0 0 15px',
-    fontWeight: 'bold',
-    fontSize: '21px',
-    lineHeight: '21px',
-    color: '#0c0d0e',
-  };
-  
-  const paragraph = {
-    fontSize: '15px',
-    lineHeight: '21px',
-    color: '#3c3f44',
-  };
   
   const divider = {
     margin: '30px 0',
@@ -236,34 +187,17 @@ far right mid left  =
     padding: '30px 30px 40px 30px',
   };
   
-  const logo = {
-    display: 'flex',
-    background: '#f3f3f5',
-    padding: '20px 30px',
-  };
+
   
   const header = {
     borderRadius: '5px 5px 0 0',
     display: 'flex',
-    flexDireciont: 'column',
+    flexDirection: 'column',
+    justifyContent: 'center',
     backgroundColor: '#849b9f',
   };
   
-  const buttonContainer = {
-    marginTop: '24px',
-    display: 'block',
-  };
-  
-  const button = {
-    backgroundColor: '#0095ff',
-    border: '1px solid #0077cc',
-    fontSize: '17px',
-    lineHeight: '17px',
-    padding: '13px 17px',
-    borderRadius: '4px',
-    maxWidth: '120px',
-    color: '#fff',
-  };
+ 
   
   const footerDivider = {
     ...divider,
@@ -277,31 +211,4 @@ far right mid left  =
     margin: '0',
   };
   
-  const footerLink = {
-    display: 'inline-block',
-    color: '#9199a1',
-    textDecoration: 'underline',
-    fontSize: '12px',
-    marginRight: '10px',
-    marginBottom: '0',
-    marginTop: '8px',
-  };
-  
-  const footerAddress = {
-    margin: '4px 0',
-    fontSize: '12px',
-    lineHeight: '15px',
-    color: '#9199a1',
-  };
-  
-  const footerHeart = {
-    borderRadius: '1px',
-    border: '1px solid #d6d9dc',
-    padding: '4px 6px 3px 6px',
-    fontSize: '11px',
-    lineHeight: '11px',
-    fontFamily: 'Consolas,monospace',
-    color: '#e06c77',
-    maxWidth: 'min-content',
-    margin: '0 0 32px 0',
-  };
+ 
