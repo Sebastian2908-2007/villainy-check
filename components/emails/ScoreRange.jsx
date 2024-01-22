@@ -2,6 +2,7 @@
 
 export default function ScoreRange({resultType}) {
     console.log(resultType.split(' '));
+    const results = resultType.split(' ');
     let typeBIdeal = false;
     let typeBMild = false;
     let typeBHigh = false;
@@ -10,6 +11,56 @@ export default function ScoreRange({resultType}) {
     let typeAMild = false;
     let typeAHigh = false;
     let typeASevere = false;
+    // ideal = ideal
+    //start = mild
+    // mid = high
+    // far = severly high
+    // right = B =imposes
+    // left = A = neglects
+    // [0] = b
+    // [2] = a
+
+// b switch statement
+switch (results[0]) {
+    case 'ideal':
+        typeBIdeal = true;
+        break;
+    case 'start':
+        typeBMild = true;
+        break;
+    case 'mid':
+        typeBHigh = true;
+        break;
+    case 'far':
+        typeBSevere = true;
+        break;
+        case 'Ideal':
+            typeBIdeal = true;
+            typeAIdeal = true;
+            break;
+};
+
+if (results[2]) {
+switch (results[2]) {
+    case 'ideal':
+        typeAIdeal = true;
+        break;
+    case 'start':
+        typeAMild = true;
+        break;
+    case 'mid':
+        typeAHigh = true;
+        break;
+    case 'far':
+        typeASevere = true;
+        break;
+         default:
+            typeBIdeal = true;
+            typeAIdeal = true;
+            break;
+ };
+};
+
     return(
      <div className="w-[50%]">
         <h1 className="text-lg font-bold font-serif">The Tester's Score</h1>
@@ -17,22 +68,28 @@ export default function ScoreRange({resultType}) {
         <ul className="list-disc">
             <li>
                 <div className="w-full">
-                    <span className={!typeBIdeal ? '':''}>Ideal</span>
+                    <span className={!typeBIdeal ? '':'text-red-600 underline font-bold'}>Ideal</span>
                     <span 
                     className={
-                        !typeBMild ?"ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 color-red"
+                        !typeBMild ?"ml-2 border-l border-black pl-2"
+                        :
+                        "ml-2 border-l border-black pl-2 text-red-600 underline font-bold"
                         }>
                             Mild
                         </span>
                     <span 
                     className={
-                        !typeBHigh ?"ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 color-red"
+                        !typeBHigh ?"ml-2 border-l border-black pl-2"
+                        :
+                        "ml-2 border-l border-black pl-2 text-red-600 underline font-bold"
                         }>
                             High
                         </span>
                     <span 
                     className={
-                        !typeBSevere ?"ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 color-red"
+                        !typeBSevere ?"ml-2 border-l border-black pl-2"
+                        :
+                        "ml-2 border-l border-black pl-2 text-red-600 underline font-bold"
                         }>
                             Severely High
                         </span>
@@ -43,10 +100,10 @@ export default function ScoreRange({resultType}) {
         <ul className="list-disc">
             <li>
                 <div className="w-full">
-                    <span className={!typeAIdeal ? '':""}>Ideal</span>
-                    <span className={!typeAIdeal ? "ml-2 border-l border-black pl-2":""}>Mild</span>
-                    <span className={!typeAIdeal ? "ml-2 border-l border-black pl-2":""}>High</span>
-                    <span className={!typeAIdeal ? "ml-2 border-l border-black pl-2":""}>Severely High</span>
+                    <span className={!typeAIdeal ? '':"text-red-600 underline font-bold"}>Ideal</span>
+                    <span className={!typeAMild ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>Mild</span>
+                    <span className={!typeAHigh ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>High</span>
+                    <span className={!typeASevere ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>Severely High</span>
                 </div>
             </li>
         </ul>

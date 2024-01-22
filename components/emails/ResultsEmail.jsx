@@ -13,9 +13,11 @@ import {
     Section,
     Text,
     Row,
+    Tailwind
   } from '@react-email/components';
  import MyHtml from './MyHtml';
  import MyOtherHtml from './MyOtherHtml';
+ import ScoreRange from './ScoreRange';
   import * as React from 'react'
 
  
@@ -89,7 +91,7 @@ far right mid left  =
     const {typeOfRecommendation,resultsMeaning,tipsSummary} = recommendation;
   
 
- 
+ console.log(typeOfRecommendation);
    
     return (
     
@@ -100,14 +102,17 @@ far right mid left  =
         <Container style={container}>
          
           <Row style={header}>
-            <Column style={headerContent}>
+            {/*<Column style={headerContent}>
               <Heading style={headerContentTitle}>
             ~Helping ourselves understand people, and ourselves~
               </Heading>
               <p style={headerContentSubtitle}>
                 Tips and tricks For whats been found&nbsp;{firstName}&nbsp;{lastName}
               </p>
-            </Column>
+            </Column>*/}
+            <Tailwind>
+    <ScoreRange resultType={typeOfRecommendation}/>
+    </Tailwind>
           </Row>
   
           <Section style={content}>
