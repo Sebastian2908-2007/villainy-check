@@ -99,7 +99,7 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-const Tiptap = ({ setRecommendData,recommendData }) => {
+const Tiptap = ({ setRecommendData,recommendData,finishSubmitted }) => {
   const editor = useEditor({
     extensions: [StarterKit, Underline],
     content: ``,
@@ -120,7 +120,15 @@ const Tiptap = ({ setRecommendData,recommendData }) => {
         
       });
     },
+    
+    
   });
+
+  if(finishSubmitted) {
+    editor.commands.clearContent();
+    console.log('content clearingtip2');
+  };
+
 
   return (
     <div  className="textEditor">
