@@ -34,7 +34,7 @@ const PaidAllUsers = () => {
                             Email: <a className="text-white" href={`mailto:${user.email}`}>{user.email}</a>
                         </p>
                         <p>
-                         Click to Copy Quiz Link
+                         Click below to Copy Quiz Link
                          </p>
                          <input 
                         readOnly

@@ -171,7 +171,7 @@ await userToUpdate.save();
 
 try {
   const data = await resend.emails.send({
-    from: 'sebastian@topdev.tech',
+    from: 'contact@olddeel.org',
     to:`${userToUpdate.email}`,
     subject: `${userToUpdate.firstName} ${userToUpdate.lastName}'s Magic Quiz Link`,
     react: MagickLinkEmail({ newQuizLink }),

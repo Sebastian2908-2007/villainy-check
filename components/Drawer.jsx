@@ -97,10 +97,13 @@ if(userCookie) {
                 </Link>
               </li>
 
-             {isSuperAdmin ? <li className='mb-2'>
+             {isSuperAdmin ? <li className='mb-2 flex flex-col'>
                 <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/createquiz">
                   Create Quiz
                 </Link>
+                <Link onClick={closeDrawer} className="text-[#fde1e2] hover:text-white underline" href="/dashboard/superadmin/addtesters">
+                  Add Subjects
+                </Link> 
               </li>
               :
               <li className='mb-2'>

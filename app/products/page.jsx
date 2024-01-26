@@ -3,7 +3,7 @@ const ProductList = dynamic(() =>import( '@/components/ProductList'),{ssr: false
 import Image from "next/image";
 export default function Products(){
     return(
-        <div>
+        <div className="w-full">
             <section className="
             w-full 
             h-[40vh] 
