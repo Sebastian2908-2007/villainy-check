@@ -68,10 +68,10 @@ switch (results[2]) {
         <ul className="list-disc font-serif">
             <li classname='text-center'>
                 <div className="w-full">
-                    <span className={!typeBIdeal ? '':'text-red-600 underline font-bold'}>Ideal</span>
+                    <span className={!typeAIdeal ? '':'text-red-600 underline font-bold'}>Ideal</span>
                     <span 
                     className={
-                        !typeBMild ?"ml-2 border-l border-black pl-2"
+                        !typeAMild ?"ml-2 border-l border-black pl-2"
                         :
                         "ml-2 border-l border-black pl-2 text-red-600 underline font-bold"
                         }>
@@ -79,7 +79,7 @@ switch (results[2]) {
                         </span>
                     <span 
                     className={
-                        !typeBHigh ?"ml-2 border-l border-black pl-2"
+                        !typeAHigh ?"ml-2 border-l border-black pl-2"
                         :
                         "ml-2 border-l border-black pl-2 text-red-600 underline font-bold"
                         }>
@@ -87,7 +87,7 @@ switch (results[2]) {
                         </span>
                     <span 
                     className={
-                        !typeBSevere ?"ml-2 border-l border-black pl-2"
+                        !typeASevere ?"ml-2 border-l border-black pl-2"
                         :
                         "ml-2 border-l border-black pl-2 text-red-600 underline font-bold"
                         }>
@@ -100,10 +100,10 @@ switch (results[2]) {
         <ul className="list-disc w-full font-serif">
             <li classname='text-center w-full'>
                 <div className="w-full">
-                    <span className={!typeAIdeal ? '':"text-red-600 underline font-bold"}>Ideal</span>
-                    <span className={!typeAMild ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>Mild</span>
-                    <span className={!typeAHigh ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>High</span>
-                    <span className={!typeASevere ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>Severely High</span>
+                    <span className={!typeBIdeal ? '':"text-red-600 underline font-bold"}>Ideal</span>
+                    <span className={!typeBMild ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>Mild</span>
+                    <span className={!typeBHigh ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>High</span>
+                    <span className={!typeBSevere ? "ml-2 border-l border-black pl-2":"ml-2 border-l border-black pl-2 font-bold underline text-red-600"}>Severely High</span>
                 </div>
             </li>
         </ul>
