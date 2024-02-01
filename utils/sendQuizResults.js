@@ -6,13 +6,26 @@ export const sendQuizResults = async (scoresData,recommends,tester) => {
     let quizData = {};
     const {typeA,typeB,balanced,idealOutcome} = scoresData;
 
-function percentage(value1,value2) {
+/****MY OLD CODE*/
+/*function percentage(value1,value2) {
   let percentage = (value2 - value1) / (value1) * 100;
   const finalValue = 100 + percentage;
   return finalValue;
+};*/
+//const typeAPer = percentage(idealOutcome,typeA);
+//const typeBPer = percentage(idealOutcome,typeB);
+/****MY OLD CODE*/
+
+//Change it to: CHASES CODE
+function percentage(value1,value2) {
+  let percentage = (value2 - value1) / (value2) * 100;
+  const finalValue = 100 + percentage;
+  return finalValue;
 };
-const typeAPer = percentage(idealOutcome,typeA);
-const typeBPer = percentage(idealOutcome,typeB);
+const typeAPer = percentage(typeA,66);
+const typeBPer = percentage(typeB,66);
+//Change it to: CHASES CODE
+
 const sp = 3;
 const mp = 30;
 const hp = 50;
