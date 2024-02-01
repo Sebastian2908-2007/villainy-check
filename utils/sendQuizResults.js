@@ -14,8 +14,8 @@ function percentage(value1,value2) {
 const typeAPer = percentage(idealOutcome,typeA);
 const typeBPer = percentage(idealOutcome,typeB);
 const sp = 3;
-const mp = 12;
-const hp = 28;
+const mp = 30;
+const hp = 50;
 
 
 //Below runs on both villainys being greater than SP
