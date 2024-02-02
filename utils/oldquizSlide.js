@@ -14,28 +14,25 @@ export const QuizSlide = ({
     setTypeB,
     balanced,
     setBalanced,
-    //correctType,
-    //setCorrectType,
     hasSubmitted,
     setHasSubmitted,
     displayAnswers,
-   // setDisplayAnswers,
     slideCounter,
-   //setSlideCounter
+ 
 }) => {
  const router = useRouter();
-  const [state, dispatch] = useStoreContext(); 
+  const [state, dispatch] = useStoreContext();
 const [lastTypeA,setLastTypeA] = useState({amount:0,add:false,subtract:false});
 const [lastTypeB,setLastTypeB] = useState({amount:0,add:false,subtract:false});
 const [lastBalanced,setLastBalanced] = useState({amount:0,add:false,subtract:false});
 const [finishSubmitted,setFinishSubmitted] = useState(null);
 
-      
-    
+     
+   
 
-    
+   
 
-    
+   
    const handleUnselect = () => {
     if(lastBalanced.add) {
 setBalanced(balanced - lastBalanced.amount);
@@ -67,7 +64,7 @@ setLastTypeB({amount:0,add:false,subtract:false});
 
       question.answers.forEach(answer => {
         if(answer.correct === 'true') {
-            //setCorrectType(answer.answerType);
+        
             correctType = answer.answerType;
         }
     });
@@ -85,19 +82,16 @@ setLastTypeB({amount:0,add:false,subtract:false});
         }else if(isUserCorrect === 'false' && correctType === 'far right') {
               switch(answerType) {
                 case'start left':
-                setTypeB(typeB + 5);
-               // setTypeA(typeA - 5);
-               // setBalanced(balanced - 5);
+                setTypeB(typeB + 4);
+            
                 /**Set State of last action*/
                 setLastTypeB({...lastTypeB,amount: 5,add: true});
-               // setLastTypeA({...lastTypeB,amount: 5,subtract: true});
-                //setLastBalanced({...lastBalanced,amount: 5, subtract:true});
+           
                 /**last action set ends*/
                 break;
                 case'mid left':
-                setTypeB(typeB + 10);
-                //setTypeA(typeA - 10);
-                //setBalanced(balanced - 10);
+                setTypeB(typeB + 5);
+               
                    /**Set State of last action*/
                 setLastTypeB({...lastTypeB,amount: 10,add: true});
                 setLastTypeA({...lastTypeB,amount: 10,subtract: true});
@@ -105,29 +99,27 @@ setLastTypeB({amount:0,add:false,subtract:false});
                 /**last action set ends*/
                 break;
                 case'far left':
-                setTypeB(typeB + 15);
-               // setTypeA(typeA - 15);
-                //setBalanced(balanced - 15);
+                setTypeB(typeB + 6);
+              
                    /**Set State of last action*/
                 setLastTypeB({...lastTypeB,amount: 15,add: true});
-               // setLastTypeA({...lastTypeB,amount: 15,subtract: true});
-               // setLastBalanced({...lastBalanced,amount: 15, subtract:true});
+               
                 /**last action set ends*/
                 break;
                 case'start right':
-               // setTypeB(typeB - 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
+              
+                setTypeA(typeB + 2);
+               
                    /**Set State of last action*/
-               // setLastTypeB({...lastTypeB,amount: 5, subtract:true});
+              
                 setLastTypeA({...lastTypeA,amount: 5,add: true});
-               // setLastBalanced({...lastBalanced,amount: 5, subtract:true});
+               
                 /**last action set ends*/
                 break;
                 case'mid right':
                // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-                //setBalanced(balanced - 10);
+                setTypeA(typeB + 1);
+                
                    /**Set State of last action*/
                 setLastTypeB({...lastTypeB,amount: 10, subtract:true});
                 setLastTypeA({...lastTypeA,amount: 10,add: true});
@@ -136,432 +128,129 @@ setLastTypeB({amount:0,add:false,subtract:false});
                 break;
 
                 case'mid':
-                setTypeB(typeB + 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
+                setTypeB(typeB + 3);
+           
                    /**Set State of last action*/
                 setLastTypeB({...lastTypeB,amount: 5,add: true});
-                setLastTypeA({...lastTypeA,amount: 5,add: true});
-                //setLastBalanced({...lastBalanced,amount: 5, subtract:true});
+                
                 /**last action set ends*/
                 break;
               }
-        }
-        else if(isUserCorrect === 'false' && correctType === 'mid right') {
-              switch(answerType) {
-                case'start left':
-                setTypeB(typeB + 5);
-               // setTypeA(typeA - 5);
-               // setBalanced(balanced - 5);
-                   /**Set State of last action*/
-                setLastTypeB({...lastTypeB,amount: 5,add: true});
-                setLastTypeA({...lastTypeB,amount: 5,subtract: true});
-                setLastBalanced({...lastBalanced,amount: 5, subtract:true});
-                /**last action set ends*/
-                break;
-                case'mid left':
-                setTypeB(typeB + 10);
-               // setTypeA(typeA - 10);
-               // setBalanced(balanced - 10);
-                   /**Set State of last action*/
-                setLastTypeB({...lastTypeB,amount: 10,add: true});
-                //setLastTypeA({...lastTypeB,amount: 10,subtract: true});
-               // setLastBalanced({...lastBalanced,amount: 10, subtract:true});
-                /**last action set ends*/
-                break;
-                case'far left':
-                setTypeB(typeB + 15);
-               // setTypeA(typeA - 15);
-                //setBalanced(balanced - 15);
-                   /**Set State of last action*/
-                setLastTypeB({...lastTypeB,amount: 15,add: true});
-               // setLastTypeA({...lastTypeB,amount: 15,subtract: true});
-               // setLastBalanced({...lastBalanced,amount: 15, subtract:true});
-                /**last action set ends*/
-                break;
-                case'start right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 5);
-                   /**Set State of last action*/
-               // setLastTypeB({...lastTypeB,amount: 10, subtract:true});
-                setLastTypeA({...lastTypeA,amount: 10,add: true});
-               // setLastBalanced({...lastBalanced,amount: 5, subtract:true});
-                /**last action set ends*/
-                break;
-                case'far right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 5);
-                   /**Set State of last action*/
-               // setLastTypeB({...lastTypeB,amount: 10, subtract:true});
-                setLastTypeA({...lastTypeA,amount: 10,add: true});
-                //setLastBalanced({...lastBalanced,amount: 5, subtract:true});
-                /**last action set ends*/
-                break;
-
-                case'mid':
-                setTypeB(typeB + 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
-                   /**Set State of last action*/
-                setLastTypeB({...lastTypeB,amount: 5,add: true});
-                setLastTypeA({...lastTypeA,amount: 5,add: true});
-               // setLastBalanced({...lastBalanced,amount: 5, subtract:true});
-                /**last action set ends*/
-                break;
-              }
-        }
-        
-        
-        else if(isUserCorrect === 'false' && correctType === 'start right') {
-              switch(answerType) {
-                case'start left':
-                setTypeB(typeB + 5);
-               // setTypeA(typeA - 5);
-               // setBalanced(balanced - 5);
-                   /**Set State of last action*/
-                setLastTypeB({...lastTypeB,amount: 5,add: true});
-                setLastTypeA({...lastTypeB,amount: 5,subtract: true});
-                setLastBalanced({...lastBalanced,amount: 5, subtract:true});
-                /**last action set ends*/
-                break;
-                case'mid left':
-                setTypeB(typeB + 10);
-               // setTypeA(typeA - 10);
-               // setBalanced(balanced - 10);
-                   /**Set State of last action*/
-                setLastTypeB({...lastTypeB,amount: 10,add: true});
-                setLastTypeA({...lastTypeB,amount: 10,subtract: true});
-                setLastBalanced({...lastBalanced,amount: 10, subtract:true});
-                /**last action set ends*/
-                break;
-                case'far left':
-                setTypeB(typeB + 15);
-               // setTypeA(typeA - 15);
-               // setBalanced(balanced - 15);
-                   /**Set State of last action*/
-               // setLastTypeB({...lastTypeB,amount: 15,add: true});
-                setLastTypeA({...lastTypeB,amount: 15,subtract: true});
-               // setLastBalanced({...lastBalanced,amount: 15, subtract:true});
-                /**last action set ends*/
-                break;
-                case'far right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 10);
-                   /**Set State of last action*/
-               // setLastTypeB({...lastTypeB,amount: 10, subtract:true});
-                setLastTypeA({...lastTypeA,amount: 10,add: true});
-               // setLastBalanced({...lastBalanced,amount: 10, subtract:true});
-                /**last action set ends*/
-                break;
-                case'mid right':
-                setTypeB(typeB - 5);
-                setTypeA(typeA + 5);
-                setBalanced(balanced - 5);
-                   /**Set State of last action*/
-               // setLastTypeB({...lastTypeB,amount: 5, subtract:true});
-                setLastTypeA({...lastTypeA,amount: 5,add: true});
-               // setLastBalanced({...lastBalanced,amount: 5, subtract:true});
-                /**last action set ends*/
-                break;
-
-                case'mid':
-                setTypeB(typeB + 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
-                   /**Set State of last action*/
-                setLastTypeB({...lastTypeB,amount: 5,add: true});
-                setLastTypeA({...lastTypeA,amount: 5,add: true});
-               // setLastBalanced({...lastBalanced,amount: 5, subtract:true});
-                /**last action set ends*/
-                break;
-              }
-        }
-        
-        
-        
-        
-        
+        }        
         /*!!!!!!!!!!!!!!!**************NEED TO SETLAST BELOW********************************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-        
+       
         else if (isUserCorrect === 'false' && correctType === 'far left') {
             switch(answerType) {
                 case'start right':
-              //  setTypeB(typeB - 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
+             
+                setTypeA(typeA + 4);
+               
                     /**Set State of last action*/
-                  //  setLastTypeB({...lastTypeB,amount: 5, subtract: true});
+                 
                     setLastTypeA({...lastTypeA,amount: 5,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 5,subtract: true});
+                  
                     /**last action set ends*/
                 break;
                 case'mid right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 10);
+               
+                setTypeA(typeA + 5);
+              
                  /**Set State of last action*/
-                  //  setLastTypeB({...lastTypeB,amount: 10, subtract: true});
+                 
                     setLastTypeA({...lastTypeA,amount: 10,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
+                 
                     /**last action set ends*/
                 break;
                 case'far right':
-               // setTypeB(typeB - 15);
-                setTypeA(typeA + 15);
-               // setBalanced(balanced - 15);
+              
+                setTypeA(typeA + 6);
+            
                  /**Set State of last action*/
-                   // setLastTypeB({...lastTypeB,amount: 15, subtract: true});
+                   
                     setLastTypeA({...lastTypeA,amount: 15,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 15,subtract: true});
+                 
                     /**last action set ends*/
                 break;
                 case'start left':
-                setTypeB(typeB + 5);
-                //setTypeA(typeA - 5);
-                //setBalanced(balanced - 5);
-                 /**Set State of last action*/
+                setTypeB(typeA + 2);
+             
                     setLastTypeB({...lastTypeB,amount: 5, add: true});
-                   // setLastTypeA({...lastTypeA,amount: 5, subtract: true});
-                   // setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
+             
                 break;
                 case'mid left':
-                setTypeB(typeB + 10);
-               // setTypeA(typeA - 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
+                setTypeB(typeA + 1);
+             
                     setLastTypeB({...lastTypeB,amount: 10, add: true});
-                  //  setLastTypeA({...lastTypeA,amount: 10, subtract: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
+              
                 break;
 
                 case'mid':
-                setTypeB(typeB + 5);
-                setTypeA(typeA + 5);
-                //setBalanced(balanced - 5);
-                 /**Set State of last action*/
-                    setLastTypeB({...lastTypeB,amount: 5, add: true});
+                setTypeA(typeA + 3);
+                
                     setLastTypeA({...lastTypeA,amount: 5,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
+                 
                 break;
               }      
         }
-        else if (isUserCorrect === 'false' && correctType === 'mid left') {
-            switch(answerType) {
-                case'start right':
-               // setTypeB(typeB - 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
-                 /**Set State of last action*/
-                  //  setLastTypeB({...lastTypeB,amount: 5, subtract: true});
-                    setLastTypeA({...lastTypeA,amount: 5,add: true});
-                  //  setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'mid right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
-                   // setLastTypeB({...lastTypeB,amount: 10, subtract: true});
-                    setLastTypeA({...lastTypeA,amount: 10,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'far right':
-               // setTypeB(typeB - 15);
-                setTypeA(typeA + 15);
-               // setBalanced(balanced - 15);
-                 /**Set State of last action*/
-                   // setLastTypeB({...lastTypeB,amount: 15, subtract: true});
-                    setLastTypeA({...lastTypeA,amount: 15,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 15,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'start left':
-                setTypeB(typeB + 10);
-               // setTypeA(typeA - 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
-                    setLastTypeB({...lastTypeB,amount: 10, add: true});
-                   // setLastTypeA({...lastTypeA,amount: 10, subtract: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'far left':
-                setTypeB(typeB + 10);
-               // setTypeA(typeA - 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
-                    setLastTypeB({...lastTypeB,amount: 10, add: true});
-                  //  setLastTypeA({...lastTypeA,amount: 10, subtract: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
-                break;
-
-                case'mid':
-                setTypeB(typeB + 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
-                 /**Set State of last action*/
-                    setLastTypeB({...lastTypeB,amount: 5, add: true});
-                    setLastTypeA({...lastTypeA,amount: 5,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
-                break;
-              }      
-        }
-        else if (isUserCorrect === 'false' && correctType === 'start left') {
-            switch(answerType) {
-                case'start right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
-                   // setLastTypeB({...lastTypeB,amount: 10, subtract: true});
-                    setLastTypeA({...lastTypeA,amount: 10,add: true});
-                  //  setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'mid right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
-                  //  setLastTypeB({...lastTypeB,amount: 10, subtract: true});
-                    setLastTypeA({...lastTypeA,amount: 10,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'far right':
-               // setTypeB(typeB - 15);
-                setTypeA(typeA + 15);
-                //setBalanced(balanced - 15);
-                 /**Set State of last action*/
-                   // setLastTypeB({...lastTypeB,amount: 15, subtract: true});
-                    setLastTypeA({...lastTypeA,amount: 15,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 15,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'start left':
-                setTypeB(typeB + 5);
-               // setTypeA(typeA - 5);
-               // setBalanced(balanced - 5);
-                 /**Set State of last action*/
-                    setLastTypeB({...lastTypeB,amount: 5, add: true});
-                   // setLastTypeA({...lastTypeA,amount: 5, subtract: true});
-                   // setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
-                break;
-                case'mid left':
-                setTypeB(typeB + 10);
-               // setTypeA(typeA - 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
-                    setLastTypeB({...lastTypeB,amount: 10, add: true});
-                   // setLastTypeA({...lastTypeA,amount: 10, subtract: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
-                break;
-
-                case'mid':
-                setTypeB(typeB + 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
-                 /**Set State of last action*/
-                    setLastTypeB({...lastTypeB,amount: 5, add: true});
-                    setLastTypeA({...lastTypeA,amount: 5,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
-                break;
-              }      
-        }
-
 
         else if (isUserCorrect === 'false' && correctType === 'mid') {
             switch(answerType) {
                 case'start right':
-                //setTypeB(typeB - 5);
-                setTypeA(typeA + 5);
-               // setBalanced(balanced - 5);
-                 /**Set State of last action*/
-                  //  setLastTypeB({...lastTypeB,amount: 5, subtract: true});
+            
+                setTypeA(typeA + 1);
+            
                     setLastTypeA({...lastTypeA,amount: 5,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
+                 
                 break;
                 case'mid right':
-               // setTypeB(typeB - 10);
-                setTypeA(typeA + 10);
-               // setBalanced(balanced - 10);
-                 /**Set State of last action*/
-                   // setLastTypeB({...lastTypeB,amount: 10, subtract: true});
+             
+                setTypeA(typeA + 2);
+             
                     setLastTypeA({...lastTypeA,amount: 10,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
+                 
                 break;
                 case'far right':
-              //  setTypeB(typeB - 15);
-                setTypeA(typeA + 15);
-               // setBalanced(balanced - 15);
-                 /**Set State of last action*/
-                   // setLastTypeB({...lastTypeB,amount: 15, subtract: true});
+              
+                setTypeA(typeA + 3);
+            
                     setLastTypeA({...lastTypeA,amount: 15,add: true});
-                   // setLastBalanced({...lastBalanced,amount: 15,subtract: true});
-                    /**last action set ends*/
+                
                 break;
                 case'start left':
-                setTypeB(typeB + 5);
-                //setTypeA(typeA - 5);
-                //setBalanced(balanced - 5);
-                 /**Set State of last action*/
+                setTypeB(typeB + 1);
+             
                     setLastTypeB({...lastTypeB,amount: 5, add: true});
-                    //setLastTypeA({...lastTypeA,amount: 5, subtract: true});
-                    //setLastBalanced({...lastBalanced,amount: 5,subtract: true});
-                    /**last action set ends*/
+                  
                 break;
                 case'mid left':
-                setTypeB(typeB + 10);
-                //setTypeA(typeA - 10);
-                //setBalanced(balanced - 10);
-                 /**Set State of last action*/
+                setTypeB(typeB + 2);
+              
                     setLastTypeB({...lastTypeB,amount: 10, add: true});
-                    //setLastTypeA({...lastTypeA,amount: 10, subtract: true});
-                    //setLastBalanced({...lastBalanced,amount: 10,subtract: true});
-                    /**last action set ends*/
+                    
                 break;
                 case'far left':
-                setTypeB(typeB + 15);
-                //setTypeA(typeA - 15);
-                //setBalanced(balanced - 15);
-                 /**Set State of last action*/
+                setTypeB(typeB + 3);
+              
                     setLastTypeB({...lastTypeB,amount: 15, add: true});
-                    //setLastTypeA({...lastTypeA,amount: 15, subtract: true});
-                    //setLastBalanced({...lastBalanced,amount: 15,subtract: true});
-                    /**last action set ends*/
+                 
                 break;
                
               }      
         }
         /**ADD NEWER ELSE IF AND CASES BELOW */
      };
-    
+   
 
     return(
         slideCounter >= 1 ?
-        <div className=" 
-        
+        <div className="
+       
         bg-[#849b9f]
         flex flex-row
-        
-        items-start h-[100%] 
+       
+        items-start h-[100%]
         min-[375px]:h-[auto]
-        
+       
         "
         style={{width:width}}
         >
@@ -578,9 +267,9 @@ setLastTypeB({amount:0,add:false,subtract:false});
             <div className="
             bg-[#dbd5d5]
             w-16 shrink-0
-            h-[1571px] 
+            h-[1571px]
             min-[360px]:h-[1007px]
-            min-[375px]:h-[947px] 
+            min-[375px]:h-[947px]
             min-[430px]:h-[870px]
             min-[540px]:h-[817px]
             min-[768px]:h-[748px]
@@ -606,8 +295,8 @@ setLastTypeB({amount:0,add:false,subtract:false});
 {hasSubmitted ? <button
  className="
  bg-[#999595]
- text-[1rem] 
- text-white 
+ text-[1rem]
+ text-white
  font-['Inter']
  font-extrabold
  text-center
@@ -615,14 +304,14 @@ setLastTypeB({amount:0,add:false,subtract:false});
  mb-64
  p-2
  rounded rounded-full
- " 
+ "
 onClick={() => handleUnselect()}>Unselect</button>
 
           :
              
         <div className="w-full">
           <div className=" p-4  w-full">
-            
+           
            <div className="flex flex-col min-[540px]:flex-row w-full justify-between mb-8">
             <p className="
             text-[1.1rem]
@@ -634,7 +323,7 @@ onClick={() => handleUnselect()}>Unselect</button>
              min-[540px]:p-2
              mb-2
             ">1.&nbsp;{question.ques1}</p>
-           {/* <span className="bg-[#fde1e2] text-[#849b9f] mt-8 mb-8 text-center font-extrabold rounded">VS</span>*/}
+          
             <p className="
             text-[1.1rem]
             text-center
@@ -646,20 +335,20 @@ onClick={() => handleUnselect()}>Unselect</button>
              mb-2
             ">2.&nbsp;{question.ques2}</p>
             </div>
-          
-            
+         
+           
 <ul className="text-[#fde1e2] list-none list-outside ">
   {question.answers.map((answer, index) => (
     <li className="
     bg-[#999595]
-    text-[1rem] 
+    text-[1rem]
     font-['Inter']
     font-bold
     text-center
     mb-4
     p-2
     rounded rounded-full
-    " 
+    "
     key={index}
     >
         <button
@@ -678,10 +367,10 @@ onClick={() => handleUnselect()}>Unselect</button>
 </ul>
 
 
-            
+           
           </div>
         </div>}
-      
+     
 
 
 
@@ -705,40 +394,36 @@ onClick={() => handleUnselect()}>Unselect</button>
         </div>
 
         <div className="
-        bg-[#999595] w-20 
-        shrink-0 
+        bg-[#999595] w-20
+        shrink-0
         h-[1635px]
         min-[360px]:h-[1071px]
         min-[375px]:h-[1011px]
         min-[430px]:h-[934px]
         min-[540px]:h-[881px]
         min-[768px]:h-[811px]
-        
+       
         " >
           </div>
-          
+         
       </div>:
       <div className="flex flec-col justify-center bg-[#bbb6b6] p-4">
-       {/* <span className="text-[#fde1e2]">Quiz Complete!</span>
-        <span className="text-[#fde1e2]">Check out your scores</span>
-        <span className="text-[#fde1e2]">Type A Score {displayAnswers.typeA}</span>
-        <span className="text-[#fde1e2]">Type B Score {displayAnswers.typeB}</span>
-      <span className="text-[#fde1e2]">Type Balanced Score {displayAnswers.balanced}</span>*/}
-      {finishSubmitted ? 
+      
+      {finishSubmitted ?
             <button type="button" className="bg-[#849b9f] font-bold p-2 text-[#fde1e2]  border-2 border-[#fde1e2] rounded " disabled>
             <svg className="animate-spin h-5 w-full  text-[#fde1e2] fill-current" viewBox="0 0 66 66">
             <path d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z">
               <animateTransform attributeName="transform" type="rotate" dur="0.75s" values="0 12 12;360 12 12" repeatCount="indefinite"/></path>
               </svg>
  
-            
+           
             ...Finishing up
             </button>
-            
+           
             :
 
-        <button 
-        // className="p-2 border-2 border-[#fde1e2] text-xl font-['Inter'] font-bold bg-[#849b9f] text-[#fde1e2] mr-1"
+        <button
+        
         className='animate-bounce p-2 border-2 border-[#fde1e2] text-xl  font-bold bg-[#849b9f] text-[#fde1e2] mr-1'
          onClick={ async () => {
           setFinishSubmitted(true);
@@ -757,21 +442,3 @@ onClick={() => handleUnselect()}>Unselect</button>
 };
 export default QuizSlide;
 
-/*
-
-    {items.questions.map((question, index) => ( h-[796px] left h-[732px]
-        <div key={index}>
-          <div className="min-h-screen p-4 bg-white shadow-md rounded-lg">
-            <h2 className="text-2xl font-semibold mb-2">{quizTitle}</h2>
-            <p>{question.ques1}</p>
-            <p>{question.ques2}</p>
-            {question.answers.map((answer,index) => (
-                <p key={index}>{answer.answerTxt}</p>
-            ))}
-            <button onClick={goToNextSlide}>Next Slide</button>
-          </div>
-        </div>
-      ))}
-
-
-*/
